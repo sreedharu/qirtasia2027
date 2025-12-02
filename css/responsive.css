@@ -1,0 +1,224 @@
+/* QIRT ASIA 2027 - Responsive Styles */
+
+/* ========== Tablet (768px - 1199px) ========== */
+@media (max-width: 1199px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .nav-menu {
+        gap: 1rem;
+    }
+
+    .hero-title {
+        font-size: 3rem;
+    }
+
+    h1 {
+        font-size: 2.5rem;
+    }
+
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+/* ========== Mobile (< 768px) ========== */
+@media (max-width: 767px) {
+
+    /* Typography */
+    html {
+        font-size: 14px;
+    }
+
+    h1 {
+        font-size: 2rem;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    h3 {
+        font-size: 1.5rem;
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-subtitle {
+        font-size: 1rem;
+    }
+
+    .hero-info {
+        font-size: 1.1rem;
+    }
+
+    /* Navigation */
+    .mobile-menu-toggle {
+        display: block;
+    }
+
+    .nav-menu {
+        position: fixed;
+        top: 70px;
+        left: -100%;
+        width: 100%;
+        height: calc(100vh - 70px);
+        background: var(--dark-secondary);
+        flex-direction: column;
+        padding: var(--spacing-md);
+        transition: var(--transition-normal);
+        overflow-y: auto;
+    }
+
+    .nav-menu.active {
+        left: 0;
+    }
+
+    .nav-item {
+        width: 100%;
+    }
+
+    .nav-link {
+        display: block;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .dropdown-menu {
+        position: static;
+        opacity: 1;
+        visibility: visible;
+        transform: none;
+        margin-top: var(--spacing-xs);
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height var(--transition-normal);
+    }
+
+    .dropdown.active .dropdown-menu {
+        max-height: 500px;
+    }
+
+    /* Grid Layouts */
+    .grid-2,
+    .grid-3,
+    .grid-4 {
+        grid-template-columns: 1fr;
+    }
+
+    /* Sections */
+    .section {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    /* Hero */
+    .hero {
+        min-height: 80vh;
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn {
+        width: 100%;
+        padding: 0.875rem 2rem;
+    }
+
+    /* Cards */
+    .card {
+        padding: var(--spacing-sm);
+    }
+
+    /* Footer */
+    .footer-content {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    /* Timeline */
+    .timeline-item {
+        padding: var(--spacing-sm);
+    }
+
+    .timeline-item:hover {
+        transform: translateX(5px);
+    }
+}
+
+/* ========== Small Mobile (< 480px) ========== */
+@media (max-width: 479px) {
+    .nav-container {
+        padding: 1rem;
+    }
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+    .hero-title {
+        font-size: 1.75rem;
+    }
+
+    .btn {
+        padding: 0.75rem 1.5rem;
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== Print Styles ========== */
+@media print {
+
+    .header,
+    .footer,
+    .hero-buttons,
+    .mobile-menu-toggle {
+        display: none;
+    }
+
+    body {
+        background: white;
+        color: black;
+    }
+
+    .section {
+        page-break-inside: avoid;
+    }
+}
+
+/* ========== Landscape Mobile ========== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .hero {
+        min-height: auto;
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .hero-title {
+        font-size: 2rem;
+    }
+
+    .hero-info {
+        font-size: 1rem;
+    }
+}
+
+/* ========== Touch Device Optimizations ========== */
+@media (hover: none) and (pointer: coarse) {
+    .btn {
+        min-height: 44px;
+        min-width: 44px;
+    }
+
+    .nav-link {
+        min-height: 44px;
+    }
+
+    .dropdown-item {
+        min-height: 44px;
+    }
+}
