@@ -142,12 +142,17 @@ http-server -p 8000
    - Click "Save"
    - Your site will be available at: `https://[username].github.io/qirtasia2027`
 
-3. **Custom Domain (Optional):**
-   - Add a file named `CNAME` in the root directory
-   - Content: `www.qirtasia2027.org`
-   - Configure DNS settings with your domain registrar:
-     - Add A records pointing to GitHub Pages IPs
-     - Add CNAME record for www subdomain
+3. **Custom Domain Configuration (Namecheap):**
+   - The `CNAME` file has been created in this repository with `qirtasia2027.com`.
+   - **Login to Namecheap** and go to the "Advanced DNS" tab for your domain.
+   - **Add the following records:**
+     - **Type:** A Record | **Host:** @ | **Value:** 185.199.108.153
+     - **Type:** A Record | **Host:** @ | **Value:** 185.199.109.153
+     - **Type:** A Record | **Host:** @ | **Value:** 185.199.110.153
+     - **Type:** A Record | **Host:** @ | **Value:** 185.199.111.153
+     - **Type:** CNAME Record | **Host:** www | **Value:** <your-github-username>.github.io
+   - Wait for DNS propagation (can take up to 24 hours).
+   - In GitHub repository settings -> Pages, check "Enforce HTTPS".
 
 ### Traditional Web Hosting
 
