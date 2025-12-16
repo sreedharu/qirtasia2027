@@ -129,66 +129,20 @@
                 </div>
             </div>
 
-            <!-- Contact Form -->
-            <div class="section-header">
-                <h2 class="section-title">Send Us a Message</h2>
-                <p class="section-subtitle">Have a question? Fill out the form below and we'll get back to you soon</p>
-            </div>
-
-            <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <form id="contact-form" action="https://formsubmit.co/info@qirtasia2027.com" method="POST">
-                    <!-- FormSubmit Configuration -->
-                    <input type="hidden" name="_subject" value="New Inquiry - QIRT ASIA 2027">
-                    <input type="hidden" name="_captcha" value="false">
-                    <input type="hidden" name="_template" value="table">
-                    <!-- Redirect to same page prevents redirection to FormSubmit success page, handled by JS ideally, but good fallback -->
-
-                    <div class="grid grid-2" style="gap: 1.5rem;">
-                        <div>
-                            <label for="name"
-                                style="display: block; margin-bottom: 0.5rem; color: var(--light-text); font-weight: 500;">Name
-                                *</label>
-                            <input type="text" id="name" name="name" required
-                                style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--dark-tertiary); color: var(--light-text); font-family: var(--font-primary);">
-                            <span class="error-message"
-                                style="display: none; color: var(--primary-red); font-size: 0.875rem; margin-top: 0.25rem;"></span>
-                        </div>
-
-                        <div>
-                            <label for="email"
-                                style="display: block; margin-bottom: 0.5rem; color: var(--light-text); font-weight: 500;">Email
-                                *</label>
-                            <input type="email" id="email" name="email" required
-                                style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--dark-tertiary); color: var(--light-text); font-family: var(--font-primary);">
-                            <span class="error-message"
-                                style="display: none; color: var(--primary-red); font-size: 0.875rem; margin-top: 0.25rem;"></span>
-                        </div>
-                    </div>
-
-                    <div style="margin-top: 1.5rem;">
-                        <label for="subject"
-                            style="display: block; margin-bottom: 0.5rem; color: var(--light-text); font-weight: 500;">Subject
-                            *</label>
-                        <input type="text" id="subject" name="subject" required
-                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--dark-tertiary); color: var(--light-text); font-family: var(--font-primary);">
-                        <span class="error-message"
-                            style="display: none; color: var(--primary-red); font-size: 0.875rem; margin-top: 0.25rem;"></span>
-                    </div>
-
-                    <div style="margin-top: 1.5rem;">
-                        <label for="message"
-                            style="display: block; margin-bottom: 0.5rem; color: var(--light-text); font-weight: 500;">Message
-                            *</label>
-                        <textarea id="message" name="message" rows="6" required
-                            style="width: 100%; padding: 0.75rem; border-radius: 8px; border: 1px solid var(--border-color); background: var(--dark-tertiary); color: var(--light-text); font-family: var(--font-primary); resize: vertical;"></textarea>
-                        <span class="error-message"
-                            style="display: none; color: var(--primary-red); font-size: 0.875rem; margin-top: 0.25rem;"></span>
-                    </div>
-
-                    <div style="margin-top: 2rem; text-align: center;">
-                        <button type="submit" class="btn btn-primary">Send Message</button>
-                    </div>
-                </form>
+            <!-- Contact Options -->
+            <div class="card" style="max-width: 600px; margin: 0 auto; text-align: center; padding: 3rem;">
+                <i class="fas fa-paper-plane"
+                    style="font-size: 3rem; color: var(--accent-gold); margin-bottom: 2rem;"></i>
+                <h3 style="margin-bottom: 1rem; color: var(--primary-white);">Get in Touch</h3>
+                <p style="margin-bottom: 2rem; color: var(--gray-text);">
+                    For general inquiries, sponsorship opportunities, or registration questions, please email us
+                    directly.
+                    Our team will respond as soon as possible.
+                </p>
+                <a href="mailto:info@qirtasia2027.com" class="btn btn-primary"
+                    style="font-size: 1.1rem; padding: 1rem 2rem;">
+                    <i class="fas fa-envelope" style="margin-right: 0.5rem;"></i> info@qirtasia2027.com
+                </a>
             </div>
 
             <!-- FAQ Section -->
@@ -249,12 +203,7 @@
 
     <script src="../../js/main.js"></script>
 
-    <style>
-        input.error,
-        textarea.error {
-            border-color: var(--primary-red) !important;
-        }
-    </style>
+
 
 </body>
 
