@@ -5,7 +5,7 @@ Official website for the 5th Asian Quantitative Infrared Thermography Conference
 ## Conference Information
 
 - **Dates:** March 9-12, 2027
-- **Venue:** Holiday Inn Atrium, Singapore (TBC)
+- **Venue:** Singapore (Venue TBC)
 - **Registration Fee:** $700 USD
 - **Website:** www.qirtasia2027.org (to be configured)
 
