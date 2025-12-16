@@ -173,9 +173,47 @@ function validateForm(formId) {
         });
 
         if (isValid) {
-            // Form is valid, you can submit it
-            alert('Form submitted successfully!');
-            form.reset();
+            // Check if form has an action (like FormSubmit)
+            if (form.action && form.id === 'contact-form') {
+                const submitBtn = form.querySelector('button[type="submit"]');
+                const originalBtnText = submitBtn.textContent;
+
+                submitBtn.textContent = 'Sending...';
+                submitBtn.disabled = true;
+
+                // Use FormSubmit AJAX endpoint
+                // We add /ajax/ to the URL if it's a standard FormSubmit URL
+                let actionUrl = form.action;
+                if (actionUrl.includes('formsubmit.co') && !actionUrl.includes('/ajax/')) {
+                    actionUrl = actionUrl.replace('formsubmit.co/', 'formsubmit.co/ajax/');
+                }
+
+                fetch(actionUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Accept': 'application/json'
+                    },
+                    body: JSON.stringify(Object.fromEntries(new FormData(form)))
+                })
+                    .then(response => response.json())
+                    .then(data => {
+                        alert('Message sent successfully! We will get back to you soon.');
+                        form.reset();
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                        alert('There was an error sending your message. Please try again later.');
+                    })
+                    .finally(() => {
+                        submitBtn.textContent = originalBtnText;
+                        submitBtn.disabled = false;
+                    });
+            } else {
+                // Fallback / original behavior for other forms
+                alert('Form submitted successfully!');
+                form.reset();
+            }
         }
     });
 

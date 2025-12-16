@@ -137,7 +137,13 @@
             </div>
 
             <div class="card" style="max-width: 800px; margin: 0 auto;">
-                <form id="contact-form">
+                <form id="contact-form" action="https://formsubmit.co/info@qirtasia2027.com" method="POST">
+                    <!-- FormSubmit Configuration -->
+                    <input type="hidden" name="_subject" value="New Inquiry - QIRT ASIA 2027">
+                    <input type="hidden" name="_captcha" value="false">
+                    <input type="hidden" name="_template" value="table">
+                    <!-- Redirect to same page prevents redirection to FormSubmit success page, handled by JS ideally, but good fallback -->
+
                     <div class="grid grid-2" style="gap: 1.5rem;">
                         <div>
                             <label for="name"
