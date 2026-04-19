@@ -1,0 +1,1258 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QIRT Asia 2027 — 6th Asian Quantitative Infrared Thermography Conference</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+<link rel="icon" href="assets/qirtasia-logo.png">
+<style>
+/* ===== Page-specific ===== */
+
+/* Announcement strip */
+.announce {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+.announce-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 10px var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 24px;
+}
+.announce .dot {
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: #E07A3B;
+  margin-right: 10px;
+  vertical-align: middle;
+  animation: pulse 2s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%,100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+.announce a { opacity: 0.7; transition: opacity 150ms; }
+.announce a:hover { opacity: 1; }
+
+/* ===== Hero ===== */
+.hero {
+  padding: clamp(80px, 10vw, 140px) 0 clamp(64px, 8vw, 100px);
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.hero-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.hero-eyebrow::before {
+  content: ""; width: 40px; height: 1px; background: var(--ink-3);
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: clamp(52px, 7.2vw, 104px);
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 32px;
+}
+.hero h1 .italic { font-style: italic; font-weight: 400; }
+.hero h1 .year {
+  display: block;
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: 0.45em;
+  letter-spacing: 0.3em;
+  color: var(--ink-3);
+  margin-top: 16px;
+}
+.hero-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: clamp(20px, 1.9vw, 26px);
+  color: var(--ink-2);
+  max-width: 42ch;
+  line-height: 1.4;
+  margin-bottom: 40px;
+}
+.hero-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0;
+  margin-bottom: 40px;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.hero-meta > div {
+  flex: 1;
+  min-width: 160px;
+  padding: 18px 24px 18px 0;
+  border-right: 1px solid var(--rule);
+}
+.hero-meta > div:last-child { border-right: none; }
+.hero-meta > div:not(:first-child) { padding-left: 24px; }
+.hero-meta dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+}
+.hero-meta dd {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+}
+.hero-cta { display: flex; gap: 12px; flex-wrap: wrap; }
+
+.hero-logo {
+  position: relative;
+}
+.hero-logo img {
+  width: 100%;
+  max-width: 480px;
+  display: block;
+  margin-left: auto;
+  filter: drop-shadow(0 20px 60px rgba(194, 65, 12, 0.08));
+}
+
+/* Marquee of host cities */
+.heritage {
+  padding: 40px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  overflow: hidden;
+}
+.heritage-row {
+  display: flex;
+  align-items: center;
+  gap: 48px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.heritage-row .year {
+  font-family: var(--font-mono);
+  font-style: normal;
+  font-size: 12px;
+  letter-spacing: 0.15em;
+  background: var(--paper-2);
+  padding: 4px 10px;
+  color: var(--ink-2);
+  border: 1px solid var(--rule);
+}
+.heritage-row .city { color: var(--ink); }
+.heritage-row .current { color: var(--accent); font-weight: 500; }
+.heritage-row .sep { color: var(--rule); }
+.heritage-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+
+/* ===== About ===== */
+.about p {
+  font-family: var(--font-display);
+  font-size: clamp(22px, 2.2vw, 32px);
+  line-height: 1.4;
+  font-weight: 400;
+  color: var(--ink);
+  text-wrap: pretty;
+  max-width: 28ch;
+  margin-bottom: 24px;
+}
+.about p + p { font-size: 16px; font-family: var(--font-body); color: var(--ink-2); max-width: 58ch; line-height: 1.7; }
+.about-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-top: 80px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+.about-stats > div {
+  padding: 28px 24px;
+  border-right: 1px solid var(--rule);
+}
+.about-stats > div:last-child { border-right: none; }
+.stat-num {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+.stat-num .sup {
+  font-size: 0.4em;
+  vertical-align: top;
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--ink-3);
+  margin-left: 4px;
+}
+.stat-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 12px;
+}
+
+/* ===== Dates / Timeline ===== */
+.timeline { position: relative; }
+.timeline-row {
+  display: grid;
+  grid-template-columns: 180px 1fr auto;
+  gap: 48px;
+  align-items: baseline;
+  padding: 24px 0;
+  border-bottom: 1px solid var(--rule);
+  transition: background 200ms, padding 200ms;
+  cursor: default;
+}
+.timeline-row:first-child { border-top: 1px solid var(--ink); }
+.timeline-row:hover { background: var(--paper-2); padding-left: 16px; padding-right: 16px; }
+.timeline-row.is-past { opacity: 0.35; }
+.timeline-row.is-active { background: var(--paper-2); }
+.timeline-row.is-active .timeline-date { color: var(--accent); }
+.timeline-date {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--ink);
+}
+.timeline-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+.timeline-note {
+  font-size: 14px;
+  color: var(--ink-3);
+  margin-top: 4px;
+  max-width: 60ch;
+  line-height: 1.55;
+}
+.timeline-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 4px 10px;
+  border: 1px solid var(--rule);
+  white-space: nowrap;
+}
+.timeline-tag.hot { color: var(--accent); border-color: var(--accent); }
+
+/* ===== Topics grid ===== */
+.topics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--rule);
+}
+.topic {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 32px 28px;
+  min-height: 240px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  transition: background 200ms;
+  position: relative;
+}
+.topic:hover { background: var(--paper-2); }
+.topic .num {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+}
+.topic h3 {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  line-height: 1.15;
+  margin: 40px 0 12px;
+  letter-spacing: -0.01em;
+}
+.topic p {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.55;
+}
+
+/* ===== Keynote ===== */
+.keynote-block {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 64px;
+  align-items: start;
+  padding: 64px 0;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+}
+.keynote-photo {
+  aspect-ratio: 4/5;
+  border: 1px solid var(--rule);
+}
+.keynote-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.keynote-name {
+  font-family: var(--font-display);
+  font-size: clamp(40px, 4.2vw, 56px);
+  font-weight: 500;
+  line-height: 1.05;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.keynote-title {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-2);
+  margin-bottom: 32px;
+}
+.keynote-bio {
+  font-size: 16px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  max-width: 64ch;
+  margin-bottom: 28px;
+}
+
+/* ===== Venue ===== */
+.venue {
+  background: var(--paper-2);
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.venue-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.2fr;
+  gap: 80px;
+  align-items: center;
+}
+.venue-image { aspect-ratio: 4/3; border: 1px solid var(--rule); }
+.venue-details dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 24px;
+  margin-bottom: 6px;
+}
+.venue-details dt:first-child { margin-top: 0; }
+.venue-details dd { font-size: 16px; color: var(--ink); line-height: 1.5; }
+
+/* ===== Hosts / Sponsors ===== */
+.hosts-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+.host-cell {
+  padding: 48px;
+  border-bottom: 1px solid var(--rule);
+  border-right: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.host-cell:nth-child(2n) { border-right: none; }
+.host-role {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.host-name {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.host-desc { font-size: 14px; color: var(--ink-2); line-height: 1.6; }
+.host-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+.host-link:hover { color: var(--accent); }
+
+.supporters {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--rule);
+  padding-top: 40px;
+  margin-top: 48px;
+  gap: 40px;
+  align-items: center;
+}
+.supporter {
+  aspect-ratio: 3/1;
+  display: grid;
+  place-items: center;
+}
+.supporter img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+  filter: grayscale(1) opacity(0.85);
+  transition: filter 220ms ease;
+}
+.supporter img:hover {
+  filter: grayscale(0) opacity(1);
+}
+.supporter.ph {
+  border: 1px dashed var(--rule);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+.supporter.ph::before { content: attr(data-label); }
+
+.media-partner-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.media-partner-row .mp-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.media-partner-row img {
+  height: 28px;
+  width: auto;
+  display: block;
+  filter: grayscale(1) opacity(0.85);
+  transition: filter 220ms ease;
+}
+.media-partner-row img:hover { filter: grayscale(0) opacity(1); }
+
+/* ===== CTA ===== */
+.cta-final {
+  background: var(--ink);
+  color: var(--paper);
+  padding: clamp(80px, 10vw, 140px) 0;
+}
+.cta-final .wrap { text-align: center; }
+.cta-final .eyebrow { color: rgba(250,247,242,0.5); margin-bottom: 24px; }
+.cta-final h2 {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: clamp(44px, 6vw, 80px);
+  line-height: 1.05;
+  letter-spacing: -0.02em;
+  margin-bottom: 16px;
+  text-wrap: balance;
+}
+.cta-final .italic { font-style: italic; }
+.cta-final .sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: rgba(250,247,242,0.7);
+  margin-bottom: 48px;
+}
+.cta-final .btn {
+  background: var(--paper);
+  color: var(--ink);
+  border-color: var(--paper);
+}
+.cta-final .btn:hover { background: transparent; color: var(--paper); }
+.cta-final .btn.ghost {
+  background: transparent;
+  color: var(--paper);
+  border-color: rgba(250,247,242,0.4);
+}
+.cta-final .btn.ghost:hover { background: var(--paper); color: var(--ink); border-color: var(--paper); }
+
+/* ===== Footer ===== */
+footer {
+  background: var(--paper);
+  padding: 64px 0 32px;
+  border-top: 1px solid var(--rule);
+}
+.foot-grid {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr 1fr 1fr;
+  gap: 48px;
+  margin-bottom: 48px;
+}
+.foot-brand img { height: 48px; margin-bottom: 16px; }
+.foot-brand p { font-size: 13px; color: var(--ink-3); line-height: 1.6; max-width: 30ch; }
+.foot-col h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.foot-col ul { list-style: none; }
+.foot-col li { margin-bottom: 8px; }
+.foot-col a { font-size: 14px; color: var(--ink); transition: color 150ms; }
+.foot-col a:hover { color: var(--accent); }
+.foot-bottom {
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+  display: flex;
+  justify-content: space-between;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
+}
+
+/* ===== Countdown ===== */
+.countdown {
+  display: flex;
+  gap: 24px;
+  font-family: var(--font-display);
+  font-weight: 500;
+}
+.countdown > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+.countdown-num {
+  font-size: 48px;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+.countdown-label {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+/* Responsive */
+@media (max-width: 960px) {
+  .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+  .hero-logo img { max-width: 320px; margin: 0 auto; }
+  .about-stats { grid-template-columns: repeat(2, 1fr); }
+  .about-stats > div:nth-child(2) { border-right: none; }
+  .topics { grid-template-columns: repeat(2, 1fr); }
+  .keynote-block { grid-template-columns: 1fr; gap: 32px; }
+  .venue-grid { grid-template-columns: 1fr; gap: 32px; }
+  .hosts-grid { grid-template-columns: 1fr; }
+  .host-cell { border-right: none; padding: 32px 24px; }
+  .supporters { grid-template-columns: repeat(2, 1fr); gap: 24px; }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
+  .timeline-row { grid-template-columns: 1fr; gap: 4px; }
+}
+
+/* Tweaks panel */
+.tweaks-panel {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 20px;
+  width: 280px;
+  z-index: 100;
+  display: none;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
+  font-family: var(--font-body);
+  font-size: 12px;
+}
+.tweaks-panel.open { display: block; }
+.tweaks-panel h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--rule);
+}
+.tweaks-panel label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 12px;
+  color: var(--ink-2);
+}
+.tweaks-panel select, .tweaks-panel input[type="range"] {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  padding: 4px 8px;
+  border: 1px solid var(--rule);
+  background: var(--paper);
+}
+</style>
+</head>
+<body>
+
+<!-- Announcement strip -->
+<div class="announce">
+  <div class="announce-inner">
+    <div><span class="dot"></span>Abstract submission opens July 1, 2026</div>
+    <a href="#submission">Submission guidelines →</a>
+  </div>
+</div>
+
+<!-- Top bar -->
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="#home">
+      <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="#about" class="active">About</a>
+      <a href="#dates">Dates</a>
+      <a href="#topics">Topics</a>
+      <a href="#keynote">Keynote</a>
+      <a href="#venue">Venue</a>
+      <a href="#hosts">Hosts</a>
+    </nav>
+    <div class="top-cta">
+      <a href="pages/register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="hero-eyebrow">The 6<sup>th</sup> Asian Conference · Biennial Series Est. 1992</div>
+        <h1>
+          Quantitative<br>
+          <span class="italic">Infrared</span><br>
+          Thermography<br>
+          <span class="year">Singapore · 2027</span>
+        </h1>
+        <p class="hero-sub">Advancing the science of thermal measurement — from active imaging and NDT to medicine, heritage, and AI-driven diagnostics.</p>
+
+        <dl class="hero-meta">
+          <div>
+            <dt>Dates</dt>
+            <dd>9 – 12 Mar 2027</dd>
+          </div>
+          <div>
+            <dt>Venue</dt>
+            <dd>Marina Bay Sands</dd>
+          </div>
+          <div>
+            <dt>Abstracts due</dt>
+            <dd>15 Oct 2026</dd>
+          </div>
+        </dl>
+
+        <div class="hero-cta">
+          <a href="pages/register.html" class="btn">Register <span class="arrow">→</span></a>
+          <a href="pages/submission.html" class="btn ghost">Submit paper <span class="arrow">→</span></a>
+        </div>
+      </div>
+
+      <div class="hero-logo">
+        <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027 logo">
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Heritage / host cities -->
+<div class="heritage">
+  <div class="wrap">
+    <div class="heritage-label">Host cities, 2015 — 2027</div>
+    <div class="heritage-row">
+      <span class="year">I · 2015</span><span class="city">Chennai</span>
+      <span class="sep">—</span>
+      <span class="year">II · 2017</span><span class="city">Daejeon</span>
+      <span class="sep">—</span>
+      <span class="year">III · 2019</span><span class="city">Tokyo</span>
+      <span class="sep">—</span>
+      <span class="year">IV · 2023</span><span class="city">Abu Dhabi</span>
+      <span class="sep">—</span>
+      <span class="year">V · 2025</span><span class="city">Harbin</span>
+      <span class="sep">—</span>
+      <span class="year">VI · 2027</span><span class="city current">Singapore</span>
+    </div>
+  </div>
+</div>
+
+<!-- ABOUT -->
+<section id="about" class="about">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">01 / About</span>
+        <h2>A thirty‑five<br>year tradition,<br><em style="font-style:italic;font-weight:400;">continued.</em></h2>
+      </div>
+      <div>
+        <p class="lede">Since 1992, the Quantitative InfraRed Thermography conferences have convened specialists from industry and academia to present the field's most significant developments.</p>
+      </div>
+    </div>
+
+    <div class="split-2">
+      <div>
+        <p>The QIRT‑Asia series, established in 2015, extends that tradition to the region's fast‑growing thermography community.</p>
+        <p>Over four days in Singapore, we bring together the researchers, engineers and practitioners shaping the next decade of thermal science — through technical sessions, keynote lectures, short courses, and a dedicated industry exhibition at Marina Bay Sands.</p>
+      </div>
+      <div>
+        <p>The programme is structured around four pillars: <em>measurement science</em>, <em>applications</em>, <em>computational methods</em>, and <em>industry practice</em>. Papers will be published in the conference proceedings and selected contributions will appear in a dedicated special issue.</p>
+        <p>Delegates are welcomed to Singapore — a crossroads of Asian research and innovation.</p>
+      </div>
+    </div>
+
+    <dl class="about-stats">
+      <div>
+        <dd class="stat-num">4<span class="sup">days</span></dd>
+        <dt class="stat-label">Conference · tutorials · excursion</dt>
+      </div>
+      <div>
+        <dd class="stat-num">35<span class="sup">+</span></dd>
+        <dt class="stat-label">Years of QIRT tradition</dt>
+      </div>
+      <div>
+        <dd class="stat-num">200<span class="sup">+</span></dd>
+        <dt class="stat-label">Expected delegates</dt>
+      </div>
+      <div>
+        <dd class="stat-num">25<span class="sup">+</span></dd>
+        <dt class="stat-label">Countries represented</dt>
+      </div>
+    </dl>
+  </div>
+</section>
+
+<!-- DATES -->
+<section id="dates" style="background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 / Calendar</span>
+        <h2>Important<br>dates.</h2>
+      </div>
+      <div>
+        <p class="lede">Mark your calendar for submission, registration and programme milestones.</p>
+
+        <div class="countdown" id="countdown" style="margin-top: 24px;">
+          <div><span class="countdown-num" id="cd-days">—</span><span class="countdown-label">Days</span></div>
+          <div><span class="countdown-num" id="cd-hours">—</span><span class="countdown-label">Hours</span></div>
+          <div><span class="countdown-num" id="cd-mins">—</span><span class="countdown-label">Minutes</span></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline" id="timeline">
+      <!-- injected by JS -->
+    </div>
+  </div>
+</section>
+
+<!-- TOPICS -->
+<section id="topics">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">03 / Programme</span>
+        <h2>Conference<br>topics.</h2>
+      </div>
+      <div>
+        <p class="lede">Eight tracks spanning the breadth of quantitative infrared thermography — foundational, applied and emerging.</p>
+      </div>
+    </div>
+
+    <div class="topics">
+      <div class="topic">
+        <span class="num">T/01</span>
+        <div>
+          <h3>Active thermography</h3>
+          <p>Lock‑in, pulsed, pulse‑phase and vibrothermography techniques for defect detection and material characterisation.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/02</span>
+        <div>
+          <h3>Passive thermography</h3>
+          <p>Condition monitoring, predictive maintenance and in‑situ diagnostics across civil, mechanical and electrical systems.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/03</span>
+        <div>
+          <h3>Medical &amp; bio-IR</h3>
+          <p>Clinical thermography, early disease detection, inflammation mapping and veterinary applications.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/04</span>
+        <div>
+          <h3>Industrial NDT</h3>
+          <p>Non‑destructive evaluation, weld inspection, quality control and process monitoring in manufacturing.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/05</span>
+        <div>
+          <h3>Aerospace &amp; defence</h3>
+          <p>Composite inspection, thermal signature analysis and engine diagnostics for aerospace and defence systems.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/06</span>
+        <div>
+          <h3>Building diagnostics</h3>
+          <p>Energy audits, envelope performance, moisture detection and HVAC assessment using infrared imaging.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/07</span>
+        <div>
+          <h3>Cultural heritage</h3>
+          <p>Non‑invasive study of paintings, murals and historical structures; conservation science and restoration.</p>
+        </div>
+      </div>
+      <div class="topic">
+        <span class="num">T/08</span>
+        <div>
+          <h3>AI &amp; data methods</h3>
+          <p>Machine learning, deep thermography, inverse problems and advanced signal processing for IR imagery.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- KEYNOTE -->
+<section id="keynote" style="border-top: 1px solid var(--rule);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">04 / Keynote</span>
+        <h2>Featured<br>speaker.</h2>
+      </div>
+      <div>
+        <p class="lede">A distinguished programme led by a world-renowned figure in infrared thermography research.</p>
+      </div>
+    </div>
+
+    <div class="keynote-block">
+      <div class="keynote-photo ph" data-label="KEYNOTE PORTRAIT · 4:5"></div>
+      <div>
+        <div class="keynote-meta">Distinguished Keynote · 10 March 2027</div>
+        <div class="keynote-name">Prof. Xavier<br><em style="font-style:italic;font-weight:400;">Maldague</em></div>
+        <div class="keynote-title">Université Laval · Canada Research Chair in Multipolar Infrared Vision</div>
+        <p class="keynote-bio">
+          Professor Maldague is among the most influential voices in contemporary infrared thermography, with pioneering contributions to active thermographic NDT, pulse‑phase methods, and the application of thermal imaging to aerospace, civil and cultural heritage domains. He has authored over 300 refereed publications and multiple textbooks foundational to the field.
+        </p>
+        <a href="pages/keynote.html" class="btn ghost">Full biography <span class="arrow">→</span></a>
+      </div>
+    </div>
+
+    <p style="margin-top: 40px; font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-3);">
+      Additional invited speakers to be announced in late 2026.
+    </p>
+  </div>
+</section>
+
+<!-- VENUE -->
+<section id="venue" class="venue">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">05 / Venue</span>
+        <h2>Marina<br>Bay<br>Sands.</h2>
+      </div>
+      <div>
+        <p class="lede">A purpose-built convention venue at the heart of Singapore's research and innovation district.</p>
+      </div>
+    </div>
+
+    <div class="venue-grid">
+      <div class="venue-image ph" data-label="MARINA BAY SANDS · 4:3"></div>
+      <div>
+        <dl class="venue-details">
+          <dt>Location</dt>
+          <dd>10 Bayfront Avenue, Singapore 018956</dd>
+          <dt>Facilities</dt>
+          <dd>Plenary hall, six parallel session rooms, dedicated exhibition area, and catering across four conference days.</dd>
+          <dt>Access</dt>
+          <dd>Bayfront MRT (CE1/DT16) · 12 min from Changi Airport via MRT · Direct connection to hotel accommodation</dd>
+          <dt>Accommodation</dt>
+          <dd>Discounted room blocks secured at Marina Bay Sands and three partner hotels within walking distance.</dd>
+        </dl>
+        <a href="pages/venue.html" class="btn ghost" style="margin-top: 32px;">Venue &amp; travel details <span class="arrow">→</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOSTS -->
+<section id="hosts">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">06 / Organisation</span>
+        <h2>Hosts &amp;<br>supporters.</h2>
+      </div>
+      <div>
+        <p class="lede">Co‑hosted by Singapore's premier materials research institute and its national NDT society, with support from the international QIRT and NDT community.</p>
+      </div>
+    </div>
+
+    <div class="hosts-grid">
+      <div class="host-cell">
+        <span class="host-role">Co‑host · Research</span>
+        <div class="host-name">A*STAR IMRE</div>
+        <p class="host-desc">The Institute of Materials Research and Engineering at A*STAR — Singapore's premier research institute for materials science, nanotechnology and advanced characterisation.</p>
+        <a class="host-link" href="https://www.a-star.edu.sg/imre">Visit site ↗</a>
+      </div>
+      <div class="host-cell">
+        <span class="host-role">Co‑host · Society</span>
+        <div class="host-name">Singapore NDT Society</div>
+        <p class="host-desc">The Singapore Non‑Destructive Testing Society advances NDT technology, certification and knowledge across Singapore and the Southeast Asian region.</p>
+        <a class="host-link" href="https://ndtss.org.sg/">Visit site ↗</a>
+      </div>
+    </div>
+
+    <div class="supporters">
+      <div class="supporter"><img src="assets/logos/astar-imre.jpg" alt="A*STAR IMRE"></div>
+      <div class="supporter"><img src="assets/logos/ndtss.png" alt="NDTSS"></div>
+      <div class="supporter ph" data-label="ICNDT"></div>
+      <div class="supporter ph" data-label="QIRT.ORG"></div>
+    </div>
+
+    <div class="media-partner-row">
+      <span class="mp-label">Media partner</span>
+      <img src="assets/logos/ndtnet.png" alt="NDT.net">
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-final">
+  <div class="wrap">
+    <span class="eyebrow">Registration · Abstracts · Sponsorship</span>
+    <h2>Submit your work.<br><em class="italic">Join us in Singapore.</em></h2>
+    <p class="sub">The programme committee welcomes contributions on all aspects of quantitative infrared thermography.</p>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="pages/register.html" class="btn">Register now <span class="arrow">→</span></a>
+      <a href="pages/submission.html" class="btn ghost">Abstract guidelines <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+        <p>The 6<sup>th</sup> Asian Quantitative InfraRed Thermography Conference. 9–12 March 2027, Marina Bay Sands, Singapore.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Conference</h4>
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li><a href="#topics">Topics</a></li>
+          <li><a href="#keynote">Keynote</a></li>
+          <li><a href="#venue">Venue</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Participate</h4>
+        <ul>
+          <li><a href="pages/submission.html">Submit paper</a></li>
+          <li><a href="pages/register.html">Register</a></li>
+          <li><a href="#">Fees</a></li>
+          <li><a href="#">Sponsorship</a></li>
+        </ul>
+      </div>
+      <div class="foot-col">
+        <h4>Contact</h4>
+        <ul>
+          <li>Sreedhar U · Chair</li>
+          <li>Andrew Ngo · Co‑Chair</li>
+          <li><a class="inline" href="/cdn-cgi/l/email-protection#9ef7f0f8f1deeff7eceaffedf7ffacaeaca9b0fdf1f3"><span class="__cf_email__" data-cfemail="553c3b333a15243c272134263c34676567627b363a38">[email&#160;protected]</span></a></li>
+          <li><a class="inline" href="http://www.qirt.org">qirt.org ↗</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 QIRT Asia. All rights reserved.</span>
+      <span>SINGAPORE · 01°17′N 103°51′E</span>
+    </div>
+  </div>
+</footer>
+
+<!-- Tweaks panel -->
+<div class="tweaks-panel" id="tweaks">
+  <h4>Tweaks</h4>
+  <label>Accent hue <input type="range" id="tw-hue" min="0" max="360" step="1" value="20"></label>
+  <label>Paper warmth <input type="range" id="tw-warm" min="0" max="30" step="1" value="10"></label>
+  <label>Density
+    <select id="tw-density">
+      <option value="airy">Airy</option>
+      <option value="comfortable" selected>Comfortable</option>
+      <option value="compact">Compact</option>
+    </select>
+  </label>
+  <label>Serif
+    <select id="tw-serif">
+      <option value="cormorant" selected>Cormorant Garamond</option>
+      <option value="garamond">EB Garamond</option>
+      <option value="playfair">Playfair Display</option>
+      <option value="lora">Lora</option>
+    </select>
+  </label>
+  <label>Theme
+    <select id="tw-theme">
+      <option value="paper" selected>Paper</option>
+      <option value="ink">Ink (dark)</option>
+      <option value="white">Pure white</option>
+    </select>
+  </label>
+</div>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
+/* ===== TWEAKS =====
+   Default values persisted here (do not edit structure — parens preserved) */
+const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
+  "accentHue": 20,
+  "paperWarmth": 10,
+  "density": "comfortable",
+  "serif": "cormorant",
+  "theme": "paper"
+}/*EDITMODE-END*/;
+
+let tweaksState = { ...TWEAK_DEFAULTS };
+
+function applyTweaks(s) {
+  const root = document.documentElement;
+
+  // Accent hue
+  root.style.setProperty('--accent', `oklch(55% 0.14 ${s.accentHue})`);
+
+  // Paper warmth -> hue shift around 60 (warm yellow), lightness 97
+  root.style.setProperty('--paper', `oklch(97% ${(s.paperWarmth/1000).toFixed(3)} ${60 + s.accentHue/10})`);
+  root.style.setProperty('--paper-2', `oklch(94% ${(s.paperWarmth/800).toFixed(3)} ${60 + s.accentHue/10})`);
+
+  // Density
+  const pad = s.density === 'airy' ? 'clamp(96px, 12vw, 180px)' :
+              s.density === 'compact' ? 'clamp(48px, 6vw, 80px)' :
+              'clamp(64px, 8vw, 120px)';
+  document.querySelectorAll('section').forEach(el => {
+    el.style.paddingTop = pad;
+    el.style.paddingBottom = pad;
+  });
+
+  // Serif
+  const fonts = {
+    cormorant: '"Cormorant Garamond", Georgia, serif',
+    garamond: '"EB Garamond", Georgia, serif',
+    playfair: '"Playfair Display", Georgia, serif',
+    lora: '"Lora", Georgia, serif'
+  };
+  root.style.setProperty('--font-display', fonts[s.serif]);
+
+  // Theme
+  if (s.theme === 'ink') {
+    root.style.setProperty('--paper', '#111110');
+    root.style.setProperty('--paper-2', '#1C1B1A');
+    root.style.setProperty('--ink', '#F4EFE4');
+    root.style.setProperty('--ink-2', '#C9C3B5');
+    root.style.setProperty('--ink-3', '#8A857A');
+    root.style.setProperty('--rule', '#2E2C29');
+    root.style.setProperty('--rule-2', '#24231F');
+  } else if (s.theme === 'white') {
+    root.style.setProperty('--paper', '#FFFFFF');
+    root.style.setProperty('--paper-2', '#F5F5F5');
+    root.style.setProperty('--ink', '#0A0A0A');
+    root.style.setProperty('--rule', '#E5E5E5');
+    root.style.setProperty('--rule-2', '#EFEFEF');
+  }
+}
+
+// Load additional serif fonts on demand
+const extraFonts = document.createElement('link');
+extraFonts.rel = 'stylesheet';
+extraFonts.href = 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap';
+document.head.appendChild(extraFonts);
+
+applyTweaks(tweaksState);
+
+// Edit mode wiring
+window.addEventListener('message', (e) => {
+  if (!e.data || !e.data.type) return;
+  if (e.data.type === '__activate_edit_mode') {
+    document.getElementById('tweaks').classList.add('open');
+  } else if (e.data.type === '__deactivate_edit_mode') {
+    document.getElementById('tweaks').classList.remove('open');
+  }
+});
+setTimeout(() => {
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+}, 100);
+
+function bindTweak(id, key, cast = v => v) {
+  const el = document.getElementById(id);
+  el.value = tweaksState[key];
+  el.addEventListener('input', () => {
+    tweaksState[key] = cast(el.value);
+    applyTweaks(tweaksState);
+    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: tweaksState[key] } }, '*');
+  });
+}
+bindTweak('tw-hue', 'accentHue', v => +v);
+bindTweak('tw-warm', 'paperWarmth', v => +v);
+bindTweak('tw-density', 'density');
+bindTweak('tw-serif', 'serif');
+bindTweak('tw-theme', 'theme');
+
+/* ===== TIMELINE ===== */
+const milestones = [
+  { date: '1 Jul 2026',   title: 'Abstract submission opens',     note: 'Submit one-page abstracts on quantitative IR thermography.', tag: 'Submission' },
+  { date: '15 Oct 2026',  title: 'Abstract deadline',             note: 'Final date for abstract submission to the technical committee.', tag: 'Deadline', hot: true },
+  { date: '1 Nov 2026',   title: 'Registration opens',            note: 'Early-bird registration rates available.', tag: 'Registration' },
+  { date: '15 Nov 2026',  title: 'Abstract decisions',            note: 'Acceptance notifications issued by the programme committee.', tag: 'Review' },
+  { date: '15 Dec 2026',  title: 'Early registration ends',       note: 'Last day to register at the discounted early rate.', tag: 'Registration' },
+  { date: '10 Jan 2027',  title: 'Full paper deadline',           note: 'Camera-ready manuscripts for the conference proceedings.', tag: 'Deadline' },
+  { date: '10 Feb 2027',  title: 'Standard registration ends',    note: 'On-site rates apply after this date.', tag: 'Registration' },
+  { date: '9 Mar 2027',   title: 'Short courses & tutorials',     note: 'Pre-conference day for in-depth training on IR thermography.', tag: 'Programme' },
+  { date: '10–11 Mar 2027', title: 'Main conference',             note: 'Plenary sessions, parallel tracks, and the conference dinner.', tag: 'Programme' },
+  { date: '12 Mar 2027',  title: 'Technical visit',               note: 'Guided excursion to leading research facilities in Singapore.', tag: 'Programme' },
+];
+
+function formatTimeline() {
+  const now = new Date('2026-04-18'); // current
+  const container = document.getElementById('timeline');
+  container.innerHTML = milestones.map(m => {
+    const d = new Date(m.date.split('–')[0].replace(' Mar 2027', ' March 2027').replace(' Jul ', ' July ').replace(' Oct ', ' October ').replace(' Nov ', ' November ').replace(' Dec ', ' December ').replace(' Jan ', ' January ').replace(' Feb ', ' February ').replace(' Mar ', ' March '));
+    const past = d < now;
+    return `
+      <div class="timeline-row ${past ? 'is-past' : ''}">
+        <div class="timeline-date">${m.date}</div>
+        <div>
+          <div class="timeline-title">${m.title}</div>
+          <div class="timeline-note">${m.note}</div>
+        </div>
+        <div class="timeline-tag ${m.hot ? 'hot' : ''}">${m.tag}</div>
+      </div>
+    `;
+  }).join('');
+}
+formatTimeline();
+
+/* ===== COUNTDOWN ===== */
+function tick() {
+  const target = new Date('2027-03-09T09:00:00+08:00');
+  const diff = target - new Date();
+  if (diff < 0) return;
+  const d = Math.floor(diff / 86400000);
+  const h = Math.floor((diff % 86400000) / 3600000);
+  const m = Math.floor((diff % 3600000) / 60000);
+  document.getElementById('cd-days').textContent = d;
+  document.getElementById('cd-hours').textContent = h;
+  document.getElementById('cd-mins').textContent = m;
+}
+tick();
+setInterval(tick, 30000);
+
+/* ===== SCROLL-SPY NAV ===== */
+const navLinks = document.querySelectorAll('.nav a');
+const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function updateNav() {
+  const y = window.scrollY + 120;
+  let active = 0;
+  sections.forEach((s, i) => { if (s && s.offsetTop <= y) active = i; });
+  navLinks.forEach((a, i) => a.classList.toggle('active', i === active));
+}
+window.addEventListener('scroll', updateNav, { passive: true });
+
+/* Smooth anchor scroll */
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length <= 1) return;
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+  });
+});
+</script>
+
+</body>
+</html>

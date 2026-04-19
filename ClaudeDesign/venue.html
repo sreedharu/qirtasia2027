@@ -1,0 +1,437 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Venue — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+
+.venue-hero-img {
+  aspect-ratio: 16/6;
+  margin-top: 48px;
+  border: 1px solid var(--rule);
+}
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  margin: 80px 0;
+}
+.fact {
+  padding: 32px 28px;
+  border-right: 1px solid var(--rule);
+}
+.fact:last-child { border-right: none; }
+.fact-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.fact-val {
+  font-family: var(--font-display);
+  font-size: 28px; font-weight: 500; line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.fact-val em { font-style: italic; font-weight: 400; color: var(--ink-2); }
+
+.split-intro {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  margin-bottom: 64px;
+  align-items: baseline;
+}
+
+/* Map / location */
+.map-section {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0;
+  border-top: 1px solid var(--ink);
+}
+.map-img {
+  aspect-ratio: 1/1;
+  background: var(--paper-2);
+  position: relative;
+  overflow: hidden;
+  border-right: 1px solid var(--rule);
+}
+.map-svg { width: 100%; height: 100%; display: block; }
+.map-info { padding: 48px; }
+.map-info h3 {
+  font-family: var(--font-display);
+  font-size: 32px; font-weight: 500; line-height: 1.1;
+  margin-bottom: 24px;
+}
+.map-info dl { font-size: 14px; line-height: 1.7; }
+.map-info dt {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-top: 20px; margin-bottom: 4px;
+}
+.map-info dt:first-child { margin-top: 0; }
+.map-info dd { color: var(--ink); }
+
+/* Accommodation list */
+.hotel-list {
+  border-top: 1px solid var(--ink);
+  margin-top: 32px;
+}
+.hotel {
+  display: grid;
+  grid-template-columns: 180px 1fr auto auto;
+  gap: 40px;
+  padding: 28px 0;
+  border-bottom: 1px solid var(--rule);
+  align-items: center;
+  transition: padding 200ms, background 200ms;
+}
+.hotel:hover { background: var(--paper-2); padding-left: 16px; padding-right: 16px; }
+.hotel-img {
+  aspect-ratio: 4/3;
+  height: 100px; width: 140px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule);
+  background-image: repeating-linear-gradient(
+    135deg, var(--rule-2) 0, var(--rule-2) 1px, transparent 1px, transparent 8px
+  );
+}
+.hotel-name {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 500; line-height: 1.2;
+}
+.hotel-desc {
+  font-size: 13px; color: var(--ink-3); margin-top: 4px;
+  line-height: 1.55; max-width: 50ch;
+}
+.hotel-rate {
+  font-family: var(--font-display);
+  font-size: 20px; font-weight: 500;
+  white-space: nowrap;
+}
+.hotel-rate .sub {
+  display: block;
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.1em; color: var(--ink-3); margin-top: 2px;
+}
+.hotel-walk {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-3);
+  text-align: right; white-space: nowrap;
+}
+
+/* Attractions */
+.attractions {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 32px;
+}
+.attr-img {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--rule);
+  margin-bottom: 16px;
+}
+.attr-name {
+  font-family: var(--font-display);
+  font-size: 22px; font-weight: 500; line-height: 1.2;
+  margin-bottom: 6px;
+}
+.attr-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
+
+@media (max-width: 900px) {
+  .split-intro { grid-template-columns: 1fr; gap: 24px; }
+  .facts { grid-template-columns: repeat(2, 1fr); }
+  .fact:nth-child(2) { border-right: none; }
+  .map-section { grid-template-columns: 1fr; }
+  .map-img { border-right: none; border-bottom: 1px solid var(--rule); }
+  .hotel { grid-template-columns: 1fr; gap: 12px; }
+  .hotel-img { width: 100%; height: 180px; }
+  .attractions { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="../index.html#topics">Topics</a>
+      <a href="submission.html">Submission</a>
+      <a href="register.html">Register</a>
+      <a href="venue.html" class="active">Venue</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Venue</div>
+    <h1>Marina Bay Sands.<br><em>Singapore.</em></h1>
+    <p class="lede" style="margin-top: 32px; max-width: 60ch;">A purpose-built conference venue overlooking Marina Bay — connected directly to partner hotels, Changi Airport, and the research institutions of central Singapore.</p>
+    <div class="venue-hero-img ph" data-label="MARINA BAY SANDS EXTERIOR · 16:6"></div>
+  </div>
+</section>
+
+<!-- Facts -->
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <div class="facts">
+      <div class="fact">
+        <div class="fact-label">Dates</div>
+        <div class="fact-val">9 – 12<br><em>March 2027</em></div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Venue</div>
+        <div class="fact-val">Sands Expo<br><em>Level 4</em></div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">Nearest MRT</div>
+        <div class="fact-val">Bayfront<br><em>CE1 / DT16</em></div>
+      </div>
+      <div class="fact">
+        <div class="fact-label">From Changi</div>
+        <div class="fact-val">22 min<br><em>by MRT</em></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- About venue -->
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <div class="split-intro">
+      <div>
+        <span class="eyebrow">01 / The venue</span>
+      </div>
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 56px); font-weight: 500; line-height: 1; letter-spacing: -0.015em; margin-bottom: 32px;">
+          A conference centre built for scientific gatherings at the heart of Southeast Asia's research hub.
+        </h2>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.75; max-width: 62ch;">
+          Sands Expo &amp; Convention Centre occupies the second of Marina Bay Sands' three towers, purpose-built to host international conferences. QIRT Asia 2027 will take place on Level 4, with a dedicated plenary hall, six parallel session rooms, an industry exhibition floor, and a connected foyer for posters and refreshments.
+        </p>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.75; max-width: 62ch; margin-top: 16px;">
+          The venue is directly connected to Marina Bay Sands hotel accommodation, The Shoppes, restaurants, and the Bayfront MRT interchange — delegates can move between sessions, meals and lodging without leaving the complex.
+        </p>
+      </div>
+    </div>
+
+    <!-- Map + info -->
+    <div class="map-section">
+      <div class="map-img">
+        <!-- Stylised abstract map of Marina Bay -->
+        <svg class="map-svg" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <defs>
+            <pattern id="grid" width="20" height="20" patternUnits="userSpaceOnUse">
+              <path d="M 20 0 L 0 0 0 20" fill="none" stroke="#E7E1D4" stroke-width="0.5"/>
+            </pattern>
+          </defs>
+          <rect width="400" height="400" fill="#F3EEE5"/>
+          <rect width="400" height="400" fill="url(#grid)"/>
+          <!-- Water (Marina Bay) -->
+          <path d="M 60 260 Q 140 230 220 260 T 400 280 L 400 400 L 60 400 Z" fill="#E5DDC9" opacity="0.7"/>
+          <path d="M 60 260 Q 140 230 220 260 T 400 280" fill="none" stroke="#D9D2C5" stroke-width="1"/>
+          <!-- Roads -->
+          <line x1="0" y1="180" x2="400" y2="160" stroke="#D9D2C5" stroke-width="2"/>
+          <line x1="120" y1="0" x2="140" y2="260" stroke="#D9D2C5" stroke-width="2"/>
+          <line x1="280" y1="0" x2="260" y2="260" stroke="#D9D2C5" stroke-width="2"/>
+          <!-- Block (MBS) -->
+          <rect x="200" y="200" width="48" height="48" fill="#1A1A1A"/>
+          <!-- Pin -->
+          <circle cx="224" cy="224" r="14" fill="none" stroke="#C2410C" stroke-width="1.5"/>
+          <circle cx="224" cy="224" r="4" fill="#C2410C"/>
+          <!-- Label -->
+          <text x="260" y="220" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" letter-spacing="1">MARINA BAY</text>
+          <text x="260" y="232" font-family="JetBrains Mono, monospace" font-size="9" fill="#1A1A1A" letter-spacing="1">SANDS</text>
+          <text x="260" y="244" font-family="JetBrains Mono, monospace" font-size="7" fill="#6B6B6B" letter-spacing="1">1°17′N  103°51′E</text>
+          <!-- MRT -->
+          <circle cx="168" cy="200" r="5" fill="#0E6E8C"/>
+          <text x="80" y="192" font-family="JetBrains Mono, monospace" font-size="8" fill="#6B6B6B" letter-spacing="1">BAYFRONT MRT</text>
+          <!-- Compass -->
+          <g transform="translate(350, 50)">
+            <circle r="18" fill="none" stroke="#1A1A1A" stroke-width="0.8"/>
+            <path d="M 0 -14 L 3 0 L 0 14 L -3 0 Z" fill="#1A1A1A"/>
+            <text x="0" y="-22" font-family="JetBrains Mono, monospace" font-size="7" fill="#1A1A1A" text-anchor="middle" letter-spacing="1">N</text>
+          </g>
+        </svg>
+      </div>
+      <div class="map-info">
+        <h3>Location &amp; <em style="font-style:italic;font-weight:400;">travel.</em></h3>
+        <dl>
+          <dt>Address</dt>
+          <dd>Sands Expo &amp; Convention Centre<br>10 Bayfront Avenue<br>Singapore 018956</dd>
+          <dt>By MRT</dt>
+          <dd>Bayfront station (CE1 / DT16) · direct tunnel access from Exit C and D</dd>
+          <dt>From Changi Airport</dt>
+          <dd>22 minutes via Downtown Line · taxi approximately 25 minutes</dd>
+          <dt>By taxi / ride-share</dt>
+          <dd>Set destination to "Sands Expo Level 1 drop-off" · 24-hour access</dd>
+          <dt>Accessibility</dt>
+          <dd>Fully step-free · wheelchair-accessible routes from all public transport points · hearing-loop in plenary hall</dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Accommodation -->
+<section style="background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">02 / Accommodation</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Partner<br>hotels.</h2>
+      </div>
+      <div>
+        <p class="lede">Discounted rates at four partner hotels, all within 10 minutes of the venue. Quote code <strong style="color: var(--ink); font-style: normal;">QIRTASIA27</strong> when booking.</p>
+      </div>
+    </div>
+
+    <div class="hotel-list">
+      <div class="hotel">
+        <div class="hotel-img"></div>
+        <div>
+          <div class="hotel-name">Marina Bay Sands</div>
+          <div class="hotel-desc">The official conference hotel — direct indoor access to Sands Expo, rooftop SkyPark, and premium amenities.</div>
+        </div>
+        <div class="hotel-rate">SGD 520<span class="sub">per night · incl. breakfast</span></div>
+        <div class="hotel-walk">0 min<br>at venue</div>
+      </div>
+      <div class="hotel">
+        <div class="hotel-img"></div>
+        <div>
+          <div class="hotel-name">The Fullerton Bay</div>
+          <div class="hotel-desc">Boutique harbourside property overlooking Marina Bay, a short walk across the Helix Bridge.</div>
+        </div>
+        <div class="hotel-rate">SGD 440<span class="sub">per night · partner rate</span></div>
+        <div class="hotel-walk">8 min<br>walk</div>
+      </div>
+      <div class="hotel">
+        <div class="hotel-img"></div>
+        <div>
+          <div class="hotel-name">Pan Pacific Singapore</div>
+          <div class="hotel-desc">Modern business hotel at Marina Square with direct MRT access and excellent dining.</div>
+        </div>
+        <div class="hotel-rate">SGD 310<span class="sub">per night · partner rate</span></div>
+        <div class="hotel-walk">10 min<br>walk or 1 MRT</div>
+      </div>
+      <div class="hotel">
+        <div class="hotel-img"></div>
+        <div>
+          <div class="hotel-name">Mandarin Oriental</div>
+          <div class="hotel-desc">Classic five-star property in the Marina Centre, connected to the CBD via covered walkways.</div>
+        </div>
+        <div class="hotel-rate">SGD 390<span class="sub">per night · partner rate</span></div>
+        <div class="hotel-walk">12 min<br>walk</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 24px; font-family: var(--font-display); font-style: italic; color: var(--ink-3);">
+      Rates valid for bookings completed by 10 February 2027 · subject to availability.
+    </p>
+  </div>
+</section>
+
+<!-- Attractions -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">03 / Around the venue</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Things to<br><em style="font-style:italic;font-weight:400;">explore.</em></h2>
+      </div>
+      <div>
+        <p class="lede">A few minutes from the conference hall, delegates will find gardens, museums, and some of the city's most celebrated cuisine.</p>
+      </div>
+    </div>
+
+    <div class="attractions">
+      <div>
+        <div class="attr-img ph" data-label="GARDENS BY THE BAY"></div>
+        <div class="attr-name">Gardens by the Bay</div>
+        <div class="attr-desc">A 101-hectare horticultural landmark across the bay, featuring the Supertree Grove and two biodomes.</div>
+      </div>
+      <div>
+        <div class="attr-img ph" data-label="ARTSCIENCE MUSEUM"></div>
+        <div class="attr-name">ArtScience Museum</div>
+        <div class="attr-desc">Singapore's museum of art, science and technology — a short walk from the conference venue.</div>
+      </div>
+      <div>
+        <div class="attr-img ph" data-label="HAWKER CENTRE"></div>
+        <div class="attr-name">Lau Pa Sat</div>
+        <div class="attr-desc">Historic hawker centre in the CBD — a UNESCO-recognised food culture, minutes away by MRT.</div>
+      </div>
+      <div>
+        <div class="attr-img ph" data-label="MERLION PARK"></div>
+        <div class="attr-name">Merlion Park</div>
+        <div class="attr-desc">The iconic waterfront viewpoint across the bay, featuring Singapore's symbolic half-lion, half-fish statue.</div>
+      </div>
+      <div>
+        <div class="attr-img ph" data-label="NATIONAL GALLERY"></div>
+        <div class="attr-name">National Gallery</div>
+        <div class="attr-desc">Southeast Asia's largest modern art collection, housed in the restored former Supreme Court building.</div>
+      </div>
+      <div>
+        <div class="attr-img ph" data-label="CHINATOWN"></div>
+        <div class="attr-name">Chinatown &amp; Telok Ayer</div>
+        <div class="attr-desc">Historic quarter of shophouses, temples and some of the city's finest dining, one MRT stop away.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final" style="background: var(--ink); color: var(--paper); padding: 100px 0;">
+  <div class="wrap" style="text-align: center;">
+    <span class="eyebrow" style="color: rgba(250,247,242,0.5);">Ready to travel?</span>
+    <h2 style="font-family: var(--font-display); font-size: 56px; font-weight: 400; margin: 16px 0 32px; letter-spacing: -0.015em;">Plan your stay in <em style="font-style:italic;">Singapore.</em></h2>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="register.html" class="btn" style="background: var(--paper); color: var(--ink); border-color: var(--paper);">Register now <span class="arrow">→</span></a>
+      <a href="../index.html" class="btn ghost" style="color: var(--paper); border-color: rgba(250,247,242,0.4);">Back to home <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

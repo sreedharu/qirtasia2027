@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Keynote — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<style>
+.page-hero {
+  padding: 80px 0 64px;
+  border-bottom: 1px solid var(--rule);
+}
+.crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.keynote-hero {
+  display: grid;
+  grid-template-columns: 1fr 1.3fr;
+  gap: 80px;
+  align-items: end;
+  margin-top: 48px;
+}
+.keynote-portrait {
+  aspect-ratio: 3/4;
+  border: 1px solid var(--rule);
+}
+.keynote-tag {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.2em;
+  text-transform: uppercase; color: var(--accent);
+  margin-bottom: 24px;
+  display: flex; align-items: center; gap: 12px;
+}
+.keynote-tag::before {
+  content: ""; width: 24px; height: 1px; background: var(--accent);
+}
+.keynote-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 104px);
+  font-weight: 500; line-height: 0.95; letter-spacing: -0.02em;
+}
+.keynote-hero h1 em { font-style: italic; font-weight: 400; }
+.keynote-hero .role {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 24px; color: var(--ink-2);
+  margin-top: 24px; line-height: 1.4;
+}
+
+.talk {
+  padding: 100px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.talk-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+}
+.talk-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 24px;
+}
+.talk-title {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4vw, 56px);
+  font-weight: 500; line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin-bottom: 40px;
+}
+.talk-title em { font-style: italic; font-weight: 400; }
+.talk-abstract {
+  font-family: var(--font-display);
+  font-size: 22px; line-height: 1.5;
+  color: var(--ink-2); font-weight: 400;
+  max-width: 62ch;
+  margin-bottom: 32px;
+}
+.talk-abstract + p {
+  font-size: 16px; line-height: 1.75;
+  color: var(--ink-2); max-width: 62ch;
+}
+
+.bio {
+  background: var(--paper-2);
+  padding: 100px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.bio-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.8fr;
+  gap: 80px;
+}
+.bio-label {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.18em; text-transform: uppercase;
+  color: var(--ink-3); margin-bottom: 16px;
+}
+.bio h2 {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 3.6vw, 48px);
+  font-weight: 500; line-height: 1.1;
+  letter-spacing: -0.015em;
+}
+.bio h2 em { font-style: italic; font-weight: 400; }
+.bio p {
+  font-size: 16px; line-height: 1.75;
+  color: var(--ink-2); margin-bottom: 20px;
+  max-width: 62ch;
+}
+.bio p:first-of-type {
+  font-family: var(--font-display);
+  font-size: 22px; line-height: 1.5;
+  color: var(--ink); font-style: italic; font-weight: 400;
+}
+
+.credentials {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  margin-top: 64px;
+}
+.cred {
+  padding: 32px 28px 32px 0;
+  border-right: 1px solid var(--rule);
+}
+.cred:last-child { border-right: none; padding-right: 0; }
+.cred-num {
+  font-family: var(--font-display);
+  font-size: 48px; font-weight: 500; line-height: 1;
+  letter-spacing: -0.02em;
+}
+.cred-num .sup {
+  font-size: 0.4em; vertical-align: top;
+  font-family: var(--font-body); font-weight: 400;
+  color: var(--ink-3); margin-left: 4px;
+}
+.cred-label {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-top: 12px;
+}
+
+/* Invited speakers */
+.speakers {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  margin-top: 40px;
+}
+.speaker {
+  border-top: 1px solid var(--ink);
+  padding-top: 24px;
+}
+.speaker-img {
+  aspect-ratio: 1/1;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+}
+.speaker-name {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 500; line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+.speaker-role {
+  font-family: var(--font-display);
+  font-style: italic; font-size: 16px;
+  color: var(--ink-2); margin-top: 4px;
+}
+.speaker-inst {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.1em; color: var(--ink-3);
+  margin-top: 8px;
+}
+.speaker-topic {
+  font-size: 14px; color: var(--ink-2);
+  line-height: 1.6; margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .keynote-hero, .talk-grid, .bio-grid { grid-template-columns: 1fr; gap: 32px; }
+  .credentials { grid-template-columns: 1fr; gap: 0; }
+  .cred { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px 0; }
+  .cred:last-child { border-bottom: none; }
+  .speakers { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="../index.html#topics">Topics</a>
+      <a href="submission.html">Submission</a>
+      <a href="register.html">Register</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Programme &nbsp;/&nbsp; Keynote</div>
+
+    <div class="keynote-hero">
+      <div class="keynote-portrait ph" data-label="KEYNOTE · 3:4"></div>
+      <div>
+        <div class="keynote-tag">Distinguished Keynote · Tuesday 10 March 2027</div>
+        <h1>Prof. Xavier<br><em>Maldague.</em></h1>
+        <div class="role">Canada Research Chair in Multipolar Infrared Vision<br>Université Laval · Québec</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Talk -->
+<section class="talk">
+  <div class="wrap">
+    <div class="talk-grid">
+      <div>
+        <div class="talk-meta">The lecture</div>
+      </div>
+      <div>
+        <h2 class="talk-title">Thirty years of<br>active thermography —<br><em>and what comes next.</em></h2>
+        <p class="talk-abstract">
+          A reflection on three decades of progress in quantitative infrared thermography: from the early lock‑in and pulsed experiments of the 1990s, through pulse‑phase methods and tomographic reconstruction, to today's AI‑augmented thermographic vision.
+        </p>
+        <p>
+          The lecture traces the methodological arc of the field — measurement, modelling, and inversion — and asks where the next decade's breakthroughs are most likely to emerge. Particular attention is given to the convergence of thermography with deep learning, the maturation of multimodal imaging, and the field's growing role in addressing challenges in infrastructure resilience, energy efficiency, and health.
+        </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Bio -->
+<section class="bio">
+  <div class="wrap">
+    <div class="bio-grid">
+      <div>
+        <div class="bio-label">Biography</div>
+        <h2>A career of <em>firsts.</em></h2>
+      </div>
+      <div>
+        <p>
+          Xavier Maldague holds the Canada Research Chair in Multipolar Infrared Vision at Université Laval, where he has taught and conducted research since 1989.
+        </p>
+        <p>
+          His work has shaped modern quantitative thermography across several decades — including foundational contributions to active thermographic non‑destructive testing, the development of pulse‑phase thermography, and the integration of thermal imaging with machine‑learning methods for defect characterisation. His textbooks on the theory and practice of infrared thermographic NDT remain standard references for the field.
+        </p>
+        <p>
+          Beyond research, he has supervised dozens of doctoral theses and led international collaborations across aerospace, civil infrastructure, cultural heritage and biomedical thermography. He is a Fellow of several learned societies and the recipient of multiple lifetime and scientific achievement awards in the infrared and NDT communities.
+        </p>
+
+        <div class="credentials">
+          <div class="cred">
+            <div class="cred-num">300<span class="sup">+</span></div>
+            <div class="cred-label">Peer‑reviewed publications</div>
+          </div>
+          <div class="cred">
+            <div class="cred-num">35<span class="sup">+</span></div>
+            <div class="cred-label">Years at Laval</div>
+          </div>
+          <div class="cred">
+            <div class="cred-num">50<span class="sup">+</span></div>
+            <div class="cred-label">PhD theses supervised</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Invited speakers teaser -->
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">Programme · Invited</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Plenary<br><em style="font-style:italic;font-weight:400;">speakers.</em></h2>
+      </div>
+      <div>
+        <p class="lede">Alongside the keynote, plenary sessions will feature invited lectures from leading figures across the conference's eight tracks.</p>
+      </div>
+    </div>
+
+    <div class="speakers">
+      <div class="speaker">
+        <div class="speaker-img ph" data-label="INVITED 1"></div>
+        <div class="speaker-name">TBA</div>
+        <div class="speaker-role">Plenary · Active thermography</div>
+        <div class="speaker-inst">To be announced · autumn 2026</div>
+        <div class="speaker-topic">Industrial applications of lock-in and pulsed thermography in composite inspection.</div>
+      </div>
+      <div class="speaker">
+        <div class="speaker-img ph" data-label="INVITED 2"></div>
+        <div class="speaker-name">TBA</div>
+        <div class="speaker-role">Plenary · Medical &amp; bio-IR</div>
+        <div class="speaker-inst">To be announced · autumn 2026</div>
+        <div class="speaker-topic">Thermographic screening and early-stage disease detection in clinical settings.</div>
+      </div>
+      <div class="speaker">
+        <div class="speaker-img ph" data-label="INVITED 3"></div>
+        <div class="speaker-name">TBA</div>
+        <div class="speaker-role">Plenary · AI &amp; data methods</div>
+        <div class="speaker-inst">To be announced · autumn 2026</div>
+        <div class="speaker-topic">Deep learning and inverse problems for quantitative thermal imaging.</div>
+      </div>
+    </div>
+
+    <p style="margin-top: 48px; font-family: var(--font-display); font-style: italic; font-size: 20px; color: var(--ink-3); text-align: center;">
+      The complete programme and invited speaker list will be announced in October 2026.
+    </p>
+  </div>
+</section>
+
+<section class="cta-final" style="background: var(--ink); color: var(--paper); padding: 100px 0;">
+  <div class="wrap" style="text-align: center;">
+    <span class="eyebrow" style="color: rgba(250,247,242,0.5);">Be part of the programme</span>
+    <h2 style="font-family: var(--font-display); font-size: 56px; font-weight: 400; margin: 16px 0 32px; letter-spacing: -0.015em;">Submit your <em style="font-style:italic;">research.</em></h2>
+    <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="submission.html" class="btn" style="background: var(--paper); color: var(--ink); border-color: var(--paper);">Abstract guidelines <span class="arrow">→</span></a>
+      <a href="register.html" class="btn ghost" style="color: var(--paper); border-color: rgba(250,247,242,0.4);">Register <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

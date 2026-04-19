@@ -1,0 +1,592 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Registration — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+
+/* Fees table */
+.fees-section { padding: 80px 0; }
+.fees-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--rule);
+  margin-top: 32px;
+}
+.fee-cell {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  position: relative;
+}
+.fee-cell.recommended {
+  background: var(--paper-2);
+}
+.fee-cell.recommended::before {
+  content: "Recommended";
+  position: absolute;
+  top: -1px; right: 24px;
+  background: var(--accent);
+  color: var(--paper);
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  padding: 4px 10px;
+}
+.fee-tier {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.fee-name {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+.fee-price {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.02em;
+  margin-top: 16px;
+}
+.fee-price .ccy {
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 400;
+  color: var(--ink-3);
+  vertical-align: top;
+  letter-spacing: 0.05em;
+  margin-right: 8px;
+}
+.fee-price .per {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--ink-3);
+  display: block;
+  margin-top: 8px;
+  letter-spacing: 0.05em;
+}
+.fee-incl {
+  font-size: 13px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  padding: 16px 0;
+  border-top: 1px solid var(--rule);
+  margin-top: 8px;
+}
+.fee-incl ul { list-style: none; }
+.fee-incl li {
+  padding: 4px 0 4px 20px;
+  position: relative;
+}
+.fee-incl li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+/* Form */
+.form-section { background: var(--paper-2); padding: 100px 0; border-top: 1px solid var(--rule); }
+.form-wrap {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 56px;
+}
+.form-step {
+  display: none;
+  animation: fadeIn 250ms ease;
+}
+.form-step.active { display: block; }
+@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+
+.step-nav {
+  display: flex;
+  gap: 4px;
+  margin-bottom: 40px;
+}
+.step-dot {
+  flex: 1;
+  height: 3px;
+  background: var(--rule);
+  position: relative;
+}
+.step-dot.active, .step-dot.done { background: var(--ink); }
+
+.form-meta {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.form-title {
+  font-family: var(--font-display);
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 8px;
+  letter-spacing: -0.015em;
+}
+.form-title em { font-style: italic; font-weight: 400; }
+.form-sub {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+}
+
+.field {
+  margin-bottom: 20px;
+}
+.field-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+.field label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.field input, .field select, .field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  border-radius: 1px;
+  color: var(--ink);
+  transition: border-color 150ms;
+}
+.field input:focus, .field select:focus, .field textarea:focus {
+  outline: none;
+  border-color: var(--ink);
+}
+
+.radio-group {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+.radio-card {
+  border: 1px solid var(--rule);
+  padding: 18px 20px;
+  cursor: pointer;
+  transition: all 150ms;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.radio-card:hover { border-color: var(--ink-2); }
+.radio-card.selected { border-color: var(--ink); background: var(--paper-2); }
+.radio-card input { display: none; }
+.radio-card-title {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+}
+.radio-card-price {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--ink-2);
+  letter-spacing: 0.05em;
+}
+
+.form-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 40px;
+  padding-top: 24px;
+  border-top: 1px solid var(--rule);
+}
+.price-summary {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  color: var(--ink-2);
+}
+.price-summary strong {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+  color: var(--ink);
+  margin-left: 10px;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Confirmation */
+.confirm {
+  text-align: center;
+  padding: 20px 0;
+}
+.confirm-icon {
+  width: 56px;
+  height: 56px;
+  border: 1.5px solid var(--accent);
+  border-radius: 50%;
+  margin: 0 auto 28px;
+  display: grid;
+  place-items: center;
+  color: var(--accent);
+}
+.confirm-icon svg { width: 24px; height: 24px; }
+.confirm h3 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  margin-bottom: 12px;
+}
+.confirm h3 em { font-style: italic; font-weight: 400; }
+.confirm p {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-2);
+  max-width: 40ch;
+  margin: 0 auto 32px;
+  line-height: 1.4;
+}
+.confirm-ref {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  background: var(--paper-2);
+  padding: 10px 16px;
+  border: 1px solid var(--rule);
+  margin-bottom: 32px;
+}
+.confirm-ref strong { color: var(--accent); }
+
+@media (max-width: 800px) {
+  .fees-grid { grid-template-columns: 1fr; }
+  .form-wrap { padding: 32px 24px; }
+  .field-row { grid-template-columns: 1fr; }
+  .radio-group { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="../index.html#topics">Topics</a>
+      <a href="submission.html">Submission</a>
+      <a href="register.html" class="active">Register</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+    <div class="top-cta">
+      <span>Early rate open</span>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Registration</div>
+    <h1>Register for<br>the <em>conference.</em></h1>
+    <p class="lede" style="margin-top: 24px;">Early-bird rates available until 15 December 2026. All fees are inclusive of sessions, lunches, the welcome reception and the conference dinner.</p>
+  </div>
+</section>
+
+<!-- FEES -->
+<section class="fees-section">
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
+      <h2 style="font-family: var(--font-display); font-size: 40px; font-weight: 500; letter-spacing: -0.015em;">Conference <em style="font-style:italic;font-weight:400;">fees.</em></h2>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase;">All prices in SGD · incl. 9% GST</span>
+    </div>
+
+    <div class="fees-grid">
+      <div class="fee-cell">
+        <span class="fee-tier">Tier · Early</span>
+        <div class="fee-name">Academic</div>
+        <div class="fee-price"><span class="ccy">SGD</span>780<span class="per">by 15 Dec 2026</span></div>
+        <div class="fee-incl">
+          <ul>
+            <li>All technical sessions</li>
+            <li>Welcome reception &amp; dinner</li>
+            <li>Lunches &amp; coffee breaks</li>
+            <li>Proceedings access</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fee-cell recommended">
+        <span class="fee-tier">Tier · Early</span>
+        <div class="fee-name">Industry</div>
+        <div class="fee-price"><span class="ccy">SGD</span>980<span class="per">by 15 Dec 2026</span></div>
+        <div class="fee-incl">
+          <ul>
+            <li>All academic inclusions</li>
+            <li>Exhibition &amp; industry floor</li>
+            <li>Industry networking lunch</li>
+            <li>Sponsor matchmaking</li>
+          </ul>
+        </div>
+      </div>
+      <div class="fee-cell">
+        <span class="fee-tier">Tier · Early</span>
+        <div class="fee-name">Student</div>
+        <div class="fee-price"><span class="ccy">SGD</span>390<span class="per">by 15 Dec 2026</span></div>
+        <div class="fee-incl">
+          <ul>
+            <li>All technical sessions</li>
+            <li>Welcome reception</li>
+            <li>Lunches &amp; coffee breaks</li>
+            <li>Student mentoring session</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <p style="font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-3); margin-top: 24px;">
+      Add-ons: Short course / tutorial day — SGD 220 · Technical visit — SGD 90 · Accompanying person — SGD 280.
+    </p>
+  </div>
+</section>
+
+<!-- FORM -->
+<section class="form-section" id="register-form">
+  <div class="wrap">
+    <div style="text-align: center; margin-bottom: 48px;">
+      <span class="eyebrow">Registration</span>
+      <h2 style="font-family: var(--font-display); font-size: 48px; font-weight: 500; margin-top: 16px; letter-spacing: -0.015em;">Reserve your <em style="font-style:italic;font-weight:400;">place.</em></h2>
+    </div>
+
+    <div class="form-wrap">
+      <div class="step-nav">
+        <div class="step-dot active" data-dot="0"></div>
+        <div class="step-dot" data-dot="1"></div>
+        <div class="step-dot" data-dot="2"></div>
+      </div>
+
+      <!-- Step 1: Category -->
+      <div class="form-step active" data-step="0">
+        <div class="form-meta">Step 01 of 03</div>
+        <h3 class="form-title">Choose your <em>category.</em></h3>
+        <p class="form-sub">Select the tier that matches your role.</p>
+
+        <div class="radio-group" id="category-group">
+          <label class="radio-card selected" data-price="780">
+            <input type="radio" name="category" value="academic" checked>
+            <div class="radio-card-title">Academic</div>
+            <div class="radio-card-price">SGD 780 · early rate</div>
+          </label>
+          <label class="radio-card" data-price="980">
+            <input type="radio" name="category" value="industry">
+            <div class="radio-card-title">Industry</div>
+            <div class="radio-card-price">SGD 980 · early rate</div>
+          </label>
+          <label class="radio-card" data-price="390">
+            <input type="radio" name="category" value="student">
+            <div class="radio-card-title">Student</div>
+            <div class="radio-card-price">SGD 390 · early rate</div>
+          </label>
+          <label class="radio-card" data-price="560">
+            <input type="radio" name="category" value="accompanying">
+            <div class="radio-card-title">Accompanying</div>
+            <div class="radio-card-price">SGD 280 · social programme only</div>
+          </label>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <div class="field">
+            <label>Add-ons</label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--rule);">
+              <input type="checkbox" id="addon-course" data-price="220"> Short course day (9 Mar) &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 220</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--rule);">
+              <input type="checkbox" id="addon-visit" data-price="90"> Technical visit (12 Mar) &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 90</span>
+            </label>
+            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0;">
+              <input type="checkbox" id="addon-dinner" data-price="150"> Extra dinner ticket &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 150</span>
+            </label>
+          </div>
+        </div>
+
+        <div class="form-foot">
+          <div class="price-summary">Total <strong id="tot-1">SGD 780</strong></div>
+          <button class="btn" onclick="goStep(1)">Continue <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 2: Details -->
+      <div class="form-step" data-step="1">
+        <div class="form-meta">Step 02 of 03</div>
+        <h3 class="form-title">Your <em>details.</em></h3>
+        <p class="form-sub">We'll use these to issue your badge and invoice.</p>
+
+        <div class="field-row">
+          <div class="field">
+            <label>Title</label>
+            <select>
+              <option>Dr.</option><option>Prof.</option><option>Mr.</option><option>Ms.</option><option>Mx.</option>
+            </select>
+          </div>
+          <div class="field">
+            <label>Country</label>
+            <select>
+              <option>Singapore</option><option>Japan</option><option>China</option><option>India</option>
+              <option>Korea, Republic of</option><option>Malaysia</option><option>Australia</option>
+              <option>United States</option><option>United Kingdom</option><option>France</option>
+              <option>Germany</option><option>Canada</option><option>Other</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field"><label>First name</label><input type="text" placeholder="Given name"></div>
+          <div class="field"><label>Last name</label><input type="text" placeholder="Family name"></div>
+        </div>
+        <div class="field">
+          <label>Email address</label>
+          <input type="email" placeholder="you@institution.edu">
+        </div>
+        <div class="field">
+          <label>Institution / Organisation</label>
+          <input type="text" placeholder="e.g. Nanyang Technological University">
+        </div>
+        <div class="field">
+          <label>Department / Role</label>
+          <input type="text" placeholder="Optional">
+        </div>
+        <div class="field">
+          <label>Dietary requirements</label>
+          <select>
+            <option>None</option><option>Vegetarian</option><option>Vegan</option>
+            <option>Halal</option><option>Kosher</option><option>Gluten-free</option><option>Other</option>
+          </select>
+        </div>
+
+        <div class="form-foot">
+          <button class="btn ghost" onclick="goStep(0)"><span style="transform: scaleX(-1); display: inline-block;">→</span> Back</button>
+          <button class="btn" onclick="goStep(2)">Review &amp; pay <span class="arrow">→</span></button>
+        </div>
+      </div>
+
+      <!-- Step 3: Confirm -->
+      <div class="form-step" data-step="2">
+        <div class="confirm">
+          <div class="confirm-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M5 12l5 5L20 7"/>
+            </svg>
+          </div>
+          <h3>Registration <em>received.</em></h3>
+          <p>Thank you. A confirmation and payment link have been sent to your email address.</p>
+          <div class="confirm-ref">Reference · <strong>QIRT27-<span id="ref-num">A4821</span></strong></div>
+          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+            <a href="../index.html" class="btn">Return home <span class="arrow">→</span></a>
+            <a href="submission.html" class="btn ghost">Submit abstract <span class="arrow">→</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+let step = 0;
+function goStep(n) {
+  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
+  document.querySelector(`.form-step[data-step="${n}"]`).classList.add('active');
+  document.querySelectorAll('.step-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === n);
+    d.classList.toggle('done', i < n);
+  });
+  step = n;
+  if (n === 2) {
+    const ref = 'A' + Math.floor(1000 + Math.random() * 8999);
+    document.getElementById('ref-num').textContent = ref;
+  }
+  document.getElementById('register-form').scrollIntoView({ block: 'start' });
+}
+
+// Category selection
+const cards = document.querySelectorAll('#category-group .radio-card');
+cards.forEach(c => {
+  c.addEventListener('click', () => {
+    cards.forEach(x => x.classList.remove('selected'));
+    c.classList.add('selected');
+    c.querySelector('input').checked = true;
+    updateTotal();
+  });
+});
+
+function updateTotal() {
+  const sel = document.querySelector('#category-group .radio-card.selected');
+  let total = +sel.dataset.price;
+  document.querySelectorAll('[data-price]').forEach(el => {
+    if (el.tagName === 'INPUT' && el.checked) total += +el.dataset.price;
+  });
+  document.getElementById('tot-1').textContent = 'SGD ' + total.toLocaleString();
+}
+document.querySelectorAll('input[type="checkbox"][data-price]').forEach(cb => {
+  cb.addEventListener('change', updateTotal);
+});
+</script>
+</body>
+</html>

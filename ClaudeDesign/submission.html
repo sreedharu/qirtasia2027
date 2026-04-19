@@ -1,0 +1,331 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Submission Guidelines — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 24px;
+}
+.page-hero .crumb a { border-bottom: 1px solid var(--rule); }
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.02em;
+  max-width: 20ch;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+.page-hero .lede { margin-top: 32px; max-width: 60ch; }
+
+.body-grid {
+  display: grid;
+  grid-template-columns: 220px 1fr;
+  gap: 80px;
+  padding: 80px 0;
+}
+.toc {
+  position: sticky;
+  top: 100px;
+  align-self: start;
+}
+.toc h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+  font-weight: 500;
+}
+.toc ul { list-style: none; border-left: 1px solid var(--rule); }
+.toc li { }
+.toc a {
+  display: block;
+  padding: 8px 16px;
+  font-size: 13px;
+  color: var(--ink-2);
+  border-left: 2px solid transparent;
+  margin-left: -1px;
+  transition: all 150ms;
+}
+.toc a:hover, .toc a.active { color: var(--ink); border-left-color: var(--ink); }
+
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  line-height: 1.1;
+  letter-spacing: -0.015em;
+  margin: 48px 0 20px;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose h2 em { font-style: italic; font-weight: 400; }
+.prose h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  margin: 32px 0 8px;
+}
+.prose p {
+  font-size: 16px;
+  line-height: 1.75;
+  color: var(--ink-2);
+  margin-bottom: 16px;
+  max-width: 65ch;
+}
+.prose ul, .prose ol {
+  margin: 16px 0 16px 20px;
+  color: var(--ink-2);
+  max-width: 65ch;
+  line-height: 1.8;
+}
+.prose li { margin-bottom: 6px; font-size: 15px; }
+.prose strong { color: var(--ink); font-weight: 600; }
+
+.callout {
+  border: 1px solid var(--ink);
+  padding: 24px 28px;
+  margin: 32px 0;
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  max-width: 70ch;
+}
+.callout .cal-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 8px;
+}
+.callout .cal-text {
+  font-family: var(--font-display);
+  font-size: 20px;
+  line-height: 1.3;
+}
+.callout .cal-text em { font-style: italic; font-weight: 400; color: var(--ink-2); }
+
+.spec-table {
+  width: 100%;
+  max-width: 70ch;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 14px;
+}
+.spec-table th, .spec-table td {
+  text-align: left;
+  padding: 14px 20px;
+  border-bottom: 1px solid var(--rule);
+  vertical-align: top;
+}
+.spec-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+  background: var(--paper-2);
+  border-top: 1px solid var(--ink);
+}
+.spec-table td:first-child {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+  width: 30%;
+}
+
+.foot-cta {
+  display: flex;
+  gap: 12px;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+@media (max-width: 900px) {
+  .body-grid { grid-template-columns: 1fr; gap: 32px; }
+  .toc { position: static; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="../index.html#topics">Topics</a>
+      <a href="submission.html" class="active">Submission</a>
+      <a href="register.html">Register</a>
+      <a href="venue.html">Venue</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a href="../index.html">Home</a> &nbsp;/&nbsp; Submission &nbsp;/&nbsp; Guidelines</div>
+    <h1>Submission<br><em>guidelines.</em></h1>
+    <p class="lede">Authors are invited to submit one‑page abstracts for oral or poster presentation at the 6<sup>th</sup> QIRT Asia Conference.</p>
+  </div>
+</section>
+
+<div class="wrap">
+  <div class="body-grid">
+    <aside class="toc">
+      <h4>On this page</h4>
+      <ul>
+        <li><a href="#scope">01 Scope &amp; topics</a></li>
+        <li><a href="#abstract">02 Abstract format</a></li>
+        <li><a href="#review">03 Review process</a></li>
+        <li><a href="#paper">04 Full paper</a></li>
+        <li><a href="#proceedings">05 Proceedings</a></li>
+        <li><a href="#ethics">06 Ethics &amp; policy</a></li>
+      </ul>
+    </aside>
+
+    <article class="prose">
+      <div class="callout">
+        <span class="cal-tag">Deadline</span>
+        <div class="cal-text"><strong>15 October 2026</strong> · <em>Abstract submission closes 23:59 SGT</em></div>
+        <a href="#" class="btn">Upload <span class="arrow">→</span></a>
+      </div>
+
+      <h2 id="scope">Scope &amp; <em>topics.</em></h2>
+      <p>QIRT Asia 2027 welcomes original, unpublished contributions on all aspects of <strong>quantitative infrared thermography</strong>. Submissions should align with one or more of the conference's eight tracks, which span measurement science, applications, computation, and industrial practice.</p>
+      <p>Interdisciplinary and cross‑track submissions are strongly encouraged, particularly those combining thermography with adjacent disciplines — machine learning, computational imaging, photonics, materials characterisation, or clinical diagnostics.</p>
+      <ul>
+        <li><strong>Active thermography</strong> — lock‑in, pulsed, pulse‑phase, vibrothermography</li>
+        <li><strong>Passive thermography</strong> — monitoring, diagnostics, remote sensing</li>
+        <li><strong>Medical &amp; biological applications</strong></li>
+        <li><strong>Industrial NDT &amp; process monitoring</strong></li>
+        <li><strong>Aerospace &amp; defence</strong></li>
+        <li><strong>Building diagnostics &amp; energy auditing</strong></li>
+        <li><strong>Cultural heritage &amp; conservation</strong></li>
+        <li><strong>AI, data methods &amp; inverse problems</strong></li>
+      </ul>
+
+      <h2 id="abstract">Abstract <em>format.</em></h2>
+      <p>Submit a single PDF, one A4 page, in English. Use the downloadable template to ensure consistent formatting across the proceedings.</p>
+
+      <table class="spec-table">
+        <thead>
+          <tr><th>Element</th><th>Specification</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Length</td><td>One A4 page, inclusive of figures and references</td></tr>
+          <tr><td>Format</td><td>PDF only · via the online submission portal</td></tr>
+          <tr><td>Typeface</td><td>Times New Roman 10 pt body · 12 pt title</td></tr>
+          <tr><td>Margins</td><td>25 mm top · 20 mm sides &amp; bottom</td></tr>
+          <tr><td>Figures</td><td>Embedded · minimum 300 dpi · greyscale or colour</td></tr>
+          <tr><td>File size</td><td>Maximum 5 MB per submission</td></tr>
+          <tr><td>Language</td><td>English</td></tr>
+          <tr><td>Authors</td><td>All affiliations listed · corresponding author marked</td></tr>
+        </tbody>
+      </table>
+
+      <h3>Preferred presentation type</h3>
+      <p>Indicate your preferred format at submission — <em>oral</em>, <em>poster</em>, or <em>either</em>. The programme committee will make final allocations based on thematic fit, scientific merit, and session balance.</p>
+
+      <h2 id="review">Review <em>process.</em></h2>
+      <p>All abstracts undergo <strong>double-blind peer review</strong> by at least two members of the technical programme committee. Reviewers are drawn from the international QIRT community and matched to submissions by expertise.</p>
+      <p>Authors are asked to prepare anonymised submissions — omitting names, affiliations and self-identifying references from the PDF. Identifying metadata is handled separately by the submission system.</p>
+
+      <h3>Decision timeline</h3>
+      <ol>
+        <li>Abstract submission: 1 Jul — 15 Oct 2026</li>
+        <li>Peer review: 16 Oct — 10 Nov 2026</li>
+        <li>Author notification: 15 Nov 2026</li>
+        <li>Full paper (optional, for proceedings): due 10 Jan 2027</li>
+      </ol>
+
+      <h2 id="paper">Full <em>paper.</em></h2>
+      <p>Authors of accepted abstracts may submit a full paper (4–6 pages) for inclusion in the conference proceedings. Full papers are optional for presentation but required for indexed proceedings.</p>
+      <p>A LaTeX class and Word template are provided on the submission portal. Papers must adhere to the QIRT formatting standards to be eligible for the special issue.</p>
+
+      <h2 id="proceedings">Proceedings &amp; <em>special issue.</em></h2>
+      <p>The conference proceedings will be published online with an ISBN and DOI assignment per paper. A selection of extended papers will be invited to a special issue of the <em>Quantitative InfraRed Thermography Journal</em> (Taylor &amp; Francis), following a second round of peer review.</p>
+
+      <h2 id="ethics">Ethics &amp; <em>policy.</em></h2>
+      <p>By submitting, authors confirm that the work is original, has not been published elsewhere, and is not concurrently under review at another venue. At least one author of each accepted contribution must register and present the work at the conference.</p>
+      <p>Submissions involving human subjects, animals, or clinical data must demonstrate appropriate ethical approval. The programme committee reserves the right to reject submissions that do not comply with these standards.</p>
+
+      <div class="foot-cta">
+        <a href="#" class="btn">Upload abstract <span class="arrow">→</span></a>
+        <a href="#" class="btn ghost">Download template (.docx) <span class="arrow">↓</span></a>
+        <a href="#" class="btn ghost">Download template (LaTeX) <span class="arrow">↓</span></a>
+      </div>
+    </article>
+  </div>
+</div>
+
+<section class="cta-final" style="background: var(--ink); color: var(--paper); padding: 100px 0;">
+  <div class="wrap" style="text-align: center;">
+    <span class="eyebrow" style="color: rgba(250,247,242,0.5);">Questions about submission?</span>
+    <h2 style="font-family: var(--font-display); font-size: 56px; font-weight: 400; margin: 16px 0 32px;">Contact the programme committee.</h2>
+    <a href="/cdn-cgi/l/email-protection#0a7a6b7a6f78794a7b63787e6b79636b383a383d24696567" class="btn" style="background: var(--paper); color: var(--ink); border-color: var(--paper);"><span class="__cf_email__" data-cfemail="d8a8b9a8bdaaab98a9b1aaacb9abb1b9eae8eaeff6bbb7b5">[email&#160;protected]</span> <span class="arrow">→</span></a>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
+const links = document.querySelectorAll('.toc a');
+const targets = Array.from(links).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
+function updateToc() {
+  const y = window.scrollY + 140;
+  let active = 0;
+  targets.forEach((s, i) => { if (s.offsetTop <= y) active = i; });
+  links.forEach((a, i) => a.classList.toggle('active', i === active));
+}
+window.addEventListener('scroll', updateToc, { passive: true });
+document.querySelectorAll('a[href^="#"]').forEach(a => {
+  a.addEventListener('click', (e) => {
+    const id = a.getAttribute('href');
+    if (id.length <= 1) return;
+    const el = document.querySelector(id);
+    if (!el) return;
+    e.preventDefault();
+    window.scrollTo({ top: el.offsetTop - 100, behavior: 'smooth' });
+  });
+});
+</script>
+</body>
+</html>
