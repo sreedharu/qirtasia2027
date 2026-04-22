@@ -1,0 +1,218 @@
+/* Base Styles for ClaudeDesign */
+
+:root {
+  --ink: #111111;
+  --ink-2: #333333;
+  --ink-3: #666666;
+  --paper: #FAF7F2;
+  --paper-2: #F3EEE5;
+  --rule: #EAE3D9;
+  --rule-2: #DFD5C5;
+  --accent: #C2410C;
+
+  --max: 1200px;
+  --gutter: 40px;
+
+  --font-display: 'Cormorant Garamond', serif;
+  --font-body: 'Inter', sans-serif;
+  --font-mono: 'JetBrains Mono', monospace;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: var(--font-body);
+  background-color: var(--paper);
+  color: var(--ink);
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
+a.inline {
+  border-bottom: 1px solid currentColor;
+}
+
+a.inline:hover {
+  color: var(--ink);
+}
+
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+}
+
+/* Sections */
+.section-head {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  margin-bottom: 64px;
+}
+
+.section-head .eyebrow {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+
+.section-head h2 {
+  font-family: var(--font-display);
+  font-size: clamp(36px, 4.4vw, 56px);
+  font-weight: 500;
+  line-height: 1;
+  letter-spacing: -0.015em;
+}
+
+.section-head .lede {
+  font-size: 20px;
+  color: var(--ink-2);
+  line-height: 1.6;
+}
+
+/* Split content */
+.split-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+
+/* Top bar */
+.topbar {
+  border-bottom: 1px solid var(--rule);
+  padding: 20px 0;
+  background: var(--paper);
+}
+
+.topbar-inner {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  color: var(--ink);
+}
+
+.brand img {
+  height: 40px;
+  width: auto;
+}
+
+.brand-meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.brand-meta strong {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.1;
+}
+
+.brand-meta span {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--ink-3);
+  text-transform: uppercase;
+}
+
+.nav {
+  display: flex;
+  gap: 32px;
+}
+
+.nav a {
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--ink-2);
+  transition: color 150ms;
+}
+
+.nav a:hover, .nav a.active {
+  color: var(--ink);
+}
+
+.top-cta .btn {
+  font-size: 13px;
+  padding: 10px 20px;
+}
+
+/* Base Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px 28px;
+  font-size: 15px;
+  font-weight: 500;
+  background: var(--accent);
+  color: #fff;
+  border: 1px solid var(--accent);
+  border-radius: 4px;
+  transition: all 150ms ease;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background: #A03308;
+  border-color: #A03308;
+  color: #fff;
+}
+
+.btn.ghost {
+  background: transparent;
+  color: var(--ink);
+  border-color: var(--rule);
+}
+
+.btn.ghost:hover {
+  background: var(--paper-2);
+  border-color: var(--ink-3);
+}
+
+.btn .arrow {
+  margin-left: 8px;
+  transition: transform 150ms ease;
+}
+
+.btn:hover .arrow {
+  transform: translateX(4px);
+}
+
+/* Typical page sections padding */
+section {
+  padding: 100px 0;
+}
+
+@media (max-width: 960px) {
+  .section-head, .split-2 {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+  .nav {
+    display: none;
+  }
+}
