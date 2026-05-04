@@ -653,6 +653,98 @@ footer {
   border: 1px solid var(--rule);
   background: var(--paper);
 }
+/* ===== Hero Carousel ===== */
+.hero-carousel {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+}
+.hero-slide {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  opacity: 0;
+  transition: opacity 0.8s ease-in-out, transform 0.8s ease-in-out;
+  transform: scale(1.02);
+  display: flex;
+  align-items: center;
+  pointer-events: none;
+  z-index: 1;
+}
+.hero-slide.active {
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+  z-index: 2;
+}
+.hero-background {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+}
+.hero-overlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.85) 0%, rgba(13, 15, 29, 0.95) 100%);
+  z-index: 1;
+}
+.hero-carousel .wrap {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+}
+.hero-carousel .hero-grid {
+  color: white;
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 80px;
+  align-items: end;
+}
+.hero-carousel h1, .hero-carousel .hero-sub, .hero-carousel dt, .hero-carousel dd, .hero-carousel .hero-eyebrow, .hero-carousel .hero-meta dt {
+  color: white;
+  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+.hero-carousel .hero-eyebrow::before {
+  background: white;
+}
+.hero-carousel .hero-meta {
+  border-color: rgba(255,255,255,0.2);
+}
+.hero-carousel .btn.ghost {
+  color: white;
+  border-color: rgba(255,255,255,0.4);
+}
+.hero-carousel .btn.ghost:hover {
+  background: white;
+  color: var(--ink);
+}
+.carousel-indicators {
+  position: absolute;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 12px;
+  z-index: 10;
+}
+.indicator {
+  width: 10px; height: 10px;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.indicator.active {
+  background: white;
+  width: 30px;
+  border-radius: 5px;
+}
+@media (max-width: 960px) {
+  .hero-carousel .hero-grid { grid-template-columns: 1fr; gap: 48px; }
+}
 </style>
 </head>
 <body>
@@ -690,44 +782,123 @@ footer {
 </header>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <div class="wrap">
-    <div class="hero-grid">
-      <div>
-        <div class="hero-eyebrow">The 6<sup>th</sup> Asian Conference · Biennial Series Est. 1992</div>
-        <h1>
-          Quantitative<br>
-          <span class="italic">Infrared</span><br>
-          Thermography<br>
-          <span class="year">Singapore · 2027</span>
-        </h1>
-        <p class="hero-sub">Advancing the science of thermal measurement — from active imaging and NDT to medicine, heritage, and AI-driven diagnostics.</p>
+<section class="hero-carousel" id="home">
+  <!-- Slide 1: Main -->
+  <div class="hero-slide active">
+    <div class="hero-background" style="background-image: url('../images/marina_bay_sands.png');"></div>
+    <div class="hero-overlay"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">The 6<sup>th</sup> Asian Conference · Biennial Series Est. 1992</div>
+          <h1>
+            Quantitative<br>
+            <span class="italic">Infrared</span><br>
+            Thermography<br>
+            <span class="year">Singapore · 2027</span>
+          </h1>
+          <p class="hero-sub">Advancing the science of thermal measurement — from active imaging and NDT to medicine, heritage, and AI-driven diagnostics.</p>
 
-        <dl class="hero-meta">
-          <div>
-            <dt>Dates</dt>
-            <dd>9 – 12 Mar 2027</dd>
-          </div>
-          <div>
-            <dt>Venue</dt>
-            <dd>Marina Bay Sands</dd>
-          </div>
-          <div>
-            <dt>Abstracts due</dt>
-            <dd>15 Oct 2026</dd>
-          </div>
-        </dl>
+          <dl class="hero-meta">
+            <div>
+              <dt>Dates</dt>
+              <dd>9 – 12 Mar 2027</dd>
+            </div>
+            <div>
+              <dt>Venue</dt>
+              <dd>Marina Bay Sands</dd>
+            </div>
+            <div>
+              <dt>Abstracts due</dt>
+              <dd>15 Oct 2026</dd>
+            </div>
+          </dl>
 
-        <div class="hero-cta">
-          <a href="pages/register.html" class="btn">Register <span class="arrow">→</span></a>
-          <a href="pages/submission.html" class="btn ghost">Submit paper <span class="arrow">→</span></a>
+          <div class="hero-cta">
+            <a href="pages/register.html" class="btn">Register <span class="arrow">→</span></a>
+            <a href="pages/submission.html" class="btn ghost">Submit paper <span class="arrow">→</span></a>
+          </div>
+        </div>
+
+        <div class="hero-logo">
+          <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027 logo" style="filter: drop-shadow(0px 0px 20px rgba(0,0,0,0.5));">
+          <!-- Countdown Timer -->
+          <div style="margin-top: 3rem; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center;">
+            <p style="color: rgba(255,255,255,0.8); font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 1rem;">Time until conference</p>
+            <div class="countdown" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); justify-content: center;">
+              <div>
+                <span id="cd-days" class="countdown-num">00</span>
+                <span class="countdown-label">Days</span>
+              </div>
+              <div>
+                <span id="cd-hours" class="countdown-num">00</span>
+                <span class="countdown-label">Hours</span>
+              </div>
+              <div>
+                <span id="cd-mins" class="countdown-num">00</span>
+                <span class="countdown-label">Mins</span>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
+    </div>
+  </div>
 
-      <div class="hero-logo">
-        <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027 logo">
+  <!-- Slide 2: A*STAR -->
+  <div class="hero-slide">
+    <div class="hero-background" style="background-image: url('../images/logos/ASTAR_IMRE.png'); background-size: contain; background-color: white;"></div>
+    <div class="hero-overlay" style="background: rgba(10, 14, 39, 0.85);"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">Co-Hosted By</div>
+          <h1>
+            A*STAR<br>
+            <span class="italic">IMRE</span>
+          </h1>
+          <p class="hero-sub">Institute of Materials Research and Engineering at A*STAR is Singapore's premier research institute for materials science and engineering.</p>
+          <div class="hero-cta">
+            <a href="https://www.a-star.edu.sg/imre" target="_blank" class="btn">Visit A*STAR IMRE <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="hero-logo" style="display: flex; justify-content: center; align-items: center;">
+          <img src="../images/logos/ASTAR_IMRE.png" alt="A*STAR IMRE" style="background: white; padding: 2rem; border-radius: 12px; max-width: 300px; filter: none;">
+        </div>
       </div>
     </div>
+  </div>
+
+  <!-- Slide 3: NDTSS -->
+  <div class="hero-slide">
+    <div class="hero-background" style="background-image: url('../images/hero/singapore-skyline.png');"></div>
+    <div class="hero-overlay"></div>
+    <div class="wrap">
+      <div class="hero-grid">
+        <div>
+          <div class="hero-eyebrow">Co-Hosted By</div>
+          <h1>
+            Singapore<br>
+            <span class="italic">NDT Society</span>
+          </h1>
+          <p class="hero-sub">Dedicated to advancing NDT technology and knowledge in Singapore and the region.</p>
+          <div class="hero-cta">
+            <a href="https://ndtss.org.sg/" target="_blank" class="btn">Visit NDTSS <span class="arrow">→</span></a>
+          </div>
+        </div>
+        <div class="hero-logo" style="display: flex; gap: 2rem; align-items: center; justify-content: center; flex-wrap: wrap;">
+          <img src="../images/logos/NDTSS.png" alt="NDTSS" style="background: white; padding: 1.5rem; border-radius: 12px; max-width: 200px; filter: none;">
+          <img src="../images/logos/ICNDT.jpg" alt="ICNDT" style="background: white; padding: 1.5rem; border-radius: 12px; max-width: 200px; filter: none;">
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Carousel Indicators -->
+  <div class="carousel-indicators">
+    <span class="indicator active" onclick="goToSlide(0)"></span>
+    <span class="indicator" onclick="goToSlide(1)"></span>
+    <span class="indicator" onclick="goToSlide(2)"></span>
   </div>
 </section>
 
@@ -1251,6 +1422,65 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     e.preventDefault();
     window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
   });
+});
+/* ===== HERO CAROUSEL ===== */
+let currentSlide = 0;
+const slides = document.querySelectorAll('.hero-slide');
+const indicators = document.querySelectorAll('.indicator');
+let autoSlideInterval;
+
+function showSlide(index) {
+  if (slides.length === 0) return;
+  slides.forEach(slide => slide.classList.remove('active'));
+  indicators.forEach(indicator => indicator.classList.remove('active'));
+
+  if (index >= slides.length) currentSlide = 0;
+  if (index < 0) currentSlide = slides.length - 1;
+
+  slides[currentSlide].classList.add('active');
+  indicators[currentSlide].classList.add('active');
+}
+
+function changeSlide(direction) {
+  currentSlide += direction;
+  showSlide(currentSlide);
+  resetAutoSlide();
+}
+
+function goToSlide(index) {
+  currentSlide = index;
+  showSlide(currentSlide);
+  resetAutoSlide();
+}
+
+function autoSlide() {
+  currentSlide++;
+  if (currentSlide >= slides.length) currentSlide = 0;
+  showSlide(currentSlide);
+}
+
+function startAutoSlide() {
+  if (slides.length > 0) {
+    autoSlideInterval = setInterval(autoSlide, 5000);
+  }
+}
+
+function resetAutoSlide() {
+  clearInterval(autoSlideInterval);
+  startAutoSlide();
+}
+
+// Ensure the countdown tick runs once immediately and doesn't fail if elements aren't there
+function initCountdown() {
+  const cdDays = document.getElementById('cd-days');
+  if (cdDays) {
+    tick();
+  }
+}
+initCountdown();
+
+document.addEventListener('DOMContentLoaded', () => {
+  startAutoSlide();
 });
 </script>
 
