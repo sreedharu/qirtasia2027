@@ -29,7 +29,7 @@
   position: fixed;
   top: 0; left: 0; right: 0;
   z-index: 150;
-  transition: background 300ms ease, box-shadow 300ms ease;
+  transition: background 120ms ease, box-shadow 120ms ease;
 }
 .hero-nav-overlay .topbar {
   position: relative;
@@ -67,8 +67,41 @@
   background: rgba(255, 255, 255, 0.12);
 }
 .hero-nav-overlay.scrolled {
-  background: var(--paper);
-  box-shadow: 0 1px 0 var(--rule);
+  background:
+    linear-gradient(rgba(9, 11, 22, 0.45), rgba(9, 11, 22, 0.45)),
+    var(--thermal-gradient);
+  background-size: 100% 100%, 220% 100%;
+  box-shadow: 0 4px 20px -6px rgba(0, 0, 0, 0.35);
+}
+.hero-nav-overlay.scrolled .topbar {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+.hero-nav-overlay.scrolled .topbar::after {
+  opacity: 0; /* the whole band is the gradient now, the hairline is redundant */
+}
+.hero-nav-overlay.scrolled .brand,
+.hero-nav-overlay.scrolled .brand-meta strong,
+.hero-nav-overlay.scrolled .caret {
+  color: #fff;
+}
+.hero-nav-overlay.scrolled .brand-meta span {
+  color: rgba(255, 255, 255, 0.75);
+}
+.hero-nav-overlay.scrolled .nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 4px rgba(0, 0, 0, 0.3);
+}
+.hero-nav-overlay.scrolled .nav a:hover,
+.hero-nav-overlay.scrolled .nav a.active {
+  color: #fff;
+}
+.hero-nav-overlay.scrolled .top-cta .btn.ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.hero-nav-overlay.scrolled .top-cta .btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.15);
 }
 
 /* ===== Hero ===== */
@@ -1309,9 +1342,7 @@ function updateNav() {
 
   const overlay = document.getElementById('hero-nav-overlay');
   if (overlay) {
-    const hero = document.querySelector('.hero-carousel');
-    const threshold = hero ? hero.offsetHeight - 80 : 400;
-    overlay.classList.toggle('scrolled', window.scrollY > threshold);
+    overlay.classList.toggle('scrolled', window.scrollY > 40);
   }
 }
 window.addEventListener('scroll', updateNav, { passive: true });
