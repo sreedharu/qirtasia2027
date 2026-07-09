@@ -28,105 +28,56 @@
 
 /* Fees table */
 .fees-section { padding: 80px 0; }
-.fees-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--ink);
-  border-left: 1px solid var(--rule);
+.fees-table {
+  width: 100%;
+  border-collapse: collapse;
   margin-top: 32px;
+  border-top: 1px solid var(--ink);
 }
-.fee-cell {
-  border-right: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-  padding: 40px 32px;
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-  position: relative;
-}
-.fee-cell.recommended {
-  background: var(--paper-2);
-}
-.fee-cell.recommended::before {
-  content: "Recommended";
-  position: absolute;
-  top: -1px; right: 24px;
-  background: var(--accent);
-  color: var(--paper);
+.fees-table th {
+  text-align: left;
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  padding: 4px 10px;
-}
-.fee-tier {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
   color: var(--ink-3);
-}
-.fee-name {
-  font-family: var(--font-display);
-  font-size: 28px;
   font-weight: 500;
-  line-height: 1.1;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
 }
-.fee-price {
+.fees-table th:last-child, .fees-table td:last-child { text-align: right; }
+.fees-table td {
+  padding: 20px 16px;
+  border-bottom: 1px solid var(--rule);
+  transition: background 200ms;
+}
+.fees-table tr:hover td { background: var(--paper-2); }
+.fees-table .fee-category {
   font-family: var(--font-display);
-  font-size: 56px;
+  font-size: 20px;
   font-weight: 500;
-  line-height: 1;
-  letter-spacing: -0.02em;
-  margin-top: 16px;
 }
-.fee-price .ccy {
-  font-family: var(--font-body);
+.fees-table .fee-deadline {
   font-size: 14px;
-  font-weight: 400;
-  color: var(--ink-3);
-  vertical-align: top;
-  letter-spacing: 0.05em;
-  margin-right: 8px;
-}
-.fee-price .per {
-  font-family: var(--font-body);
-  font-size: 13px;
-  font-weight: 400;
-  color: var(--ink-3);
-  display: block;
-  margin-top: 8px;
-  letter-spacing: 0.05em;
-}
-.fee-incl {
-  font-size: 13px;
   color: var(--ink-2);
-  line-height: 1.6;
-  padding: 16px 0;
-  border-top: 1px solid var(--rule);
-  margin-top: 8px;
+  font-variant-numeric: tabular-nums;
 }
-.fee-incl ul { list-style: none; }
-.fee-incl li {
-  padding: 4px 0 4px 20px;
-  position: relative;
+.fees-table .fee-amount {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
 }
-.fee-incl li::before {
-  content: "·";
-  position: absolute;
-  left: 4px;
-  color: var(--accent);
-  font-weight: 700;
+.fees-table .fee-amount .ccy {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-3);
+  margin-right: 6px;
+  letter-spacing: 0.05em;
 }
-
-.fee-cell {
-  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms;
-}
-.fee-cell:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 16px 32px -20px rgba(17, 17, 17, 0.25);
-  z-index: 1;
-}
+.fees-table tr.group-start td { border-top: 1px solid var(--rule-2); }
 
 /* Registration CTA panel */
 .reg-cta {
@@ -185,7 +136,8 @@
 }
 
 @media (max-width: 800px) {
-  .fees-grid { grid-template-columns: 1fr; }
+  .fees-table .fee-amount { font-size: 20px; }
+  .fees-table td, .fees-table th { padding: 14px 10px; }
   .reg-cta { padding: 40px 24px; }
 }
 </style>
@@ -229,7 +181,7 @@
   <div class="wrap">
     <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Registration</div>
     <h1>Register for<br>the <em>conference.</em></h1>
-    <p class="lede" style="margin-top: 24px;">Early-bird rates available until 15 December 2026. All fees are inclusive of sessions, lunches, the welcome reception and the conference dinner.</p>
+    <p class="lede" style="margin-top: 24px;">Early-bird rates available until 15 December 2026. Registration includes the welcome reception, conference dinner, and lunches &amp; coffee breaks. Accommodation is not included.</p>
   </div>
 </section>
 
@@ -238,53 +190,55 @@
   <div class="wrap">
     <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px;">
       <h2 style="font-family: var(--font-display); font-size: 40px; font-weight: 500; letter-spacing: -0.015em;">Conference <em style="font-style:italic;font-weight:400;">fees.</em></h2>
-      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase;">All prices in SGD · incl. 9% GST</span>
+      <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase;">All prices in USD</span>
     </div>
 
-    <div class="fees-grid reveal">
-      <div class="fee-cell">
-        <span class="fee-tier">Tier · Early</span>
-        <div class="fee-name">Academic</div>
-        <div class="fee-price"><span class="ccy">SGD</span>780<span class="per">by 15 Dec 2026</span></div>
-        <div class="fee-incl">
-          <ul>
-            <li>All technical sessions</li>
-            <li>Welcome reception &amp; dinner</li>
-            <li>Lunches &amp; coffee breaks</li>
-            <li>Proceedings access</li>
-          </ul>
-        </div>
-      </div>
-      <div class="fee-cell recommended">
-        <span class="fee-tier">Tier · Early</span>
-        <div class="fee-name">Industry</div>
-        <div class="fee-price"><span class="ccy">SGD</span>980<span class="per">by 15 Dec 2026</span></div>
-        <div class="fee-incl">
-          <ul>
-            <li>All academic inclusions</li>
-            <li>Exhibition &amp; industry floor</li>
-            <li>Industry networking lunch</li>
-            <li>Sponsor matchmaking</li>
-          </ul>
-        </div>
-      </div>
-      <div class="fee-cell">
-        <span class="fee-tier">Tier · Early</span>
-        <div class="fee-name">Student</div>
-        <div class="fee-price"><span class="ccy">SGD</span>390<span class="per">by 15 Dec 2026</span></div>
-        <div class="fee-incl">
-          <ul>
-            <li>All technical sessions</li>
-            <li>Welcome reception</li>
-            <li>Lunches &amp; coffee breaks</li>
-            <li>Student mentoring session</li>
-          </ul>
-        </div>
-      </div>
+    <div style="overflow-x: auto;" class="reveal">
+      <table class="fees-table">
+        <thead>
+          <tr>
+            <th>Category</th>
+            <th>Deadline</th>
+            <th>USD</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="group-start">
+            <td class="fee-category">Regular — Early Bird</td>
+            <td class="fee-deadline">15 Dec 2026</td>
+            <td class="fee-amount"><span class="ccy">USD</span>650</td>
+          </tr>
+          <tr>
+            <td class="fee-category">Regular — Standard</td>
+            <td class="fee-deadline">15 Feb 2027</td>
+            <td class="fee-amount"><span class="ccy">USD</span>700</td>
+          </tr>
+          <tr>
+            <td class="fee-category">Regular — Late / On-site</td>
+            <td class="fee-deadline">At desk</td>
+            <td class="fee-amount"><span class="ccy">USD</span>900</td>
+          </tr>
+          <tr class="group-start">
+            <td class="fee-category">Student — Early Bird</td>
+            <td class="fee-deadline">15 Dec 2026</td>
+            <td class="fee-amount"><span class="ccy">USD</span>450</td>
+          </tr>
+          <tr>
+            <td class="fee-category">Student — Standard</td>
+            <td class="fee-deadline">15 Feb 2027</td>
+            <td class="fee-amount"><span class="ccy">USD</span>500</td>
+          </tr>
+          <tr class="group-start">
+            <td class="fee-category">Accompanying Person</td>
+            <td class="fee-deadline">15 Dec 2026</td>
+            <td class="fee-amount"><span class="ccy">USD</span>150</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
 
     <p style="font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-3); margin-top: 24px;">
-      Add-ons: Short course / tutorial day — SGD 220 · Technical visit — SGD 90 · Accompanying person — SGD 280.
+      QIRT short course (7 Mar 2027) — USD 300, separate registration required.
     </p>
   </div>
 </section>

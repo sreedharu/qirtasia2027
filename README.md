@@ -5,78 +5,75 @@ Official website for the 6th Asian Quantitative Infrared Thermography Conference
 ## Conference Information
 
 - **Dates:** March 7-10, 2027
-- **Venue:** Singapore (Venue TBC)
-- **Registration Fee:** $700 USD
-- **Website:** www.qirtasia2027.org (to be configured)
+- **Venue:** Marina Bay Sands (Sands Expo & Convention Centre, Level 4), Singapore
+- **Registration Fee:** Regular from USD 650 (early bird) / Student from USD 450 (early bird) — see `pages/register.html` for the full tiered pricing
+- **Organiser:** Nondestructive Testing Society of Singapore (NDTSS)
+- **Supporter:** Institute of Materials Research and Engineering, A*STAR (A*STAR IMRE)
+- **Co-located with:** SINCE 2027 conference and exhibition
+- **Website:** qirtasia2027.com
 
 ## Important Dates
 
-- **Abstract Submission:** November 15, 2026
-- **Early-Bird Registration:** January 31, 2027
-- **Paper Submission:** February 15, 2027
-- **Conference:** March 7-10, 2027
+- **Abstract Submission Opens:** 1 June 2026
+- **Registration Opens:** 1 July 2026
+- **Abstract Submission Deadline:** 15 October 2026
+- **Notification of Acceptance:** 25 November 2026
+- **Early-Bird Registration Deadline:** 15 December 2026
+- **Full Paper / Extended Abstract Due:** 10 January 2027
+- **Standard Registration Deadline:** 15 February 2027
+- **QIRT Short Course:** 7 March 2027
+- **Main Conference:** 8-9 March 2027
+- **Post-Conference Tour:** 10 March 2027
 
 ## Organizing Committee
 
-- **Sreedhar U** - General Chair
-- **Andrew Ngo** - Co-Chair
-- **Jonathan** - Technical Program Chair
-- **Vinod** - Committee Member
-- **Andy Malcolm** - Committee Member
-- **Babu** - Committee Member
+**Local Organizing Committee** — see `pages/committee.html` for full affiliations:
+
+- **Dr. Andrew Ngo** - Chair (A*STAR IMRE / A*STAR FEAT)
+- **Dr. Sreedhar Unnikrishnakurup** - Co-Chair (A*STAR IMRE / A*STAR FEAT)
+- **Prof. Junyan Liu** - Vice Chair (Harbin Institute of Technology)
+- **Prof. Edmund Liew** - Committee Member (Singapore Institute of Technology)
+- **Vinod Kumar** - Logistics Committee (A*STAR IMRE)
+- **Jonathan Zheng** - Technical Committee (A*STAR IMRE)
+- **Dr. Andy Malcolm** - Committee Member (A*STAR SIMTECH)
+- **Dr. Sajeesh K Babu** - President NDTSS, ICNDT Chairman
+
+The QIRT Asia Steering Committee (19 members across 10 countries) is listed in full on `pages/committee.html`.
 
 ## Keynote Speaker
 
-- **Prof. Xavier Maldague** - Distinguished expert in infrared thermography
+- **Prof. Xavier Maldague** - Université Laval, Canada Research Chair in Multipolar Infrared Vision; also QIRT Council Representative
 
-## Sponsors
+## Awards
 
-- ALX (Platinum Sponsor)
-- FLIR (Gold Sponsor)
-- INFRATEC (Silver Sponsor)
+- **Best Young Researcher Presentation Award** - for the most impactful presentation by a researcher within 10 years of completing their PhD
+- **Best Student Paper Award** - for the best paper with a student as primary and presenting author
 
 ## Website Structure
 
 ```
 qirtasia2027/
 ├── index.html                 # Home page
-├── css/
-│   ├── main.css              # Main stylesheet
-│   └── responsive.css        # Responsive design
+├── styles.css                 # Shared stylesheet (design tokens, layout, components)
 ├── js/
-│   └── main.js               # JavaScript functionality
+│   └── mobile-nav.js          # Mobile menu toggle + scroll-reveal engine, shared across pages
 ├── images/
-│   ├── hero/                 # Hero section images
-│   ├── singapore/            # Singapore attractions
-│   ├── logos/                # Conference and sponsor logos
-│   └── speakers/             # Keynote speaker photos
+│   ├── hero/                  # Hero section images and video
+│   ├── logos/                 # Conference, host and supporter logos
+│   ├── committee/              # Committee member photos
+│   └── speakers/               # Keynote speaker photos
 ├── pages/
-│   ├── general-info/
-│   │   ├── about.html
-│   │   ├── committee.html
-│   │   ├── contacts.html
-│   │   ├── news.html
-│   │   └── organizer.html
-│   ├── sessions/
-│   │   ├── topics.html
-│   │   ├── keynote.html
-│   │   └── venue.html
-│   ├── submission/
-│   │   ├── guidelines.html
-│   │   └── upload.html
-│   ├── registration/
-│   │   ├── register.html
-│   │   ├── fees.html
-│   │   └── faq.html
-│   ├── local-info/
-│   │   ├── accommodation.html
-│   │   ├── attractions.html
-│   │   └── dining.html
-│   └── sponsors.html
-└── downloads/
-    ├── abstract-template.docx
-    ├── paper-template.docx
-    └── flyer.pdf
+│   ├── committee.html
+│   ├── contacts.html
+│   ├── keynote.html
+│   ├── news.html
+│   ├── register.html
+│   ├── submission.html
+│   └── venue.html
+├── downloads/
+│   └── QIRTAsia2027_ExtendedAbstract_Template.docx
+├── archive/old-design/        # Retired previous design, kept for reference
+└── _headers                   # Security headers for Cloudflare Pages / Netlify deployment
 ```
 
 ## Features
@@ -196,32 +193,33 @@ Edit `index.html` and update the relevant sections:
 
 ### Change Colors
 
-Edit `css/main.css` and modify the CSS variables:
+Edit `styles.css` and modify the CSS custom properties:
 ```css
 :root {
-  --primary-red: #ED2939;
-  --accent-gold: #FFD700;
-  /* Add more custom colors */
+  --paper: #FAF7F2;
+  --ink: #111111;
+  --accent: #C2410C;
+  /* thermal-gradient tokens (--thermal-1 through --thermal-6) drive the
+     signature accent gradient used across nav, buttons and hover states */
 }
 ```
 
 ### Add New Pages
 
-1. Create a new HTML file in the appropriate `pages/` subdirectory
-2. Copy the structure from an existing page
-3. Update the navigation links in the header
-4. Add the page to the footer links
+1. Create a new HTML file in `pages/`
+2. Copy the structure from an existing page (topbar, nav, footer)
+3. Add the new page to the nav dropdown/links in every page's `<nav class="nav">` block
+4. Add the page to the footer links in `index.html`
 
 ## Contact
 
 For questions or issues with the website:
 
-- **Sreedhar U** - sreedhar@qirtasia2027.org
-- **Andrew Ngo** - andrew@qirtasia2027.org
+- **info@qirtasia2027.com**
 
 ## License
 
-© 2027 QIRT ASIA. All rights reserved.
+© 2026 QIRT Asia. All rights reserved.
 
 ## Acknowledgments
 
