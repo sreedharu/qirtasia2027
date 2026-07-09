@@ -1,4 +1,4 @@
-/* Base Styles for ClaudeDesign */
+/* Base Styles */
 
 :root {
   --ink: #111111;
@@ -9,6 +9,18 @@
   --rule: #EAE3D9;
   --rule-2: #DFD5C5;
   --accent: #C2410C;
+
+  /* Ironbow thermal-camera palette — the site's signature accent motif,
+     a nod to the conference's own subject matter (quantitative IR imaging) */
+  --thermal-1: #0a0e27;
+  --thermal-2: #3730a3;
+  --thermal-3: #c026d3;
+  --thermal-4: #dc2626;
+  --thermal-5: #f97316;
+  --thermal-6: #fde047;
+  --thermal-gradient: linear-gradient(90deg,
+    var(--thermal-1) 0%, var(--thermal-2) 22%, var(--thermal-3) 42%,
+    var(--thermal-4) 60%, var(--thermal-5) 80%, var(--thermal-6) 100%);
 
   --max: 1200px;
   --gutter: 40px;
@@ -30,6 +42,54 @@ body {
   color: var(--ink);
   line-height: 1.5;
   -webkit-font-smoothing: antialiased;
+  position: relative;
+}
+
+/* Subtle paper-grain texture for a tactile, printed feel */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Thermal gradient rule — used as a signature divider under the topbar
+   and above the final CTA */
+.thermal-rule {
+  height: 3px;
+  background: var(--thermal-gradient);
+  background-size: 200% 100%;
+  animation: thermal-drift 12s ease-in-out infinite;
+}
+@keyframes thermal-drift {
+  0%, 100% { background-position: 0% 0; }
+  50% { background-position: 100% 0; }
+}
+
+.thermal-text {
+  background: var(--thermal-gradient);
+  background-size: 200% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Scroll-reveal engine (see js/mobile-nav.js) */
+.reveal {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 700ms cubic-bezier(0.16, 1, 0.3, 1), transform 700ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
 }
 
 a {
@@ -96,6 +156,18 @@ a.inline:hover {
   border-bottom: 1px solid var(--rule);
   padding: 20px 0;
   background: var(--paper);
+  position: sticky;
+  top: 0;
+  z-index: 90;
+}
+.topbar::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  background: var(--thermal-gradient);
+  background-size: 200% 100%;
+  animation: thermal-drift 12s ease-in-out infinite;
 }
 
 .topbar-inner {
@@ -172,7 +244,7 @@ a.inline:hover {
   color: #fff;
   border: 1px solid var(--accent);
   border-radius: 4px;
-  transition: all 150ms ease;
+  transition: transform 200ms ease, box-shadow 200ms ease, background 150ms ease, border-color 150ms ease;
   cursor: pointer;
 }
 
@@ -180,6 +252,13 @@ a.inline:hover {
   background: #A03308;
   border-color: #A03308;
   color: #fff;
+  transform: translateY(-2px);
+  box-shadow: 0 10px 24px -8px rgba(194, 65, 12, 0.5);
+}
+
+.btn:active {
+  transform: translateY(0);
+  box-shadow: none;
 }
 
 .btn.ghost {
@@ -191,6 +270,7 @@ a.inline:hover {
 .btn.ghost:hover {
   background: var(--paper-2);
   border-color: var(--ink-3);
+  box-shadow: 0 10px 24px -10px rgba(17, 17, 17, 0.18);
 }
 
 .btn .arrow {

@@ -1,10 +1,10 @@
 # QIRT ASIA 2027 Conference Website
 
-Official website for the 5th Asian Quantitative Infrared Thermography Conference (QIRT ASIA 2027), to be held March 9-12, 2027 in Singapore.
+Official website for the 6th Asian Quantitative Infrared Thermography Conference (QIRT ASIA 2027), to be held March 7-10, 2027 in Singapore.
 
 ## Conference Information
 
-- **Dates:** March 9-12, 2027
+- **Dates:** March 7-10, 2027
 - **Venue:** Singapore (Venue TBC)
 - **Registration Fee:** $700 USD
 - **Website:** www.qirtasia2027.org (to be configured)
@@ -14,7 +14,7 @@ Official website for the 5th Asian Quantitative Infrared Thermography Conference
 - **Abstract Submission:** November 15, 2026
 - **Early-Bird Registration:** January 31, 2027
 - **Paper Submission:** February 15, 2027
-- **Conference:** March 9-12, 2027
+- **Conference:** March 7-10, 2027
 
 ## Organizing Committee
 

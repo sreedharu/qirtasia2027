@@ -4,11 +4,22 @@
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>QIRT Asia 2027 — 6th Asian Quantitative Infrared Thermography Conference</title>
+<meta name="description" content="QIRT Asia 2027: the 6th Asian Quantitative Infrared Thermography Conference. 7–10 March 2027, Marina Bay Sands, Singapore. Co-hosted by A*STAR IMRE and the Singapore NDT Society.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="QIRT Asia 2027 — 6th Asian Quantitative Infrared Thermography Conference">
+<meta property="og:description" content="7–10 March 2027, Marina Bay Sands, Singapore. Advancing the science of thermal measurement — from active imaging and NDT to medicine, heritage, and AI-driven diagnostics.">
+<meta property="og:image" content="https://qirtasia2027.com/images/logos/qirtasia2027Logo_highres.png">
+<meta property="og:url" content="https://qirtasia2027.com/">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="QIRT Asia 2027 — 6th Asian Quantitative Infrared Thermography Conference">
+<meta name="twitter:description" content="7–10 March 2027, Marina Bay Sands, Singapore.">
+<meta name="twitter:image" content="https://qirtasia2027.com/images/logos/qirtasia2027Logo_highres.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="styles.css">
-<link rel="icon" href="assets/qirtasia-logo.png">
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="alternate icon" href="favicon.png">
 <script src="js/mobile-nav.js" defer></script>
 <style>
 /* ===== Page-specific ===== */
@@ -139,6 +150,29 @@
   display: block;
   margin-left: auto;
   filter: drop-shadow(0 20px 60px rgba(194, 65, 12, 0.08));
+  position: relative;
+  z-index: 1;
+}
+/* Thermal glow orb behind the hero mark — a quiet nod to an IR camera's heat signature */
+.hero-logo::before {
+  content: "";
+  position: absolute;
+  top: 50%; left: 50%;
+  width: 520px; height: 520px;
+  transform: translate(-50%, -50%);
+  background: conic-gradient(from 180deg,
+    var(--thermal-1), var(--thermal-2), var(--thermal-3), var(--thermal-4), var(--thermal-5), var(--thermal-6), var(--thermal-1));
+  filter: blur(90px);
+  opacity: 0.22;
+  border-radius: 50%;
+  z-index: 0;
+  animation: orb-rotate 20s linear infinite;
+}
+@keyframes orb-rotate {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .hero-logo::before { animation: none; }
 }
 
 /* Marquee of host cities */
@@ -211,7 +245,14 @@
   font-weight: 500;
   line-height: 1;
   letter-spacing: -0.02em;
+  background: var(--thermal-gradient);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  transition: background-position 600ms ease;
 }
+.about-stats > div:hover .stat-num { background-position: 100% 0; }
 .stat-num .sup {
   font-size: 0.4em;
   vertical-align: top;
@@ -293,10 +334,26 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  transition: background 200ms;
+  transition: background 200ms, transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms;
   position: relative;
 }
-.topic:hover { background: var(--paper-2); }
+.topic::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--thermal-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
+}
+.topic:hover {
+  background: var(--paper-2);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -20px rgba(17, 17, 17, 0.25);
+  z-index: 1;
+}
+.topic:hover::before { transform: scaleX(1); }
 .topic .num {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -330,6 +387,12 @@
 .keynote-photo {
   aspect-ratio: 4/5;
   border: 1px solid var(--rule);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms;
+  filter: grayscale(0.15);
+}
+.keynote-block:hover .keynote-photo {
+  transform: scale(1.02);
+  filter: grayscale(0);
 }
 .keynote-meta {
   font-family: var(--font-mono);
@@ -374,7 +437,12 @@
   gap: 80px;
   align-items: center;
 }
-.venue-image { aspect-ratio: 4/3; border: 1px solid var(--rule); }
+.venue-image {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--rule);
+  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.venue-grid:hover .venue-image { transform: scale(1.015); }
 .venue-details dt {
   font-family: var(--font-mono);
   font-size: 10px;
@@ -401,8 +469,23 @@
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
+  transition: background 200ms;
 }
 .host-cell:nth-child(2n) { border-right: none; }
+.host-cell::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; bottom: 0;
+  width: 3px;
+  background: var(--thermal-gradient);
+  background-size: 100% 300%;
+  transform: scaleY(0);
+  transform-origin: top;
+  transition: transform 300ms ease;
+}
+.host-cell:hover { background: var(--paper-2); }
+.host-cell:hover::before { transform: scaleY(1); }
 .host-role {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -614,46 +697,6 @@ footer {
   .timeline-row { grid-template-columns: 1fr; gap: 4px; }
 }
 
-/* Tweaks panel */
-.tweaks-panel {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: var(--paper);
-  border: 1px solid var(--ink);
-  padding: 20px;
-  width: 280px;
-  z-index: 100;
-  display: none;
-  box-shadow: 0 10px 40px rgba(0,0,0,0.08);
-  font-family: var(--font-body);
-  font-size: 12px;
-}
-.tweaks-panel.open { display: block; }
-.tweaks-panel h4 {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--rule);
-}
-.tweaks-panel label {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
-  font-size: 12px;
-  color: var(--ink-2);
-}
-.tweaks-panel select, .tweaks-panel input[type="range"] {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  padding: 4px 8px;
-  border: 1px solid var(--rule);
-  background: var(--paper);
-}
 /* ===== Hero Carousel ===== */
 .hero-carousel {
   position: relative;
@@ -765,7 +808,7 @@ footer {
       <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
       <div class="brand-meta">
         <strong>QIRT Asia 2027</strong>
-        <span>Singapore · 09–12 March</span>
+        <span>Singapore · 07–10 March</span>
       </div>
     </a>
     <nav class="nav">
@@ -805,7 +848,7 @@ footer {
           <dl class="hero-meta">
             <div>
               <dt>Dates</dt>
-              <dd>9 – 12 Mar 2027</dd>
+              <dd>7 – 10 Mar 2027</dd>
             </div>
             <div>
               <dt>Venue</dt>
@@ -928,7 +971,7 @@ footer {
 <!-- ABOUT -->
 <section id="about" class="about">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">01 / About</span>
         <h2>A thirty‑five<br>year tradition,<br><em style="font-style:italic;font-weight:400;">continued.</em></h2>
@@ -949,7 +992,7 @@ footer {
       </div>
     </div>
 
-    <dl class="about-stats">
+    <dl class="about-stats reveal">
       <div>
         <dd class="stat-num">4<span class="sup">days</span></dd>
         <dt class="stat-label">Conference · tutorials · excursion</dt>
@@ -973,7 +1016,7 @@ footer {
 <!-- DATES -->
 <section id="dates" style="background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">02 / Calendar</span>
         <h2>Important<br>dates.</h2>
@@ -998,7 +1041,7 @@ footer {
 <!-- TOPICS -->
 <section id="topics">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">03 / Programme</span>
         <h2>Conference<br>topics.</h2>
@@ -1008,7 +1051,7 @@ footer {
       </div>
     </div>
 
-    <div class="topics">
+    <div class="topics reveal">
       <div class="topic">
         <span class="num">T/01</span>
         <div>
@@ -1072,7 +1115,7 @@ footer {
 <!-- KEYNOTE -->
 <section id="keynote" style="border-top: 1px solid var(--rule);">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">04 / Keynote</span>
         <h2>Featured<br>speaker.</h2>
@@ -1082,10 +1125,10 @@ footer {
       </div>
     </div>
 
-    <div class="keynote-block">
+    <div class="keynote-block reveal">
       <img class="keynote-photo" src="images/speakers/Xavier_Maldague.jpg" alt="Prof. Xavier Maldague" style="object-fit: cover;">
       <div>
-        <div class="keynote-meta">Distinguished Keynote · 10 March 2027</div>
+        <div class="keynote-meta">Distinguished Keynote · 8 March 2027</div>
         <div class="keynote-name">Prof. Xavier<br><em style="font-style:italic;font-weight:400;">Maldague</em></div>
         <div class="keynote-title">Université Laval · Canada Research Chair in Multipolar Infrared Vision</div>
         <p class="keynote-bio">
@@ -1104,7 +1147,7 @@ footer {
 <!-- VENUE -->
 <section id="venue" class="venue">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">05 / Venue</span>
         <h2>Marina<br>Bay<br>Sands.</h2>
@@ -1114,7 +1157,7 @@ footer {
       </div>
     </div>
 
-    <div class="venue-grid">
+    <div class="venue-grid reveal">
       <img class="venue-image" src="images/marina_bay_sands.png" alt="Marina Bay Sands" style="object-fit: cover;">
       <div>
         <dl class="venue-details">
@@ -1136,7 +1179,7 @@ footer {
 <!-- HOSTS -->
 <section id="hosts">
   <div class="wrap">
-    <div class="section-head">
+    <div class="section-head reveal">
       <div>
         <span class="eyebrow">06 / Organisation</span>
         <h2>Hosts &amp;<br>supporters.</h2>
@@ -1146,7 +1189,7 @@ footer {
       </div>
     </div>
 
-    <div class="hosts-grid">
+    <div class="hosts-grid reveal">
       <div class="host-cell">
         <span class="host-role">Co‑host · Research</span>
         <div class="host-name">A*STAR IMRE</div>
@@ -1194,7 +1237,7 @@ footer {
     <div class="foot-grid">
       <div class="foot-brand">
         <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
-        <p>The 6<sup>th</sup> Asian Quantitative InfraRed Thermography Conference. 9–12 March 2027, Marina Bay Sands, Singapore.</p>
+        <p>The 6<sup>th</sup> Asian Quantitative InfraRed Thermography Conference. 7–10 March 2027, Marina Bay Sands, Singapore.</p>
       </div>
       <div class="foot-col">
         <h4>Conference</h4>
@@ -1231,130 +1274,7 @@ footer {
   </div>
 </footer>
 
-<!-- Tweaks panel -->
-<div class="tweaks-panel" id="tweaks">
-  <h4>Tweaks</h4>
-  <label>Accent hue <input type="range" id="tw-hue" min="0" max="360" step="1" value="20"></label>
-  <label>Paper warmth <input type="range" id="tw-warm" min="0" max="30" step="1" value="10"></label>
-  <label>Density
-    <select id="tw-density">
-      <option value="airy">Airy</option>
-      <option value="comfortable" selected>Comfortable</option>
-      <option value="compact">Compact</option>
-    </select>
-  </label>
-  <label>Serif
-    <select id="tw-serif">
-      <option value="cormorant" selected>Cormorant Garamond</option>
-      <option value="garamond">EB Garamond</option>
-      <option value="playfair">Playfair Display</option>
-      <option value="lora">Lora</option>
-    </select>
-  </label>
-  <label>Theme
-    <select id="tw-theme">
-      <option value="paper" selected>Paper</option>
-      <option value="ink">Ink (dark)</option>
-      <option value="white">Pure white</option>
-    </select>
-  </label>
-</div>
-
-<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js" defer></script><script>
-/* ===== TWEAKS =====
-   Default values persisted here (do not edit structure — parens preserved) */
-const TWEAK_DEFAULTS = /*EDITMODE-BEGIN*/{
-  "accentHue": 20,
-  "paperWarmth": 10,
-  "density": "comfortable",
-  "serif": "cormorant",
-  "theme": "paper"
-}/*EDITMODE-END*/;
-
-let tweaksState = { ...TWEAK_DEFAULTS };
-
-function applyTweaks(s) {
-  const root = document.documentElement;
-
-  // Accent hue
-  root.style.setProperty('--accent', `oklch(55% 0.14 ${s.accentHue})`);
-
-  // Paper warmth -> hue shift around 60 (warm yellow), lightness 97
-  root.style.setProperty('--paper', `oklch(97% ${(s.paperWarmth/1000).toFixed(3)} ${60 + s.accentHue/10})`);
-  root.style.setProperty('--paper-2', `oklch(94% ${(s.paperWarmth/800).toFixed(3)} ${60 + s.accentHue/10})`);
-
-  // Density
-  const pad = s.density === 'airy' ? 'clamp(96px, 12vw, 180px)' :
-              s.density === 'compact' ? 'clamp(48px, 6vw, 80px)' :
-              'clamp(64px, 8vw, 120px)';
-  document.querySelectorAll('section').forEach(el => {
-    el.style.paddingTop = pad;
-    el.style.paddingBottom = pad;
-  });
-
-  // Serif
-  const fonts = {
-    cormorant: '"Cormorant Garamond", Georgia, serif',
-    garamond: '"EB Garamond", Georgia, serif',
-    playfair: '"Playfair Display", Georgia, serif',
-    lora: '"Lora", Georgia, serif'
-  };
-  root.style.setProperty('--font-display', fonts[s.serif]);
-
-  // Theme
-  if (s.theme === 'ink') {
-    root.style.setProperty('--paper', '#111110');
-    root.style.setProperty('--paper-2', '#1C1B1A');
-    root.style.setProperty('--ink', '#F4EFE4');
-    root.style.setProperty('--ink-2', '#C9C3B5');
-    root.style.setProperty('--ink-3', '#8A857A');
-    root.style.setProperty('--rule', '#2E2C29');
-    root.style.setProperty('--rule-2', '#24231F');
-  } else if (s.theme === 'white') {
-    root.style.setProperty('--paper', '#FFFFFF');
-    root.style.setProperty('--paper-2', '#F5F5F5');
-    root.style.setProperty('--ink', '#0A0A0A');
-    root.style.setProperty('--rule', '#E5E5E5');
-    root.style.setProperty('--rule-2', '#EFEFEF');
-  }
-}
-
-// Load additional serif fonts on demand
-const extraFonts = document.createElement('link');
-extraFonts.rel = 'stylesheet';
-extraFonts.href = 'https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Lora:ital,wght@0,400;0,500;1,400&display=swap';
-document.head.appendChild(extraFonts);
-
-applyTweaks(tweaksState);
-
-// Edit mode wiring
-window.addEventListener('message', (e) => {
-  if (!e.data || !e.data.type) return;
-  if (e.data.type === '__activate_edit_mode') {
-    document.getElementById('tweaks').classList.add('open');
-  } else if (e.data.type === '__deactivate_edit_mode') {
-    document.getElementById('tweaks').classList.remove('open');
-  }
-});
-setTimeout(() => {
-  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
-}, 100);
-
-function bindTweak(id, key, cast = v => v) {
-  const el = document.getElementById(id);
-  el.value = tweaksState[key];
-  el.addEventListener('input', () => {
-    tweaksState[key] = cast(el.value);
-    applyTweaks(tweaksState);
-    window.parent.postMessage({ type: '__edit_mode_set_keys', edits: { [key]: tweaksState[key] } }, '*');
-  });
-}
-bindTweak('tw-hue', 'accentHue', v => +v);
-bindTweak('tw-warm', 'paperWarmth', v => +v);
-bindTweak('tw-density', 'density');
-bindTweak('tw-serif', 'serif');
-bindTweak('tw-theme', 'theme');
-
+<script>
 /* ===== TIMELINE ===== */
 const milestones = [
   { date: '1 Jul 2026',   title: 'Abstract submission opens',     note: 'Submit one-page abstracts on quantitative IR thermography.', tag: 'Submission' },
@@ -1364,19 +1284,19 @@ const milestones = [
   { date: '15 Dec 2026',  title: 'Early registration ends',       note: 'Last day to register at the discounted early rate.', tag: 'Registration' },
   { date: '10 Jan 2027',  title: 'Full paper deadline',           note: 'Camera-ready manuscripts for the conference proceedings.', tag: 'Deadline' },
   { date: '10 Feb 2027',  title: 'Standard registration ends',    note: 'On-site rates apply after this date.', tag: 'Registration' },
-  { date: '9 Mar 2027',   title: 'Short courses & tutorials',     note: 'Pre-conference day for in-depth training on IR thermography.', tag: 'Programme' },
-  { date: '10–11 Mar 2027', title: 'Main conference',             note: 'Plenary sessions, parallel tracks, and the conference dinner.', tag: 'Programme' },
-  { date: '12 Mar 2027',  title: 'Technical visit',               note: 'Guided excursion to leading research facilities in Singapore.', tag: 'Programme' },
+  { date: '7 Mar 2027',   title: 'Short courses & tutorials',     note: 'Pre-conference day for in-depth training on IR thermography.', tag: 'Programme' },
+  { date: '8–9 Mar 2027', title: 'Main conference',             note: 'Plenary sessions, parallel tracks, and the conference dinner.', tag: 'Programme' },
+  { date: '10 Mar 2027',  title: 'Technical visit',               note: 'Guided excursion to leading research facilities in Singapore.', tag: 'Programme' },
 ];
 
 function formatTimeline() {
   const now = new Date('2026-04-18'); // current
   const container = document.getElementById('timeline');
-  container.innerHTML = milestones.map(m => {
+  container.innerHTML = milestones.map((m, i) => {
     const d = new Date(m.date.split('–')[0].replace(' Mar 2027', ' March 2027').replace(' Jul ', ' July ').replace(' Oct ', ' October ').replace(' Nov ', ' November ').replace(' Dec ', ' December ').replace(' Jan ', ' January ').replace(' Feb ', ' February ').replace(' Mar ', ' March '));
     const past = d < now;
     return `
-      <div class="timeline-row ${past ? 'is-past' : ''}">
+      <div class="timeline-row reveal ${past ? 'is-past' : ''}" style="transition-delay: ${Math.min(i * 60, 300)}ms;">
         <div class="timeline-date">${m.date}</div>
         <div>
           <div class="timeline-title">${m.title}</div>
@@ -1391,7 +1311,7 @@ formatTimeline();
 
 /* ===== COUNTDOWN ===== */
 function tick() {
-  const target = new Date('2027-03-09T09:00:00+08:00');
+  const target = new Date('2027-03-07T09:00:00+08:00');
   const diff = target - new Date();
   if (diff < 0) return;
   const d = Math.floor(diff / 86400000);

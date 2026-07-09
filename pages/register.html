@@ -8,7 +8,8 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../styles.css">
-<link rel="icon" href="../assets/qirtasia-logo.png">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon.png">
 <script src="../js/mobile-nav.js" defer></script>
 <style>
 .page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
@@ -118,197 +119,74 @@
   font-weight: 700;
 }
 
-/* Form */
-.form-section { background: var(--paper-2); padding: 100px 0; border-top: 1px solid var(--rule); }
-.form-wrap {
-  max-width: 760px;
+.fee-cell {
+  transition: transform 250ms cubic-bezier(0.16, 1, 0.3, 1), box-shadow 250ms;
+}
+.fee-cell:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 16px 32px -20px rgba(17, 17, 17, 0.25);
+  z-index: 1;
+}
+
+/* Registration CTA panel */
+.reg-cta {
+  max-width: 720px;
   margin: 0 auto;
   background: var(--paper);
   border: 1px solid var(--ink);
-  padding: 56px;
-}
-.form-step {
-  display: none;
-  animation: fadeIn 250ms ease;
-}
-.form-step.active { display: block; }
-@keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
-
-.step-nav {
-  display: flex;
-  gap: 4px;
-  margin-bottom: 40px;
-}
-.step-dot {
-  flex: 1;
-  height: 3px;
-  background: var(--rule);
+  padding: 64px 56px;
+  text-align: center;
   position: relative;
+  overflow: hidden;
 }
-.step-dot.active, .step-dot.done { background: var(--ink); }
-
-.form-meta {
+.reg-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--thermal-gradient);
+}
+.reg-cta .badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
   font-family: var(--font-mono);
   font-size: 11px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 12px;
-}
-.form-title {
-  font-family: var(--font-display);
-  font-size: 36px;
-  font-weight: 500;
-  line-height: 1.1;
-  margin-bottom: 8px;
-  letter-spacing: -0.015em;
-}
-.form-title em { font-style: italic; font-weight: 400; }
-.form-sub {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
-  color: var(--ink-3);
-  margin-bottom: 32px;
-}
-
-.field {
-  margin-bottom: 20px;
-}
-.field-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 16px;
-}
-.field label {
-  display: block;
-  font-family: var(--font-mono);
-  font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin-bottom: 8px;
-}
-.field input, .field select, .field textarea {
-  width: 100%;
-  padding: 12px 14px;
-  font-family: var(--font-body);
-  font-size: 15px;
-  background: var(--paper);
+  background: var(--paper-2);
   border: 1px solid var(--rule);
-  border-radius: 1px;
-  color: var(--ink);
-  transition: border-color 150ms;
+  padding: 6px 14px;
+  margin-bottom: 24px;
 }
-.field input:focus, .field select:focus, .field textarea:focus {
-  outline: none;
-  border-color: var(--ink);
-}
-
-.radio-group {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 12px;
-  margin-top: 8px;
-}
-.radio-card {
-  border: 1px solid var(--rule);
-  padding: 18px 20px;
-  cursor: pointer;
-  transition: all 150ms;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-.radio-card:hover { border-color: var(--ink-2); }
-.radio-card.selected { border-color: var(--ink); background: var(--paper-2); }
-.radio-card input { display: none; }
-.radio-card-title {
-  font-family: var(--font-display);
-  font-size: 20px;
-  font-weight: 500;
-}
-.radio-card-price {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  color: var(--ink-2);
-  letter-spacing: 0.05em;
-}
-
-.form-foot {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 40px;
-  padding-top: 24px;
-  border-top: 1px solid var(--rule);
-}
-.price-summary {
-  font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.08em;
-  color: var(--ink-2);
-}
-.price-summary strong {
-  font-family: var(--font-display);
-  font-size: 24px;
-  font-weight: 500;
-  color: var(--ink);
-  margin-left: 10px;
-  letter-spacing: 0;
-  font-variant-numeric: tabular-nums;
-}
-
-/* Confirmation */
-.confirm {
-  text-align: center;
-  padding: 20px 0;
-}
-.confirm-icon {
-  width: 56px;
-  height: 56px;
-  border: 1.5px solid var(--accent);
-  border-radius: 50%;
-  margin: 0 auto 28px;
-  display: grid;
-  place-items: center;
-  color: var(--accent);
-}
-.confirm-icon svg { width: 24px; height: 24px; }
-.confirm h3 {
+.reg-cta .badge svg { width: 13px; height: 13px; }
+.reg-cta h3 {
   font-family: var(--font-display);
   font-size: 40px;
   font-weight: 500;
   line-height: 1.1;
-  margin-bottom: 12px;
+  margin-bottom: 16px;
 }
-.confirm h3 em { font-style: italic; font-weight: 400; }
-.confirm p {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 18px;
+.reg-cta h3 em { font-style: italic; font-weight: 400; }
+.reg-cta p {
+  font-size: 16px;
   color: var(--ink-2);
-  max-width: 40ch;
+  max-width: 48ch;
   margin: 0 auto 32px;
-  line-height: 1.4;
+  line-height: 1.6;
 }
-.confirm-ref {
-  display: inline-block;
+.reg-cta .fine-print {
+  margin-top: 28px;
   font-family: var(--font-mono);
-  font-size: 12px;
-  letter-spacing: 0.1em;
-  background: var(--paper-2);
-  padding: 10px 16px;
-  border: 1px solid var(--rule);
-  margin-bottom: 32px;
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  color: var(--ink-3);
 }
-.confirm-ref strong { color: var(--accent); }
 
 @media (max-width: 800px) {
   .fees-grid { grid-template-columns: 1fr; }
-  .form-wrap { padding: 32px 24px; }
-  .field-row { grid-template-columns: 1fr; }
-  .radio-group { grid-template-columns: 1fr; }
+  .reg-cta { padding: 40px 24px; }
 }
 </style>
 </head>
@@ -320,7 +198,7 @@
       <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
       <div class="brand-meta">
         <strong>QIRT Asia 2027</strong>
-        <span>Singapore · 09–12 March</span>
+        <span>Singapore · 07–10 March</span>
       </div>
     </a>
     <nav class="nav">
@@ -355,7 +233,7 @@
       <span style="font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.15em; color: var(--ink-3); text-transform: uppercase;">All prices in SGD · incl. 9% GST</span>
     </div>
 
-    <div class="fees-grid">
+    <div class="fees-grid reveal">
       <div class="fee-cell">
         <span class="fee-tier">Tier · Early</span>
         <div class="fee-name">Academic</div>
@@ -403,141 +281,24 @@
   </div>
 </section>
 
-<!-- FORM -->
-<section class="form-section" id="register-form">
+<!-- REGISTER -->
+<section class="form-section" id="register-form" style="background: var(--paper-2); padding: 100px 0; border-top: 1px solid var(--rule);">
   <div class="wrap">
     <div style="text-align: center; margin-bottom: 48px;">
       <span class="eyebrow">Registration</span>
       <h2 style="font-family: var(--font-display); font-size: 48px; font-weight: 500; margin-top: 16px; letter-spacing: -0.015em;">Reserve your <em style="font-style:italic;font-weight:400;">place.</em></h2>
     </div>
 
-    <div class="form-wrap">
-      <div class="step-nav">
-        <div class="step-dot active" data-dot="0"></div>
-        <div class="step-dot" data-dot="1"></div>
-        <div class="step-dot" data-dot="2"></div>
-      </div>
-
-      <!-- Step 1: Category -->
-      <div class="form-step active" data-step="0">
-        <div class="form-meta">Step 01 of 03</div>
-        <h3 class="form-title">Choose your <em>category.</em></h3>
-        <p class="form-sub">Select the tier that matches your role.</p>
-
-        <div class="radio-group" id="category-group">
-          <label class="radio-card selected" data-price="780">
-            <input type="radio" name="category" value="academic" checked>
-            <div class="radio-card-title">Academic</div>
-            <div class="radio-card-price">SGD 780 · early rate</div>
-          </label>
-          <label class="radio-card" data-price="980">
-            <input type="radio" name="category" value="industry">
-            <div class="radio-card-title">Industry</div>
-            <div class="radio-card-price">SGD 980 · early rate</div>
-          </label>
-          <label class="radio-card" data-price="390">
-            <input type="radio" name="category" value="student">
-            <div class="radio-card-title">Student</div>
-            <div class="radio-card-price">SGD 390 · early rate</div>
-          </label>
-          <label class="radio-card" data-price="280">
-            <input type="radio" name="category" value="accompanying">
-            <div class="radio-card-title">Accompanying</div>
-            <div class="radio-card-price">SGD 280 · social programme only</div>
-          </label>
-        </div>
-
-        <div style="margin-top: 28px;">
-          <div class="field">
-            <label>Add-ons</label>
-            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--rule);">
-              <input type="checkbox" id="addon-course" data-price="220"> Short course day (9 Mar) &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 220</span>
-            </label>
-            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0; border-bottom: 1px solid var(--rule);">
-              <input type="checkbox" id="addon-visit" data-price="90"> Technical visit (12 Mar) &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 90</span>
-            </label>
-            <label style="display: flex; align-items: center; gap: 10px; padding: 12px 0;">
-              <input type="checkbox" id="addon-dinner" data-price="150"> Extra dinner ticket &nbsp; <span style="margin-left: auto; color: var(--ink-3); font-family: var(--font-mono); font-size: 12px;">+ SGD 150</span>
-            </label>
-          </div>
-        </div>
-
-        <div class="form-foot">
-          <div class="price-summary">Total <strong id="tot-1">SGD 780</strong></div>
-          <button class="btn" onclick="goStep(1)">Continue <span class="arrow">→</span></button>
-        </div>
-      </div>
-
-      <!-- Step 2: Details -->
-      <div class="form-step" data-step="1">
-        <div class="form-meta">Step 02 of 03</div>
-        <h3 class="form-title">Your <em>details.</em></h3>
-        <p class="form-sub">We'll use these to issue your badge and invoice.</p>
-
-        <div class="field-row">
-          <div class="field">
-            <label>Title</label>
-            <select>
-              <option>Dr.</option><option>Prof.</option><option>Mr.</option><option>Ms.</option><option>Mx.</option>
-            </select>
-          </div>
-          <div class="field">
-            <label>Country</label>
-            <select>
-              <option>Singapore</option><option>Japan</option><option>China</option><option>India</option>
-              <option>Korea, Republic of</option><option>Malaysia</option><option>Australia</option>
-              <option>United States</option><option>United Kingdom</option><option>France</option>
-              <option>Germany</option><option>Canada</option><option>Other</option>
-            </select>
-          </div>
-        </div>
-        <div class="field-row">
-          <div class="field"><label>First name</label><input type="text" placeholder="Given name"></div>
-          <div class="field"><label>Last name</label><input type="text" placeholder="Family name"></div>
-        </div>
-        <div class="field">
-          <label>Email address</label>
-          <input type="email" placeholder="you@institution.edu">
-        </div>
-        <div class="field">
-          <label>Institution / Organisation</label>
-          <input type="text" placeholder="e.g. Nanyang Technological University">
-        </div>
-        <div class="field">
-          <label>Department / Role</label>
-          <input type="text" placeholder="Optional">
-        </div>
-        <div class="field">
-          <label>Dietary requirements</label>
-          <select>
-            <option>None</option><option>Vegetarian</option><option>Vegan</option>
-            <option>Halal</option><option>Kosher</option><option>Gluten-free</option><option>Other</option>
-          </select>
-        </div>
-
-        <div class="form-foot">
-          <button class="btn ghost" onclick="goStep(0)"><span style="transform: scaleX(-1); display: inline-block;">→</span> Back</button>
-          <button class="btn" onclick="goStep(2)">Review &amp; pay <span class="arrow">→</span></button>
-        </div>
-      </div>
-
-      <!-- Step 3: Confirm -->
-      <div class="form-step" data-step="2">
-        <div class="confirm">
-          <div class="confirm-icon">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M5 12l5 5L20 7"/>
-            </svg>
-          </div>
-          <h3>Registration <em>received.</em></h3>
-          <p>Thank you. A confirmation and payment link have been sent to your email address.</p>
-          <div class="confirm-ref">Reference · <strong>QIRT27-<span id="ref-num">A4821</span></strong></div>
-          <div style="display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
-            <a href="../index.html" class="btn">Return home <span class="arrow">→</span></a>
-            <a href="submission.html" class="btn ghost">Submit abstract <span class="arrow">→</span></a>
-          </div>
-        </div>
-      </div>
+    <div class="reg-cta reveal">
+      <span class="badge">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 7h7l-5.5 4.5L18.5 21 12 16.5 5.5 21 7.5 13.5 2 9h7z"/></svg>
+        Securely processed by our conference management partner
+      </span>
+      <h3>Registration &amp; payment<br><em>handled off-site.</em></h3>
+      <p>To keep your payment details safe, registration and payment for QIRT Asia 2027 are handled entirely by our professional conference management partner — this website never collects or stores card information.</p>
+      <!-- TODO: replace # with the live registration URL from the conference management partner -->
+      <a href="#" class="btn" target="_blank" rel="noopener">Continue to registration <span class="arrow">→</span></a>
+      <div class="fine-print">You will leave qirtasia2027.com · Early-bird rate ends 15 December 2026</div>
     </div>
   </div>
 </section>
@@ -551,45 +312,5 @@
   </div>
 </footer>
 
-<script>
-let step = 0;
-function goStep(n) {
-  document.querySelectorAll('.form-step').forEach(s => s.classList.remove('active'));
-  document.querySelector(`.form-step[data-step="${n}"]`).classList.add('active');
-  document.querySelectorAll('.step-dot').forEach((d, i) => {
-    d.classList.toggle('active', i === n);
-    d.classList.toggle('done', i < n);
-  });
-  step = n;
-  if (n === 2) {
-    const ref = 'A' + Math.floor(1000 + Math.random() * 8999);
-    document.getElementById('ref-num').textContent = ref;
-  }
-  document.getElementById('register-form').scrollIntoView({ block: 'start' });
-}
-
-// Category selection
-const cards = document.querySelectorAll('#category-group .radio-card');
-cards.forEach(c => {
-  c.addEventListener('click', () => {
-    cards.forEach(x => x.classList.remove('selected'));
-    c.classList.add('selected');
-    c.querySelector('input').checked = true;
-    updateTotal();
-  });
-});
-
-function updateTotal() {
-  const sel = document.querySelector('#category-group .radio-card.selected');
-  let total = +sel.dataset.price;
-  document.querySelectorAll('[data-price]').forEach(el => {
-    if (el.tagName === 'INPUT' && el.checked) total += +el.dataset.price;
-  });
-  document.getElementById('tot-1').textContent = 'SGD ' + total.toLocaleString();
-}
-document.querySelectorAll('input[type="checkbox"][data-price]').forEach(cb => {
-  cb.addEventListener('change', updateTotal);
-});
-</script>
 </body>
 </html>
