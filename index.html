@@ -57,6 +57,56 @@
 .announce a { opacity: 0.7; transition: opacity 150ms; }
 .announce a:hover { opacity: 1; }
 
+/* Fixed overlay: transparent over the hero video until the page scrolls past it */
+.hero-nav-overlay {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 150;
+  transition: background 300ms ease, box-shadow 300ms ease;
+}
+.hero-nav-overlay .topbar {
+  position: relative;
+  transition: background 300ms ease, border-color 300ms ease;
+}
+.hero-nav-overlay:not(.scrolled) {
+  background: transparent;
+}
+.hero-nav-overlay:not(.scrolled) .announce {
+  background: rgba(10, 10, 10, 0.28);
+}
+.hero-nav-overlay:not(.scrolled) .topbar {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+.hero-nav-overlay:not(.scrolled) .topbar::after { opacity: 0; }
+.hero-nav-overlay:not(.scrolled) .brand,
+.hero-nav-overlay:not(.scrolled) .brand-meta strong,
+.hero-nav-overlay:not(.scrolled) .caret {
+  color: #fff;
+}
+.hero-nav-overlay:not(.scrolled) .brand-meta span {
+  color: rgba(255, 255, 255, 0.75);
+}
+.hero-nav-overlay:not(.scrolled) .nav a {
+  color: rgba(255, 255, 255, 0.85);
+  text-shadow: 0 1px 6px rgba(0, 0, 0, 0.3);
+}
+.hero-nav-overlay:not(.scrolled) .nav a:hover,
+.hero-nav-overlay:not(.scrolled) .nav a.active {
+  color: #fff;
+}
+.hero-nav-overlay:not(.scrolled) .top-cta .btn.ghost {
+  color: #fff;
+  border-color: rgba(255, 255, 255, 0.5);
+}
+.hero-nav-overlay:not(.scrolled) .top-cta .btn.ghost:hover {
+  background: rgba(255, 255, 255, 0.12);
+}
+.hero-nav-overlay.scrolled {
+  background: var(--paper);
+  box-shadow: 0 1px 0 var(--rule);
+}
+
 /* ===== Hero ===== */
 .hero {
   padding: clamp(80px, 10vw, 140px) 0 clamp(64px, 8vw, 100px);
@@ -837,47 +887,49 @@ footer {
 </head>
 <body>
 
-<!-- Announcement strip -->
-<div class="announce">
-  <div class="announce-inner">
-    <div><span class="dot"></span>Abstract submission opens July 1, 2026</div>
-    <a href="#submission">Submission guidelines →</a>
-  </div>
-</div>
-
-<!-- Top bar -->
-<header class="topbar">
-  <div class="topbar-inner">
-    <a class="brand" href="#home">
-      <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
-      <div class="brand-meta">
-        <strong>QIRT Asia 2027</strong>
-        <span>Singapore · 07–10 March</span>
-      </div>
-    </a>
-    <nav class="nav">
-      <div class="nav-group">
-        <div class="nav-group-head">
-          <a href="#about" class="active">About</a>
-          <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
-        </div>
-        <div class="dropdown">
-          <a href="#dates">Key dates</a>
-          <a href="pages/committee.html">Committee</a>
-          <a href="pages/keynote.html">Keynote speaker</a>
-        </div>
-      </div>
-      <a href="pages/submission.html">Submission</a>
-      <a href="pages/register.html">Registration</a>
-      <a href="pages/venue.html">Venue</a>
-      <a href="pages/news.html">News</a>
-      <a href="pages/contacts.html">Contact</a>
-    </nav>
-    <div class="top-cta">
-      <a href="pages/register.html" class="btn ghost">Register</a>
+<!-- Announcement + Top bar: fixed overlay, transparent over the hero video until scrolled -->
+<div class="hero-nav-overlay" id="hero-nav-overlay">
+  <div class="announce">
+    <div class="announce-inner">
+      <div><span class="dot"></span>Abstract submission opens July 1, 2026</div>
+      <a href="#submission">Submission guidelines →</a>
     </div>
   </div>
-</header>
+
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#home">
+        <img src="assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+        <div class="brand-meta">
+          <strong>QIRT Asia 2027</strong>
+          <span>Singapore · 07–10 March</span>
+        </div>
+      </a>
+      <nav class="nav">
+        <a href="#home" class="active">Home</a>
+        <div class="nav-group">
+          <div class="nav-group-head">
+            <a href="#about">About</a>
+            <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
+          </div>
+          <div class="dropdown">
+            <a href="#dates">Key dates</a>
+            <a href="pages/committee.html">Committee</a>
+            <a href="pages/keynote.html">Keynote speaker</a>
+          </div>
+        </div>
+        <a href="pages/submission.html">Submission</a>
+        <a href="pages/register.html">Registration</a>
+        <a href="pages/venue.html">Venue</a>
+        <a href="pages/news.html">News</a>
+        <a href="pages/contacts.html">Contact</a>
+      </nav>
+      <div class="top-cta">
+        <a href="pages/register.html" class="btn ghost">Register</a>
+      </div>
+    </div>
+  </header>
+</div>
 
 <!-- HERO -->
 <section class="hero-carousel" id="home">
@@ -1382,15 +1434,26 @@ tick();
 setInterval(tick, 30000);
 
 /* ===== SCROLL-SPY NAV ===== */
-const navLinks = document.querySelectorAll('.nav a');
+/* Only same-page hash links participate — document.querySelector() throws on
+   non-hash hrefs like "pages/committee.html", which would otherwise abort
+   every script below this point (carousel, smooth scroll, etc.) */
+const navLinks = document.querySelectorAll('.nav a[href^="#"]');
 const sections = Array.from(navLinks).map(a => document.querySelector(a.getAttribute('href'))).filter(Boolean);
 function updateNav() {
   const y = window.scrollY + 120;
   let active = 0;
   sections.forEach((s, i) => { if (s && s.offsetTop <= y) active = i; });
   navLinks.forEach((a, i) => a.classList.toggle('active', i === active));
+
+  const overlay = document.getElementById('hero-nav-overlay');
+  if (overlay) {
+    const hero = document.querySelector('.hero-carousel');
+    const threshold = hero ? hero.offsetHeight - 80 : 400;
+    overlay.classList.toggle('scrolled', window.scrollY > threshold);
+  }
 }
 window.addEventListener('scroll', updateNav, { passive: true });
+updateNav();
 
 /* Smooth anchor scroll */
 document.querySelectorAll('a[href^="#"]').forEach(a => {
@@ -1400,7 +1463,9 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     const el = document.querySelector(id);
     if (!el) return;
     e.preventDefault();
-    window.scrollTo({ top: el.offsetTop - 70, behavior: 'smooth' });
+    const overlay = document.getElementById('hero-nav-overlay');
+    const offset = overlay ? overlay.offsetHeight + 16 : 70;
+    window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
   });
 });
 /* ===== HERO CAROUSEL ===== */
