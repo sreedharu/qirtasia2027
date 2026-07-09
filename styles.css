@@ -213,6 +213,7 @@ a.inline:hover {
 
 .nav {
   display: flex;
+  align-items: center;
   gap: 32px;
 }
 
@@ -225,6 +226,66 @@ a.inline:hover {
 
 .nav a:hover, .nav a.active {
   color: var(--ink);
+}
+
+/* Dropdown nav group */
+.nav-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+.nav-group-head {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+.nav-group .caret {
+  font-size: 9px;
+  color: var(--ink-3);
+  transition: transform 150ms ease;
+  display: inline-flex;
+  padding: 4px;
+  background: none;
+  border: 0;
+  cursor: pointer;
+  line-height: 1;
+}
+.nav-group:hover .caret, .nav-group:focus-within .caret {
+  transform: rotate(180deg);
+}
+.dropdown {
+  position: absolute;
+  top: 100%;
+  left: -14px;
+  min-width: 190px;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  box-shadow: 0 16px 32px -14px rgba(17, 17, 17, 0.2);
+  padding: 8px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(4px);
+  transition: opacity 160ms ease, transform 160ms ease, visibility 160ms;
+  z-index: 95;
+}
+.nav-group:hover .dropdown, .nav-group:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.dropdown a {
+  display: block;
+  padding: 9px 12px;
+  font-size: 13px;
+  border-radius: 3px;
+}
+.dropdown a:hover {
+  background: var(--paper-2);
+  color: var(--ink);
+}
+.dropdown a.active {
+  color: var(--accent);
+  font-weight: 600;
 }
 
 .top-cta .btn {
@@ -313,6 +374,7 @@ section {
     display: none;
     width: 100%;
     flex-direction: column;
+    align-items: stretch;
     gap: 16px;
     padding: 24px 0 8px;
     border-top: 1px solid var(--rule);
@@ -320,6 +382,33 @@ section {
   }
   .topbar.menu-open .nav {
     display: flex;
+  }
+  .nav-group {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .nav-group-head {
+    justify-content: space-between;
+    width: 100%;
+  }
+  .dropdown {
+    position: static;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    box-shadow: none;
+    border: 0;
+    border-left: 2px solid var(--rule);
+    background: none;
+    padding: 4px 0 4px 14px;
+    margin: 6px 0 0 4px;
+    display: none;
+  }
+  .nav-group.mobile-open .dropdown {
+    display: block;
+  }
+  .nav-group.mobile-open .caret {
+    transform: rotate(180deg);
   }
   .topbar.menu-open .mobile-menu-toggle i::before {
     content: "\f00d"; /* FontAwesome times (X) icon */

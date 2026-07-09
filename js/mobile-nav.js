@@ -34,6 +34,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
       });
     });
+
+    // On mobile, tapping the caret expands the dropdown instead of following the link
+    nav.querySelectorAll('.nav-group .caret').forEach(caret => {
+      caret.addEventListener('click', (e) => {
+        if (window.innerWidth > 960) return;
+        e.preventDefault();
+        e.stopPropagation();
+        caret.closest('.nav-group').classList.toggle('mobile-open');
+      });
+    });
   }
 
   // Scroll-reveal: fade/rise elements marked .reveal as they enter view
