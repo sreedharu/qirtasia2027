@@ -752,6 +752,8 @@ footer {
   overflow: hidden;
   display: flex;
   align-items: center;
+  padding: 0; /* override the shared `section { padding: 100px 0 }` rule so the
+                 video reaches the true top of the page, not a padded gap */
 }
 .hero-slide {
   position: relative;
