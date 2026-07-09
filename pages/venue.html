@@ -94,54 +94,6 @@
 .map-info dd { color: var(--ink); }
 
 /* Accommodation list */
-.hotel-list {
-  border-top: 1px solid var(--ink);
-  margin-top: 32px;
-}
-.hotel {
-  display: grid;
-  grid-template-columns: 180px 1fr auto auto;
-  gap: 40px;
-  padding: 28px 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: center;
-  transition: padding 200ms, background 200ms;
-}
-.hotel:hover { background: var(--paper-2); padding-left: 16px; padding-right: 16px; }
-.hotel-img {
-  aspect-ratio: 4/3;
-  height: 100px; width: 140px;
-  background: var(--paper-2);
-  border: 1px solid var(--rule);
-  background-image: repeating-linear-gradient(
-    135deg, var(--rule-2) 0, var(--rule-2) 1px, transparent 1px, transparent 8px
-  );
-}
-.hotel-name {
-  font-family: var(--font-display);
-  font-size: 22px; font-weight: 500; line-height: 1.2;
-}
-.hotel-desc {
-  font-size: 13px; color: var(--ink-3); margin-top: 4px;
-  line-height: 1.55; max-width: 50ch;
-}
-.hotel-rate {
-  font-family: var(--font-display);
-  font-size: 20px; font-weight: 500;
-  white-space: nowrap;
-}
-.hotel-rate .sub {
-  display: block;
-  font-family: var(--font-mono); font-size: 10px;
-  letter-spacing: 0.1em; color: var(--ink-3); margin-top: 2px;
-}
-.hotel-walk {
-  font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--ink-3);
-  text-align: right; white-space: nowrap;
-}
-
 /* Attractions */
 .attractions {
   display: grid;
@@ -167,8 +119,6 @@
   .fact:nth-child(2) { border-right: none; }
   .map-section { grid-template-columns: 1fr; }
   .map-img { border-right: none; border-bottom: 1px solid var(--rule); }
-  .hotel { grid-template-columns: 1fr; gap: 12px; }
-  .hotel-img { width: 100%; height: 180px; }
   .attractions { grid-template-columns: 1fr; }
 }
 </style>
@@ -328,52 +278,15 @@
         <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Partner<br>hotels.</h2>
       </div>
       <div>
-        <p class="lede">Discounted rates at four partner hotels, all within 10 minutes of the venue. Quote code <strong style="color: var(--ink); font-style: normal;">QIRTASIA27</strong> when booking.</p>
+        <p class="lede">Discounted rates with nearby hotel partners are being finalised.</p>
       </div>
     </div>
 
-    <div class="hotel-list">
-      <div class="hotel">
-        <div class="hotel-img"></div>
-        <div>
-          <div class="hotel-name">Marina Bay Sands</div>
-          <div class="hotel-desc">The official conference hotel — direct indoor access to Sands Expo, rooftop SkyPark, and premium amenities.</div>
-        </div>
-        <div class="hotel-rate">SGD 520<span class="sub">per night · incl. breakfast</span></div>
-        <div class="hotel-walk">0 min<br>at venue</div>
-      </div>
-      <div class="hotel">
-        <div class="hotel-img"></div>
-        <div>
-          <div class="hotel-name">The Fullerton Bay</div>
-          <div class="hotel-desc">Boutique harbourside property overlooking Marina Bay, a short walk across the Helix Bridge.</div>
-        </div>
-        <div class="hotel-rate">SGD 440<span class="sub">per night · partner rate</span></div>
-        <div class="hotel-walk">8 min<br>walk</div>
-      </div>
-      <div class="hotel">
-        <div class="hotel-img"></div>
-        <div>
-          <div class="hotel-name">Pan Pacific Singapore</div>
-          <div class="hotel-desc">Modern business hotel at Marina Square with direct MRT access and excellent dining.</div>
-        </div>
-        <div class="hotel-rate">SGD 310<span class="sub">per night · partner rate</span></div>
-        <div class="hotel-walk">10 min<br>walk or 1 MRT</div>
-      </div>
-      <div class="hotel">
-        <div class="hotel-img"></div>
-        <div>
-          <div class="hotel-name">Mandarin Oriental</div>
-          <div class="hotel-desc">Classic five-star property in the Marina Centre, connected to the CBD via covered walkways.</div>
-        </div>
-        <div class="hotel-rate">SGD 390<span class="sub">per night · partner rate</span></div>
-        <div class="hotel-walk">12 min<br>walk</div>
-      </div>
+    <div style="border: 1px solid var(--ink); background: var(--paper); padding: 56px 48px; text-align: center; margin-top: 32px;">
+      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); background: var(--paper-2); border: 1px solid var(--rule); padding: 6px 14px; margin-bottom: 20px;">Coming soon</span>
+      <p style="font-family: var(--font-display); font-size: 24px; font-weight: 500; max-width: 46ch; margin: 0 auto 12px;">Partner hotel rates are not yet confirmed.</p>
+      <p style="font-size: 15px; color: var(--ink-2); max-width: 52ch; margin: 0 auto;">We're finalising discounted accommodation agreements with hotels near Marina Bay Sands and will publish rates and booking codes here once confirmed. In the meantime, delegates are welcome to book Marina Bay Sands or any nearby hotel directly.</p>
     </div>
-
-    <p style="margin-top: 24px; font-family: var(--font-display); font-style: italic; color: var(--ink-3);">
-      Rates valid for bookings completed by 10 February 2027 · subject to availability.
-    </p>
   </div>
 </section>
 
