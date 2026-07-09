@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Committee — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+
+.section-title-custom {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 4vw, 48px);
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 32px;
+  border-bottom: 1px solid var(--ink);
+  padding-bottom: 16px;
+  margin-top: 64px;
+}
+
+.committee-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--rule);
+  margin-top: 32px;
+}
+.member-cell {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 32px 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+.member-portrait {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--rule);
+  margin-bottom: 20px;
+  background-color: var(--paper-2);
+}
+.member-name {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+.member-role {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 6px;
+}
+.member-inst {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-top: 10px;
+  line-height: 1.4;
+}
+
+/* Steering Committee styling */
+.steering-section {
+  padding: 64px 0 100px;
+}
+.steering-grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 80px;
+  border-top: 1px solid var(--ink);
+  padding-top: 48px;
+}
+.steering-chairs {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+.steering-chair-group h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 12px;
+}
+.steering-chair-name {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.steering-members h4 {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 24px;
+}
+.steering-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px 40px;
+  list-style: none;
+  font-size: 15px;
+  color: var(--ink-2);
+}
+.steering-list li {
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--rule);
+}
+
+@media (max-width: 960px) {
+  .committee-grid { grid-template-columns: repeat(2, 1fr); }
+  .steering-grid { grid-template-columns: 1fr; gap: 48px; }
+  .steering-list { grid-template-columns: 1fr; }
+}
+@media (max-width: 480px) {
+  .committee-grid { grid-template-columns: 1fr; border-left: none; }
+  .member-cell { border-left: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="committee.html" class="active">Committee</a>
+      <a href="submission.html">Submission</a>
+      <a href="register.html">Register</a>
+      <a href="venue.html">Venue</a>
+      <a href="news.html">News</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Committee</div>
+    <h1>Conference<br><em>committees.</em></h1>
+    <p class="lede" style="margin-top: 32px; max-width: 60ch;">Meet the local organizers and steering committee members driving the technical programme and organization of QIRT Asia 2027.</p>
+  </div>
+</section>
+
+<section style="padding: 60px 0 0;">
+  <div class="wrap">
+    <h2 class="section-title-custom" style="margin-top: 0;">Local Organizing Committee</h2>
+    
+    <div class="committee-grid">
+      <!-- Chair -->
+      <div class="member-cell">
+        <img class="member-portrait" src="../images/committee/Andrew_Ngo.jpg" alt="Dr. Andrew Ngo">
+        <div class="member-name">Dr. Andrew Ngo</div>
+        <div class="member-role">Chair</div>
+        <div class="member-inst">IMRE, FEAT, A*STAR<br>Singapore</div>
+      </div>
+      
+      <!-- Co-Chair -->
+      <div class="member-cell">
+        <img class="member-portrait" src="../images/committee/Sreedhar_Unnikrishnakurup.jpg" alt="Dr. Sreedhar Unnikrishnakurup">
+        <div class="member-name">Dr. Sreedhar U.</div>
+        <div class="member-role">Co-Chair</div>
+        <div class="member-inst">IMRE, FEAT, A*STAR<br>Singapore</div>
+      </div>
+      
+      <!-- Vice Chair -->
+      <div class="member-cell">
+        <img class="member-portrait" src="../images/committee/Junyan_Liu.jpg" alt="Prof. Junyan Liu">
+        <div class="member-name">Prof. Junyan Liu</div>
+        <div class="member-role">Vice Chair</div>
+        <div class="member-inst">Harbin Institute of Technology<br>China</div>
+      </div>
+
+      <!-- Vice Chair / Member (Edmund Liew) -->
+      <div class="member-cell">
+        <img class="member-portrait" src="../images/committee/Edmund_Liew.jpg" alt="Prof. Edmund Liew">
+        <div class="member-name">Prof. Edmund Liew</div>
+        <div class="member-role">Committee Member</div>
+        <div class="member-inst">Singapore</div>
+      </div>
+      
+      <!-- Vinod Kumar -->
+      <div class="member-cell">
+        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">VK</div>
+        <div class="member-name">Vinod Kumar</div>
+        <div class="member-role">Logistics Committee</div>
+        <div class="member-inst">Singapore</div>
+      </div>
+      
+      <!-- Jonathan Zheng -->
+      <div class="member-cell">
+        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">JZ</div>
+        <div class="member-name">Jonathan Zheng</div>
+        <div class="member-role">Technical Committee</div>
+        <div class="member-inst">Singapore</div>
+      </div>
+      
+      <!-- Andy Malcolm -->
+      <div class="member-cell">
+        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">AM</div>
+        <div class="member-name">Andy Malcolm</div>
+        <div class="member-role">Committee Member</div>
+        <div class="member-inst">Singapore</div>
+      </div>
+      
+      <!-- Dr. Sajeesh Babu -->
+      <div class="member-cell">
+        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">SB</div>
+        <div class="member-name">Dr. Sajeesh Babu</div>
+        <div class="member-role">Committee Member</div>
+        <div class="member-inst">Singapore</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="steering-section">
+  <div class="wrap">
+    <h2 class="section-title-custom">QIRT Asia Steering Committee</h2>
+    
+    <div class="steering-grid">
+      <div class="steering-chairs">
+        <div class="steering-chair-group">
+          <h4>Chairs</h4>
+          <div class="steering-chair-name">Andrew Ngo Chun Yong <span style="font-size: 14px; font-weight: 400; color: var(--ink-3); font-family: var(--font-mono);">(Singapore)</span></div>
+          <div class="steering-chair-name" style="margin-top: 8px;">Sreedhar Unnikrishnakurup <span style="font-size: 14px; font-weight: 400; color: var(--ink-3); font-family: var(--font-mono);">(Singapore)</span></div>
+        </div>
+        <div class="steering-chair-group">
+          <h4>Vice-Chair</h4>
+          <div class="steering-chair-name">Junyan Liu <span style="font-size: 14px; font-weight: 400; color: var(--ink-3); font-family: var(--font-mono);">(China)</span></div>
+        </div>
+      </div>
+      
+      <div class="steering-members">
+        <h4>Committee Members</h4>
+        <ul class="steering-list">
+          <li>Manyong Choi <span style="font-size: 12px; color: var(--ink-3);">· Korea</span></li>
+          <li>Ab Razak Hamzah <span style="font-size: 12px; color: var(--ink-3);">· Malaysia</span></li>
+          <li>WonTae Kim <span style="font-size: 12px; color: var(--ink-3);">· Korea</span></li>
+          <li>Guohua Li <span style="font-size: 12px; color: var(--ink-3);">· China</span></li>
+          <li>Junko Morikawa <span style="font-size: 12px; color: var(--ink-3);">· Japan</span></li>
+          <li>Mohammed A. Omar <span style="font-size: 12px; color: var(--ink-3);">· UAE</span></li>
+          <li>M. Menaka <span style="font-size: 12px; color: var(--ink-3);">· India</span></li>
+          <li>Nik Rajic <span style="font-size: 12px; color: var(--ink-3);">· Australia</span></li>
+          <li>Andrei Sleptchenko <span style="font-size: 12px; color: var(--ink-3);">· UAE</span></li>
+          <li>B. Venkatraman <span style="font-size: 12px; color: var(--ink-3);">· India</span></li>
+          <li>Cunlin Zhang <span style="font-size: 12px; color: var(--ink-3);">· China</span></li>
+          <li>Ilham Mukriz B. Zainal Abidin <span style="font-size: 12px; color: var(--ink-3);">· Malaysia</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

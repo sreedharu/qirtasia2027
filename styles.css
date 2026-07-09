@@ -207,12 +207,44 @@ section {
   padding: 100px 0;
 }
 
+.mobile-menu-toggle {
+  display: none;
+}
+
 @media (max-width: 960px) {
   .section-head, .split-2 {
     grid-template-columns: 1fr;
     gap: 32px;
   }
+  .mobile-menu-toggle {
+    display: block;
+    background: none;
+    border: none;
+    color: var(--ink);
+    font-size: 22px;
+    cursor: pointer;
+    padding: 4px;
+    z-index: 110;
+  }
+  .topbar-inner {
+    flex-wrap: wrap;
+  }
   .nav {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 16px;
+    padding: 24px 0 8px;
+    border-top: 1px solid var(--rule);
+    margin-top: 16px;
+  }
+  .topbar.menu-open .nav {
+    display: flex;
+  }
+  .topbar.menu-open .mobile-menu-toggle i::before {
+    content: "\f00d"; /* FontAwesome times (X) icon */
+  }
+  .top-cta {
     display: none;
   }
 }

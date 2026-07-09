@@ -1,0 +1,194 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Contact — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" href="../assets/qirtasia-logo.png">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+
+.contacts-section { padding: 80px 0; }
+.contacts-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  border-top: 1px solid var(--ink);
+  border-left: 1px solid var(--rule);
+  margin-top: 32px;
+}
+.contact-cell {
+  border-right: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+  padding: 40px 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  justify-content: space-between;
+  min-height: 320px;
+}
+.contact-label {
+  font-family: var(--font-mono); font-size: 11px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3);
+}
+.contact-title {
+  font-family: var(--font-display); font-size: 28px;
+  font-weight: 500; line-height: 1.1;
+}
+.contact-name {
+  font-size: 16px; color: var(--ink-2); line-height: 1.5;
+}
+.contact-email {
+  font-family: var(--font-mono); font-size: 13px;
+  color: var(--accent); border-bottom: 1px solid transparent;
+  align-self: flex-start;
+  transition: border-color 150ms;
+}
+.contact-email:hover {
+  border-bottom-color: var(--accent);
+}
+
+.map-summary-section {
+  background: var(--paper-2);
+  padding: 80px 0;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.map-summary-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+}
+.map-details dt {
+  font-family: var(--font-mono); font-size: 10px;
+  letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3);
+  margin-top: 24px; margin-bottom: 6px;
+}
+.map-details dt:first-child { margin-top: 0; }
+.map-details dd { font-size: 16px; color: var(--ink); line-height: 1.5; }
+
+@media (max-width: 960px) {
+  .contacts-grid { grid-template-columns: 1fr; border-left: none; }
+  .contact-cell { border-left: none; min-height: auto; }
+  .map-summary-grid { grid-template-columns: 1fr; gap: 48px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 09–12 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="../index.html#about">About</a>
+      <a href="../index.html#dates">Dates</a>
+      <a href="committee.html">Committee</a>
+      <a href="submission.html">Submission</a>
+      <a href="register.html">Register</a>
+      <a href="venue.html">Venue</a>
+      <a href="news.html">News</a>
+      <a href="contacts.html" class="active">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Contact</div>
+    <h1>Get in<br><em>touch.</em></h1>
+    <p class="lede" style="margin-top: 32px; max-width: 60ch;">For inquiries regarding submissions, registration, sponsorship, or logistical arrangements, please reach out to the appropriate committee contact below.</p>
+  </div>
+</section>
+
+<section class="contacts-section">
+  <div class="wrap">
+    <div class="contacts-grid">
+      <!-- General Inquiries -->
+      <div class="contact-cell">
+        <div>
+          <span class="contact-label">General Inquiries</span>
+          <h3 class="contact-title" style="margin-top: 16px;">Secretariat &amp; Chairs</h3>
+          <p class="contact-name" style="margin-top: 12px;">For general questions, certificates, and organization matters, contact the General Chairs.</p>
+        </div>
+        <a href="mailto:info@qirtasia2027.com" class="contact-email">info@qirtasia2027.com</a>
+      </div>
+      
+      <!-- Technical Program -->
+      <div class="contact-cell">
+        <div>
+          <span class="contact-label">Technical Program</span>
+          <h3 class="contact-title" style="margin-top: 16px;">Paper Submission</h3>
+          <p class="contact-name" style="margin-top: 12px;">For abstract submission, review feedback, or questions about the conference proceedings and journal.</p>
+        </div>
+        <a href="mailto:program@qirtasia2027.com" class="contact-email">program@qirtasia2027.com</a>
+      </div>
+      
+      <!-- Registration & Logistics -->
+      <div class="contact-cell">
+        <div>
+          <span class="contact-label">Registration</span>
+          <h3 class="contact-title" style="margin-top: 16px;">Logistics &amp; Fees</h3>
+          <p class="contact-name" style="margin-top: 12px;">For payments, invoices, letter of invitations, visas, and Sands Expo logistics.</p>
+        </div>
+        <a href="mailto:registration@qirtasia2027.com" class="contact-email">registration@qirtasia2027.com</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="map-summary-section">
+  <div class="wrap">
+    <div class="map-summary-grid">
+      <div>
+        <h2 style="font-family: var(--font-display); font-size: 36px; font-weight: 500; line-height: 1.1; margin-bottom: 24px;">Venue Information</h2>
+        <p style="font-size: 16px; color: var(--ink-2); line-height: 1.7;">
+          The conference will take place at the Sands Expo &amp; Convention Centre at Marina Bay Sands in Singapore. For transit information, nearby accommodation, or local travel guides, please refer to our venue page.
+        </p>
+        <a href="venue.html" class="btn" style="margin-top: 32px;">Venue &amp; Travel Details <span class="arrow">→</span></a>
+      </div>
+      <div>
+        <dl class="map-details">
+          <dt>Address</dt>
+          <dd>Sands Expo &amp; Convention Centre<br>10 Bayfront Avenue, Singapore 018956</dd>
+          <dt>Official Series Web</dt>
+          <dd><a class="inline" href="http://www.qirt.org" target="_blank">www.qirt.org ↗</a></dd>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div style="display: flex; justify-content: space-between; align-items: center; padding: 32px 0; font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.1em; color: var(--ink-3); border-top: 1px solid var(--rule);">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
