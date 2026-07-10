@@ -262,17 +262,13 @@
 }
 
 /* ===== About ===== */
-.about p {
-  font-family: var(--font-display);
-  font-size: clamp(22px, 2.2vw, 32px);
-  line-height: 1.4;
-  font-weight: 400;
-  color: var(--ink);
+.about-body {
+  font-size: 17px;
+  color: var(--ink-2);
+  line-height: 1.85;
+  max-width: 72ch;
   text-wrap: pretty;
-  max-width: 28ch;
-  margin-bottom: 24px;
 }
-.about p + p { font-size: 16px; font-family: var(--font-body); color: var(--ink-2); max-width: 58ch; line-height: 1.7; }
 .about-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -980,16 +976,7 @@ footer {
       </div>
     </div>
 
-    <div class="split-2">
-      <div>
-        <p>The QIRT‑Asia series, established in 2015, extends that tradition to the region's fast‑growing thermography community. QIRT Asia 2027 is organised by the Nondestructive Testing Society of Singapore (NDTSS) and supported by the Institute of Materials Research and Engineering (A*STAR IMRE).</p>
-        <p>Over four days in Singapore, we bring together the researchers, engineers and practitioners shaping the next decade of thermal science — through technical sessions, keynote lectures, short courses, and a dedicated industry exhibition at Marina Bay Sands, co‑located with the SINCE 2027 conference and exhibition.</p>
-      </div>
-      <div>
-        <p>The programme spans state‑of‑the‑art IR imaging systems, quantitative methods, signal and image processing, AI/ML, materials characterisation, and applications across NDE/NDT, aerospace, nuclear, biomedical and industrial sectors. Papers are published in the QIRT Open Archives, indexed by Google Scholar, with selected contributions invited to the QIRT Journal.</p>
-        <p>Delegates are welcomed to Singapore — a crossroads of Asian research and innovation, fostering interdisciplinary collaboration between the thermography, NDT, manufacturing, aerospace, nuclear energy, biomedical and infrastructure communities.</p>
-      </div>
-    </div>
+    <p class="about-body reveal">Established in 2015, the QIRT‑Asia series brings that tradition to the region's fast‑growing thermography community. Over four days at Marina Bay Sands — co‑located with the SINCE 2027 conference and exhibition — QIRT Asia 2027 gathers researchers, engineers and industry practitioners to exchange the latest advances in thermal imaging science, from quantitative methods, signal processing and AI to applications across aerospace, nuclear, biomedical and industrial inspection. Accepted papers are published in the QIRT Open Archives, indexed by Google Scholar, with selected contributions invited to the QIRT Journal. The conference is organised by the Nondestructive Testing Society of Singapore (NDTSS) and supported by A*STAR's Institute of Materials Research and Engineering (IMRE).</p>
 
     <dl class="about-stats reveal">
       <div>
