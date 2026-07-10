@@ -93,6 +93,16 @@
 .map-info dt:first-child { margin-top: 0; }
 .map-info dd { color: var(--ink); }
 
+.venue-details { font-size: 15px; line-height: 1.7; }
+.venue-details dt {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--ink-3);
+  margin-top: 22px; margin-bottom: 5px;
+}
+.venue-details dt:first-child { margin-top: 0; }
+.venue-details dd { color: var(--ink); }
+
 /* Accommodation list */
 /* Attractions */
 .attractions {
@@ -148,7 +158,16 @@
       </div>
       <a href="submission.html">Submission</a>
       <a href="register.html">Registration</a>
-      <a href="venue.html" class="active">Venue</a>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="venue.html" class="active">Venue</a>
+          <button type="button" class="caret" aria-label="Toggle Venue menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="venue.html#accommodation">Accommodation</a>
+          <a href="venue.html#travel-singapore">Travelling to Singapore</a>
+        </div>
+      </div>
       <a href="news.html">News</a>
       <a href="contacts.html">Contact</a>
     </nav>
@@ -270,7 +289,7 @@
 </section>
 
 <!-- Accommodation -->
-<section style="background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
+<section id="accommodation" style="background: var(--paper-2); border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule);">
   <div class="wrap">
     <div class="section-head">
       <div>
@@ -290,12 +309,58 @@
   </div>
 </section>
 
+<!-- Travelling to Singapore -->
+<section id="travel-singapore">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <span class="eyebrow">03 / Travelling to Singapore</span>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Getting<br><em style="font-style:italic;font-weight:400;">here.</em></h2>
+      </div>
+      <div>
+        <p class="lede">A compact, multicultural city at the crossroads of Asia — and one of the easiest in the world to arrive in, get around, and explore.</p>
+      </div>
+    </div>
+
+    <div class="split-intro" style="align-items: start;">
+      <div>
+        <dl class="venue-details">
+          <dt>Time zone</dt>
+          <dd>GMT+8, year-round (no daylight saving)</dd>
+          <dt>Climate</dt>
+          <dd>Tropical · uniformly warm and humid, around 25–31°C</dd>
+          <dt>Languages</dt>
+          <dd>English (official for business &amp; government), Chinese, Malay, Tamil</dd>
+          <dt>Currency</dt>
+          <dd>Singapore Dollar (SGD) · cards and mobile payment widely accepted</dd>
+          <dt>Electrical outlets</dt>
+          <dd>Type G, 230V — the same plug used in the UK</dd>
+        </dl>
+      </div>
+      <div>
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 10px;">Excellent global connectivity</h3>
+        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">Changi Airport is consistently ranked among the world's best, connecting Singapore to more than 100 cities worldwide. It sits around 20 minutes from Marina Bay Sands by MRT or taxi.</p>
+
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin: 28px 0 10px;">Visa &amp; entry requirements</h3>
+        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">Entry and visa requirements depend on your nationality and change from time to time — always check the official source before booking travel. All visitors must submit an SG Arrival Card online before entry.</p>
+        <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
+          <a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements" target="_blank" rel="noopener" class="btn ghost">Check visa requirements (ICA) <span class="arrow">↗</span></a>
+          <a href="https://www.visitsingapore.com/" target="_blank" rel="noopener" class="btn ghost">Visit Singapore guide <span class="arrow">↗</span></a>
+        </div>
+
+        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin: 28px 0 10px;">Getting around</h3>
+        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">The Mass Rapid Transit (MRT) network reaches most of the city's key attractions and is fully wheelchair-accessible. Metered taxis and ride-hailing apps (Grab) are widely available, and English signage makes independent travel straightforward.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- Attractions -->
 <section>
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="eyebrow">03 / Around the venue</span>
+        <span class="eyebrow">04 / Around the venue</span>
         <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Things to<br><em style="font-style:italic;font-weight:400;">explore.</em></h2>
       </div>
       <div>
@@ -343,7 +408,7 @@
   <div class="wrap">
     <div class="section-head">
       <div>
-        <span class="eyebrow">04 / 10 March 2027</span>
+        <span class="eyebrow">05 / 10 March 2027</span>
         <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 56px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Post-conference<br><em style="font-style:italic;font-weight:400;">tour.</em></h2>
       </div>
       <div>
