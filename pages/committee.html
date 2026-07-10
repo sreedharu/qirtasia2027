@@ -48,21 +48,28 @@
   padding: 32px 24px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
+  align-items: flex-start;
+  text-align: left;
+  min-height: 148px;
+  justify-content: center;
+  position: relative;
+  transition: background 200ms;
 }
-.member-portrait {
-  width: 120px;
-  height: 120px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 1px solid var(--rule);
-  margin-bottom: 20px;
-  background-color: var(--paper-2);
+.member-cell::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--thermal-gradient);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 300ms ease;
 }
+.member-cell:hover { background: var(--paper-2); }
+.member-cell:hover::before { transform: scaleX(1); }
 .member-name {
   font-family: var(--font-display);
-  font-size: 20px;
+  font-size: 21px;
   font-weight: 500;
   line-height: 1.2;
 }
@@ -72,7 +79,7 @@
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--accent);
-  margin-top: 6px;
+  margin-top: 8px;
 }
 .member-inst {
   font-size: 13px;
@@ -193,23 +200,20 @@
     <div class="committee-grid">
       <!-- Chair -->
       <div class="member-cell">
-        <img class="member-portrait" src="../images/committee/Andrew_Ngo.jpg" alt="Dr. Andrew Ngo">
         <div class="member-name">Dr. Andrew Ngo</div>
         <div class="member-role">Chair</div>
         <div class="member-inst">IMRE, FEAT, A*STAR<br>Singapore</div>
       </div>
-      
+
       <!-- Co-Chair -->
       <div class="member-cell">
-        <img class="member-portrait" src="../images/committee/Sreedhar_Unnikrishnakurup.jpg" alt="Dr. Sreedhar Unnikrishnakurup">
         <div class="member-name">Dr. Sreedhar U.</div>
         <div class="member-role">Co-Chair</div>
         <div class="member-inst">IMRE, FEAT, A*STAR<br>Singapore</div>
       </div>
-      
+
       <!-- Vice Chair -->
       <div class="member-cell">
-        <img class="member-portrait" src="../images/committee/Junyan_Liu.jpg" alt="Prof. Junyan Liu">
         <div class="member-name">Prof. Junyan Liu</div>
         <div class="member-role">Vice Chair</div>
         <div class="member-inst">Harbin Institute of Technology<br>China</div>
@@ -217,7 +221,6 @@
 
       <!-- Vice Chair / Member (Edmund Liew) -->
       <div class="member-cell">
-        <img class="member-portrait" src="../images/committee/Edmund_Liew.jpg" alt="Prof. Edmund Liew">
         <div class="member-name">Prof. Edmund Liew</div>
         <div class="member-role">Committee Member</div>
         <div class="member-inst">Singapore Institute of Technology (SIT)<br>Singapore</div>
@@ -225,7 +228,6 @@
 
       <!-- Vinod Kumar -->
       <div class="member-cell">
-        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">VK</div>
         <div class="member-name">Vinod Kumar</div>
         <div class="member-role">Logistics Committee</div>
         <div class="member-inst">A*STAR-IMRE<br>Singapore</div>
@@ -233,7 +235,6 @@
 
       <!-- Jonathan Zheng -->
       <div class="member-cell">
-        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">JZ</div>
         <div class="member-name">Jonathan Zheng</div>
         <div class="member-role">Technical Committee</div>
         <div class="member-inst">A*STAR-IMRE<br>Singapore</div>
@@ -241,7 +242,6 @@
 
       <!-- Andy Malcolm -->
       <div class="member-cell">
-        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">AM</div>
         <div class="member-name">Dr. Andy Malcolm</div>
         <div class="member-role">Committee Member</div>
         <div class="member-inst">A*STAR SIMTECH<br>Singapore</div>
@@ -249,7 +249,6 @@
 
       <!-- Dr. Sajeesh Babu -->
       <div class="member-cell">
-        <div class="member-portrait" style="display: grid; place-items: center; font-family: var(--font-display); font-size: 28px; color: var(--ink-3);">SB</div>
         <div class="member-name">Dr. Sajeesh K Babu</div>
         <div class="member-role">President NDTSS, ICNDT Chairman</div>
         <div class="member-inst">Singapore</div>
