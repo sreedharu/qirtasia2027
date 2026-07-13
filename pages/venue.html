@@ -133,6 +133,42 @@
   color: var(--ink-3);
   margin-top: 12px;
 }
+.attr-fares {
+  margin-top: 16px;
+  padding-top: 14px;
+  border-top: 1px solid var(--rule);
+  font-size: 13px;
+}
+.attr-fares .fare-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 3px 0;
+  font-variant-numeric: tabular-nums;
+}
+.attr-fares .fare-row span {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-3);
+}
+.attr-fares .fare-row strong { font-weight: 500; color: var(--ink); }
+.attr-fares .fare-note {
+  font-style: italic;
+  color: var(--ink-3);
+  font-size: 12px;
+  margin: 2px 0 10px;
+}
+.attr-fares .fare-airport {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--rule);
+}
+.attr-fares .fare-airport-label {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
 
 @media (max-width: 900px) {
   .travel-row { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
@@ -397,16 +433,46 @@
           <div class="attr-img" style="background-image: url('../images/train.jpg'); background-size: cover; background-position: center;"></div>
           <div class="attr-name">MRT &amp; LRT</div>
           <div class="attr-desc">The backbone of the network — fast, air-conditioned, and reaches almost every major attraction and hotel district.</div>
+          <div class="attr-fares">
+            <div class="fare-row"><span>Hours</span><strong>5.30am – 12am</strong></div>
+            <div class="fare-row"><span>Fares</span><strong>S$0.95 – S$2.21</strong></div>
+            <div class="fare-note">S$2.21 ≈ USD 1.62</div>
+            <div class="fare-airport">
+              <div class="fare-airport-label">Airport to city centre</div>
+              <div class="fare-row"><span>Time</span><strong>30 min</strong></div>
+              <div class="fare-row"><span>Fare</span><strong>~S$2.00 (USD 1.40)</strong></div>
+            </div>
+          </div>
         </div>
         <div>
           <div class="attr-img" style="background-image: url('../images/bus.jpg'); background-size: cover; background-position: center;"></div>
           <div class="attr-name">Buses</div>
           <div class="attr-desc">An extensive, economical network covering places the MRT doesn't reach, including double-decker routes around the bay.</div>
+          <div class="attr-fares">
+            <div class="fare-row"><span>Hours</span><strong>5.30am – 12am</strong></div>
+            <div class="fare-row"><span>Fares</span><strong>From S$0.95</strong></div>
+            <div class="fare-note">S$0.95 ≈ USD 0.70</div>
+            <div class="fare-airport">
+              <div class="fare-airport-label">Airport to city centre</div>
+              <div class="fare-row"><span>Time</span><strong>60 min</strong></div>
+              <div class="fare-row"><span>Fare</span><strong>~S$2.00 (USD 1.40)</strong></div>
+            </div>
+          </div>
         </div>
         <div>
           <div class="attr-img" style="background-image: url('../images/taxi.jpg'); background-size: cover; background-position: center;"></div>
           <div class="attr-name">Taxis &amp; ride-hailing</div>
           <div class="attr-desc">Metered taxis queue at hotels and malls, or hail one by the roadside. Grab and other ride-hailing apps are widely used.</div>
+          <div class="attr-fares">
+            <div class="fare-row"><span>Hours</span><strong>24 hours</strong></div>
+            <div class="fare-row"><span>Fares</span><strong>From S$3.90</strong></div>
+            <div class="fare-note">S$3.90 ≈ USD 2.86</div>
+            <div class="fare-airport">
+              <div class="fare-airport-label">Airport to city centre</div>
+              <div class="fare-row"><span>Time</span><strong>15 – 20 min</strong></div>
+              <div class="fare-row"><span>Fare</span><strong>S$20 – S$28 (USD 14.70 – 21.00)</strong></div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
