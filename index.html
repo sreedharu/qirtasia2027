@@ -114,6 +114,18 @@
 .hero-nav-overlay.scrolled .nav a.active {
   color: #fff;
 }
+/* The dropdown is a solid popup (not part of the gradient band itself),
+   so it always reads normally regardless of the top-level nav's state */
+.hero-nav-overlay.scrolled .dropdown a {
+  color: var(--ink-2);
+  text-shadow: none;
+}
+.hero-nav-overlay.scrolled .dropdown a:hover {
+  color: var(--ink);
+}
+.hero-nav-overlay.scrolled .dropdown a.active {
+  color: var(--accent);
+}
 .hero-nav-overlay.scrolled .top-cta .btn.ghost {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.55);
@@ -581,36 +593,6 @@
   .modal-box .modal-photo { min-height: 200px; }
 }
 
-/* ===== Venue ===== */
-.venue {
-  background: var(--paper-2);
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.venue-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.2fr;
-  gap: 80px;
-  align-items: center;
-}
-.venue-image {
-  aspect-ratio: 4/3;
-  border: 1px solid var(--rule);
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1);
-}
-.venue-grid:hover .venue-image { transform: scale(1.015); }
-.venue-details dt {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-top: 24px;
-  margin-bottom: 6px;
-}
-.venue-details dt:first-child { margin-top: 0; }
-.venue-details dd { font-size: 16px; color: var(--ink); line-height: 1.5; }
-
 /* ===== Hosts / Sponsors ===== */
 .hosts-grid {
   display: grid;
@@ -845,7 +827,6 @@ footer {
   .about-stats > div:nth-child(2) { border-right: none; }
   .topics { grid-template-columns: repeat(2, 1fr); }
   .speaker-grid { grid-template-columns: 1fr; max-width: 380px; }
-  .venue-grid { grid-template-columns: 1fr; gap: 32px; }
   .hosts-grid { grid-template-columns: 1fr; }
   .host-cell { border-right: none; padding: 32px 24px; }
   .supporters { grid-template-columns: repeat(2, 1fr); gap: 24px; }
@@ -1238,37 +1219,6 @@ footer {
 </div>
 
 <!-- VENUE -->
-<section id="venue" class="venue">
-  <div class="wrap">
-    <div class="section-head reveal">
-      <div>
-        <span class="eyebrow">Venue</span>
-        <h2>Marina<br>Bay<br>Sands.</h2>
-      </div>
-      <div>
-        <p class="lede">A purpose-built convention venue at the heart of Singapore's research and innovation district.</p>
-      </div>
-    </div>
-
-    <div class="venue-grid reveal">
-      <img class="venue-image" src="images/marina_bay_sands.png" alt="Marina Bay Sands" style="object-fit: cover;">
-      <div>
-        <dl class="venue-details">
-          <dt>Location</dt>
-          <dd>10 Bayfront Avenue, Singapore 018956</dd>
-          <dt>Facilities</dt>
-          <dd>Plenary hall, six parallel session rooms, dedicated exhibition area, and catering across four conference days.</dd>
-          <dt>Access</dt>
-          <dd>Bayfront MRT (CE1/DT16) · 12 min from Changi Airport via MRT · Direct connection to hotel accommodation</dd>
-          <dt>Accommodation</dt>
-          <dd>Discounted room blocks secured at Marina Bay Sands and three partner hotels within walking distance.</dd>
-        </dl>
-        <a href="pages/venue.html" class="btn ghost" style="margin-top: 32px;">Venue &amp; travel details <span class="arrow">→</span></a>
-      </div>
-    </div>
-  </div>
-</section>
-
 <!-- HOSTS -->
 <section id="hosts">
   <div class="wrap">
@@ -1339,7 +1289,7 @@ footer {
           <li><a href="#about">About</a></li>
           <li><a href="#topics">Topics</a></li>
           <li><a href="#keynote">Keynote</a></li>
-          <li><a href="#venue">Venue</a></li>
+          <li><a href="pages/venue.html">Venue</a></li>
         </ul>
       </div>
       <div class="foot-col">
