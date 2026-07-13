@@ -1,0 +1,12 @@
+.git
+.github
+archive
+README.md
+
+# Unused raw brand-asset dumps - not referenced by any live page, just
+# repo bloat that has no reason to be deployed
+images/logos/LogoHR.svg
+images/logos/qirtasia2027Logo_vectorized.svg
+images/logos/qirtasia2027Logo_highres_transparent.png
+images/logos/NanoBanana.png
+images/logos/Brand Cheatsheet Oct2025.png
