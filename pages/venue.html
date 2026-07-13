@@ -93,15 +93,51 @@
 .map-info dt:first-child { margin-top: 0; }
 .map-info dd { color: var(--ink); }
 
-.venue-details { font-size: 15px; line-height: 1.7; }
-.venue-details dt {
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ink-3);
-  margin-top: 22px; margin-bottom: 5px;
+/* Travelling to Singapore: alternating image/text rows */
+.travel-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: center;
+  padding: 56px 0;
+  border-bottom: 1px solid var(--rule);
 }
-.venue-details dt:first-child { margin-top: 0; }
-.venue-details dd { color: var(--ink); }
+.travel-row:first-of-type { border-top: 1px solid var(--ink); }
+.travel-row.reverse .travel-media { order: 2; }
+.travel-media {
+  aspect-ratio: 4/3;
+  border: 1px solid var(--rule);
+  background-size: cover;
+  background-position: center;
+}
+.travel-copy h3 {
+  font-family: var(--font-display);
+  font-size: 24px; font-weight: 500;
+  margin-bottom: 12px;
+}
+.travel-copy p {
+  font-size: 15px; color: var(--ink-2); line-height: 1.75;
+}
+.travel-copy p + p { margin-top: 14px; }
+
+/* Getting around: MRT map + transport mode cards */
+.mrt-map-frame {
+  border: 1px solid var(--rule);
+  margin-top: 32px;
+  overflow: hidden;
+}
+.mrt-map-frame img { width: 100%; display: block; }
+.mrt-caption {
+  font-family: var(--font-mono);
+  font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 12px;
+}
+
+@media (max-width: 900px) {
+  .travel-row { grid-template-columns: 1fr; gap: 24px; padding: 32px 0; }
+  .travel-row.reverse .travel-media { order: 0; }
+}
 
 /* Accommodation list */
 /* Attractions */
@@ -322,34 +358,56 @@
       </div>
     </div>
 
-    <div class="split-intro" style="align-items: start;">
-      <div>
-        <dl class="venue-details">
-          <dt>Time zone</dt>
-          <dd>GMT+8, year-round (no daylight saving)</dd>
-          <dt>Climate</dt>
-          <dd>Tropical · uniformly warm and humid, around 25–31°C</dd>
-          <dt>Languages</dt>
-          <dd>English (official for business &amp; government), Chinese, Malay, Tamil</dd>
-          <dt>Currency</dt>
-          <dd>Singapore Dollar (SGD) · cards and mobile payment widely accepted</dd>
-          <dt>Electrical outlets</dt>
-          <dd>Type G, 230V — the same plug used in the UK</dd>
-        </dl>
+    <!-- Row 1: About Singapore -->
+    <div class="travel-row">
+      <div class="travel-media" style="background-image: url('../images/singapore-01.jpg');"></div>
+      <div class="travel-copy">
+        <h3>About Singapore</h3>
+        <p>Singapore sits along the equator in the heart of Southeast Asia, 8 hours ahead of GMT (GMT+8, no daylight saving), with a year-round tropical climate — uniformly warm and humid, typically 25–31°C.</p>
+        <p>A multi-ethnic city of around 5.6 million, with English as the language of business and government alongside Chinese, Malay and Tamil. Singapore Dollar (SGD) is the local currency, and cards and mobile payment are widely accepted; electrical outlets are Type G (230V), the same as the UK.</p>
       </div>
-      <div>
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin-bottom: 10px;">Excellent global connectivity</h3>
-        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">Changi Airport is consistently ranked among the world's best, connecting Singapore to more than 100 cities worldwide. It sits around 20 minutes from Marina Bay Sands by MRT or taxi.</p>
+    </div>
 
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin: 28px 0 10px;">Visa &amp; entry requirements</h3>
-        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">Entry and visa requirements depend on your nationality and change from time to time — always check the official source before booking travel. All visitors must submit an SG Arrival Card online before entry.</p>
+    <!-- Row 2: Connectivity (reversed) -->
+    <div class="travel-row reverse">
+      <div class="travel-media" style="background-image: url('../images/changi-airport.jpg');"></div>
+      <div class="travel-copy">
+        <h3>Excellent global connectivity</h3>
+        <p>Changi Airport is consistently ranked among the world's best, connecting Singapore to more than 100 cities worldwide — around 20 minutes from Marina Bay Sands by MRT or taxi.</p>
+        <p>Entry and visa requirements depend on your nationality and change from time to time — always check the official source before booking travel. All visitors must submit an SG Arrival Card online before entry.</p>
         <div style="display: flex; gap: 12px; flex-wrap: wrap; margin-top: 20px;">
           <a href="https://www.ica.gov.sg/enter-transit-depart/entering-singapore/visa_requirements" target="_blank" rel="noopener" class="btn ghost">Check visa requirements (ICA) <span class="arrow">↗</span></a>
           <a href="https://www.visitsingapore.com/" target="_blank" rel="noopener" class="btn ghost">Visit Singapore guide <span class="arrow">↗</span></a>
         </div>
+      </div>
+    </div>
 
-        <h3 style="font-family: var(--font-display); font-size: 20px; font-weight: 500; margin: 28px 0 10px;">Getting around</h3>
-        <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 60ch;">The Mass Rapid Transit (MRT) network reaches most of the city's key attractions and is fully wheelchair-accessible. Metered taxis and ride-hailing apps (Grab) are widely available, and English signage makes independent travel straightforward.</p>
+    <!-- Getting around Singapore -->
+    <div style="padding-top: 56px;">
+      <h3 style="font-family: var(--font-display); font-size: 28px; font-weight: 500; margin-bottom: 12px;">Getting around Singapore</h3>
+      <p style="font-size: 15px; color: var(--ink-2); line-height: 1.75; max-width: 70ch;">Public signage is in English, so delegates can navigate independently with ease. The Mass Rapid Transit (MRT) network is one of the fastest ways to get around — most key attractions are within walking distance of a station, and trains are fully accessible to wheelchair users, the visually impaired, and families with strollers.</p>
+
+      <div class="mrt-map-frame">
+        <img src="../images/MRT_MAP.png" alt="Singapore MRT system map">
+      </div>
+      <p class="mrt-caption">MRT system map · Land Transport Authority, Singapore</p>
+
+      <div class="attractions" style="grid-template-columns: repeat(3, 1fr); margin-top: 48px;">
+        <div>
+          <div class="attr-img" style="background-image: url('../images/train.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="attr-name">MRT &amp; LRT</div>
+          <div class="attr-desc">The backbone of the network — fast, air-conditioned, and reaches almost every major attraction and hotel district.</div>
+        </div>
+        <div>
+          <div class="attr-img" style="background-image: url('../images/bus.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="attr-name">Buses</div>
+          <div class="attr-desc">An extensive, economical network covering places the MRT doesn't reach, including double-decker routes around the bay.</div>
+        </div>
+        <div>
+          <div class="attr-img" style="background-image: url('../images/taxi.jpg'); background-size: cover; background-position: center;"></div>
+          <div class="attr-name">Taxis &amp; ride-hailing</div>
+          <div class="attr-desc">Metered taxis queue at hotels and malls, or hail one by the roadside. Grab and other ride-hailing apps are widely used.</div>
+        </div>
       </div>
     </div>
   </div>
