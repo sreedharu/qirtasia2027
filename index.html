@@ -460,55 +460,125 @@
   line-height: 1.55;
 }
 
-/* ===== Keynote ===== */
-.keynote-block {
+/* ===== Speakers (click-to-expand grid, matching ICILSM's plenary-speakers pattern) ===== */
+.speaker-grid {
   display: grid;
-  grid-template-columns: 320px 1fr;
-  gap: 64px;
-  align-items: start;
-  padding: 64px 0;
-  border-top: 1px solid var(--ink);
-  border-bottom: 1px solid var(--rule);
-}
-.keynote-photo {
-  aspect-ratio: 4/5;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
   border: 1px solid var(--rule);
-  transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms;
-  filter: grayscale(0.15);
+  margin-top: 8px;
+  max-width: 620px;
 }
-.keynote-block:hover .keynote-photo {
-  transform: scale(1.02);
-  filter: grayscale(0);
+.speaker-card {
+  background: var(--paper);
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  transition: background 180ms;
 }
-.keynote-meta {
+.speaker-card:hover { background: var(--paper-2); }
+.speaker-card .ph {
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(0.2);
+  transition: filter 300ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.speaker-card:hover .ph { filter: grayscale(0); transform: scale(1.03); }
+.speaker-card .ph::after {
+  content: "";
+  position: absolute; inset: 0;
+  background: var(--thermal-gradient);
+  opacity: 0;
+  mix-blend-mode: multiply;
+  transition: opacity 250ms;
+}
+.speaker-card:hover .ph::after { opacity: 0.14; }
+.speaker-card .meta { padding: 18px 20px 22px; }
+.speaker-card .tag {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-  margin-bottom: 16px;
-}
-.keynote-name {
-  font-family: var(--font-display);
-  font-size: clamp(40px, 4.2vw, 56px);
-  font-weight: 500;
-  line-height: 1.05;
-  letter-spacing: -0.015em;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent);
   margin-bottom: 8px;
 }
-.keynote-title {
+.speaker-card .name {
   font-family: var(--font-display);
-  font-style: italic;
-  font-size: 20px;
-  color: var(--ink-2);
-  margin-bottom: 32px;
+  font-size: 20px; font-weight: 500; line-height: 1.15;
 }
-.keynote-bio {
-  font-size: 16px;
-  color: var(--ink-2);
-  line-height: 1.7;
-  max-width: 64ch;
-  margin-bottom: 28px;
+.speaker-card .aff {
+  font-size: 12px; color: var(--ink-3);
+  margin-top: 4px; line-height: 1.4;
+}
+.speaker-card .more {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.speaker-card:hover .more { color: var(--accent); }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 14, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 300;
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  max-width: 640px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.modal-box .modal-photo {
+  width: 100%; height: 100%;
+  min-height: 240px;
+  background-size: cover; background-position: center;
+}
+.modal-box .modal-body { padding: 40px 36px; }
+.modal-box .close {
+  position: absolute; top: 14px; right: 14px;
+  background: none; border: 0; font-size: 22px; line-height: 1;
+  color: var(--ink-3); cursor: pointer;
+  width: 32px; height: 32px;
+}
+.modal-box .close:hover { color: var(--ink); }
+.modal-box .modal-tag {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.modal-box .modal-name {
+  font-family: var(--font-display);
+  font-size: 30px; font-weight: 500; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.modal-box .modal-role {
+  font-family: var(--font-display);
+  font-style: italic; font-size: 16px;
+  color: var(--ink-2); margin-bottom: 20px; line-height: 1.4;
+}
+.modal-box .modal-bio {
+  font-size: 15px; color: var(--ink-2); line-height: 1.7;
+}
+
+@media (max-width: 700px) {
+  .modal-box { grid-template-columns: 1fr; }
+  .modal-box .modal-photo { min-height: 200px; }
 }
 
 /* ===== Venue ===== */
@@ -774,7 +844,7 @@ footer {
   .about-stats { grid-template-columns: repeat(2, 1fr); }
   .about-stats > div:nth-child(2) { border-right: none; }
   .topics { grid-template-columns: repeat(2, 1fr); }
-  .keynote-block { grid-template-columns: 1fr; gap: 32px; }
+  .speaker-grid { grid-template-columns: 1fr; max-width: 380px; }
   .venue-grid { grid-template-columns: 1fr; gap: 32px; }
   .hosts-grid { grid-template-columns: 1fr; }
   .host-cell { border-right: none; padding: 32px 24px; }
@@ -1138,31 +1208,34 @@ footer {
     <div class="section-head reveal">
       <div>
         <span class="eyebrow">Keynote</span>
-        <h2>Featured<br>speaker.</h2>
+        <h2>Featured<br>speakers.</h2>
       </div>
       <div>
-        <p class="lede">A distinguished programme led by a world-renowned figure in infrared thermography research.</p>
+        <p class="lede">A distinguished programme led by world-renowned figures in infrared thermography research. Click a speaker for their full biography.</p>
       </div>
     </div>
 
-    <div class="keynote-block reveal">
-      <img class="keynote-photo" src="images/speakers/Xavier_Maldague.jpg" alt="Prof. Xavier Maldague" style="object-fit: cover;">
-      <div>
-        <div class="keynote-meta">Distinguished Keynote · 8 March 2027</div>
-        <div class="keynote-name">Prof. Xavier<br><em style="font-style:italic;font-weight:400;">Maldague</em></div>
-        <div class="keynote-title">Université Laval · Canada Research Chair in Multipolar Infrared Vision</div>
-        <p class="keynote-bio">
-          Professor Maldague is among the most influential voices in contemporary infrared thermography, with pioneering contributions to active thermographic NDT, pulse‑phase methods, and the application of thermal imaging to aerospace, civil and cultural heritage domains. He has authored over 300 refereed publications and multiple textbooks foundational to the field.
-        </p>
-        <a href="pages/keynote.html" class="btn ghost">Full biography <span class="arrow">→</span></a>
-      </div>
-    </div>
+    <div class="speaker-grid reveal" id="home-speaker-grid"></div>
 
     <p style="margin-top: 40px; font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-3);">
-      Additional invited speakers to be announced in late 2026.
+      <a href="pages/keynote.html" class="inline" style="color: inherit;">View the full speaker programme →</a> · additional invited speakers to be announced in late 2026.
     </p>
   </div>
 </section>
+
+<!-- Speaker bio modal -->
+<div class="modal-overlay" id="speaker-modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeSpeakerModal()" aria-label="Close">&times;</button>
+    <div class="modal-photo" id="modal-photo"></div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modal-tag"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-role" id="modal-role"></div>
+      <p class="modal-bio" id="modal-bio"></p>
+    </div>
+  </div>
+</div>
 
 <!-- VENUE -->
 <section id="venue" class="venue">
@@ -1308,6 +1381,60 @@ footer {
 </footer>
 
 <script>
+/* ===== SPEAKERS ===== */
+const speakers = [
+  {
+    photo: 'images/speakers/Xavier_Maldague.jpg',
+    tag: 'Distinguished Keynote · 8 March 2027',
+    name: 'Prof. Xavier Maldague',
+    role: 'Canada Research Chair in Multipolar Infrared Vision · Université Laval, Canada',
+    bio: 'Professor Maldague is among the most influential voices in contemporary infrared thermography, with pioneering contributions to active thermographic NDT, pulse-phase methods, and the application of thermal imaging to aerospace, civil and cultural heritage domains. He has authored over 300 refereed publications and multiple textbooks foundational to the field.'
+  },
+  {
+    photo: 'images/HaiZhang.png',
+    tag: 'Plenary Speaker',
+    name: 'Prof. Hai Zhang',
+    role: 'School of Astronautics · Harbin Institute of Technology, China',
+    bio: 'Hai Zhang is a Professor and Doctoral Supervisor at the School of Astronautics, Harbin Institute of Technology (HIT). His research spans optical engineering, mechanics, and instrument science and technology.'
+  }
+];
+
+function renderSpeakers(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = speakers.map((s, i) => `
+    <button class="speaker-card" onclick="openSpeakerModal(${i})">
+      <div class="ph" style="background-image: url('${s.photo}');"></div>
+      <div class="meta">
+        <div class="tag">${s.tag}</div>
+        <div class="name">${s.name}</div>
+        <div class="aff">${s.role}</div>
+        <div class="more">View biography <span class="arrow">→</span></div>
+      </div>
+    </button>
+  `).join('');
+}
+renderSpeakers('home-speaker-grid');
+
+function openSpeakerModal(i) {
+  const s = speakers[i];
+  document.getElementById('modal-photo').style.backgroundImage = `url('${s.photo}')`;
+  document.getElementById('modal-tag').textContent = s.tag;
+  document.getElementById('modal-name').textContent = s.name;
+  document.getElementById('modal-role').textContent = s.role;
+  document.getElementById('modal-bio').textContent = s.bio;
+  document.getElementById('speaker-modal').classList.add('open');
+}
+function closeSpeakerModal() {
+  document.getElementById('speaker-modal').classList.remove('open');
+}
+document.getElementById('speaker-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'speaker-modal') closeSpeakerModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSpeakerModal();
+});
+
 /* ===== TIMELINE ===== */
 const milestones = [
   { date: '1 Jun 2026',   title: 'Abstract submission opens',     note: 'Submit a 500-word abstract on quantitative IR thermography via EasyChair.', tag: 'Submission' },

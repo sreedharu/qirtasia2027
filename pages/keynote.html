@@ -20,137 +20,116 @@
   font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
   text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
 }
-.keynote-hero {
+/* Confirmed speakers: click-to-expand grid, matching ICILSM's plenary-speakers pattern */
+.speaker-grid {
   display: grid;
-  grid-template-columns: 1fr 1.3fr;
-  gap: 80px;
-  align-items: end;
-  margin-top: 48px;
-}
-.keynote-portrait {
-  aspect-ratio: 3/4;
+  grid-template-columns: repeat(2, minmax(240px, 320px));
+  gap: 1px;
+  background: var(--rule);
   border: 1px solid var(--rule);
+  width: fit-content;
+  max-width: 100%;
 }
-.keynote-tag {
+.speaker-card {
+  background: var(--paper);
+  border: 0;
+  text-align: left;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  font-family: inherit;
+  transition: background 180ms;
+}
+.speaker-card:hover { background: var(--paper-2); }
+.speaker-card .ph {
+  aspect-ratio: 1/1;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  overflow: hidden;
+  filter: grayscale(0.2);
+  transition: filter 300ms, transform 400ms cubic-bezier(0.16, 1, 0.3, 1);
+}
+.speaker-card:hover .ph { filter: grayscale(0); transform: scale(1.03); }
+.speaker-card .meta { padding: 18px 20px 22px; }
+.speaker-card .tag {
   font-family: var(--font-mono);
-  font-size: 11px; letter-spacing: 0.2em;
-  text-transform: uppercase; color: var(--accent);
-  margin-bottom: 24px;
-  display: flex; align-items: center; gap: 12px;
+  font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 8px;
 }
-.keynote-tag::before {
-  content: ""; width: 24px; height: 1px; background: var(--accent);
-}
-.keynote-hero h1 {
+.speaker-card .name {
   font-family: var(--font-display);
-  font-size: clamp(56px, 7vw, 104px);
-  font-weight: 500; line-height: 0.95; letter-spacing: -0.02em;
+  font-size: 20px; font-weight: 500; line-height: 1.15;
 }
-.keynote-hero h1 em { font-style: italic; font-weight: 400; }
-.keynote-hero .role {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 24px; color: var(--ink-2);
-  margin-top: 24px; line-height: 1.4;
+.speaker-card .aff {
+  font-size: 12px; color: var(--ink-3);
+  margin-top: 4px; line-height: 1.4;
 }
-
-.talk {
-  padding: 100px 0;
-  border-bottom: 1px solid var(--rule);
-}
-.talk-grid {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 80px;
-}
-.talk-meta {
+.speaker-card .more {
   font-family: var(--font-mono);
-  font-size: 11px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--ink-3);
-  margin-bottom: 24px;
-}
-.talk-title {
-  font-family: var(--font-display);
-  font-size: clamp(36px, 4vw, 56px);
-  font-weight: 500; line-height: 1.1;
-  letter-spacing: -0.015em;
-  margin-bottom: 40px;
-}
-.talk-title em { font-style: italic; font-weight: 400; }
-.talk-abstract {
-  font-family: var(--font-display);
-  font-size: 22px; line-height: 1.5;
-  color: var(--ink-2); font-weight: 400;
-  max-width: 62ch;
-  margin-bottom: 32px;
-}
-.talk-abstract + p {
-  font-size: 16px; line-height: 1.75;
-  color: var(--ink-2); max-width: 62ch;
-}
-
-.bio {
-  background: var(--paper-2);
-  padding: 100px 0;
-  border-top: 1px solid var(--rule);
-  border-bottom: 1px solid var(--rule);
-}
-.bio-grid {
-  display: grid;
-  grid-template-columns: 1fr 1.8fr;
-  gap: 80px;
-}
-.bio-label {
-  font-family: var(--font-mono); font-size: 10px;
-  letter-spacing: 0.18em; text-transform: uppercase;
-  color: var(--ink-3); margin-bottom: 16px;
-}
-.bio h2 {
-  font-family: var(--font-display);
-  font-size: clamp(32px, 3.6vw, 48px);
-  font-weight: 500; line-height: 1.1;
-  letter-spacing: -0.015em;
-}
-.bio h2 em { font-style: italic; font-weight: 400; }
-.bio p {
-  font-size: 16px; line-height: 1.75;
-  color: var(--ink-2); margin-bottom: 20px;
-  max-width: 62ch;
-}
-.bio p:first-of-type {
-  font-family: var(--font-display);
-  font-size: 22px; line-height: 1.5;
-  color: var(--ink); font-style: italic; font-weight: 400;
-}
-
-.credentials {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  border-top: 1px solid var(--ink);
-  margin-top: 64px;
-}
-.cred {
-  padding: 32px 28px 32px 0;
-  border-right: 1px solid var(--rule);
-}
-.cred:last-child { border-right: none; padding-right: 0; }
-.cred-num {
-  font-family: var(--font-display);
-  font-size: 48px; font-weight: 500; line-height: 1;
-  letter-spacing: -0.02em;
-}
-.cred-num .sup {
-  font-size: 0.4em; vertical-align: top;
-  font-family: var(--font-body); font-weight: 400;
-  color: var(--ink-3); margin-left: 4px;
-}
-.cred-label {
-  font-family: var(--font-mono);
-  font-size: 10px; letter-spacing: 0.15em;
-  text-transform: uppercase; color: var(--ink-3);
   margin-top: 12px;
+  display: flex; align-items: center; gap: 6px;
+}
+.speaker-card:hover .more { color: var(--accent); }
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 14, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 300;
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  max-width: 640px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.modal-box .modal-photo {
+  width: 100%; height: 100%;
+  min-height: 240px;
+  background-size: cover; background-position: center;
+}
+.modal-box .modal-body { padding: 40px 36px; }
+.modal-box .close {
+  position: absolute; top: 14px; right: 14px;
+  background: none; border: 0; font-size: 22px; line-height: 1;
+  color: var(--ink-3); cursor: pointer;
+  width: 32px; height: 32px;
+}
+.modal-box .close:hover { color: var(--ink); }
+.modal-box .modal-tag {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.modal-box .modal-name {
+  font-family: var(--font-display);
+  font-size: 30px; font-weight: 500; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.modal-box .modal-role {
+  font-family: var(--font-display);
+  font-style: italic; font-size: 16px;
+  color: var(--ink-2); margin-bottom: 20px; line-height: 1.4;
+}
+.modal-box .modal-bio {
+  font-size: 15px; color: var(--ink-2); line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .modal-box { grid-template-columns: 1fr; }
+  .modal-box .modal-photo { min-height: 200px; }
+  .speaker-grid { grid-template-columns: repeat(2, 1fr); }
 }
 
 /* Invited speakers */
@@ -190,10 +169,6 @@
 }
 
 @media (max-width: 900px) {
-  .keynote-hero, .talk-grid, .bio-grid { grid-template-columns: 1fr; gap: 32px; }
-  .credentials { grid-template-columns: 1fr; gap: 0; }
-  .cred { border-right: none; border-bottom: 1px solid var(--rule); padding: 20px 0; }
-  .cred:last-child { border-bottom: none; }
   .speakers { grid-template-columns: 1fr; }
 }
 </style>
@@ -244,76 +219,32 @@
 
 <section class="page-hero">
   <div class="wrap">
-    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Programme &nbsp;/&nbsp; Keynote</div>
-
-    <div class="keynote-hero">
-      <img class="keynote-portrait" src="../images/speakers/Xavier_Maldague.jpg" alt="Prof. Xavier Maldague" style="object-fit: cover;">
-      <div>
-        <div class="keynote-tag">Distinguished Keynote · Monday 8 March 2027</div>
-        <h1>Prof. Xavier<br><em>Maldague.</em></h1>
-        <div class="role">Canada Research Chair in Multipolar Infrared Vision<br>Université Laval · Québec</div>
-      </div>
-    </div>
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Programme &nbsp;/&nbsp; Speakers</div>
+    <h1>Keynote &amp;<br><em>plenary speakers.</em></h1>
+    <p class="lede" style="margin-top: 24px; max-width: 62ch;">A distinguished programme led by world-renowned figures in infrared thermography research. Click a speaker for their full biography.</p>
   </div>
 </section>
 
-<!-- Talk -->
-<section class="talk">
+<!-- Confirmed speakers -->
+<section style="padding: 80px 0; border-bottom: 1px solid var(--rule);">
   <div class="wrap">
-    <div class="talk-grid">
-      <div>
-        <div class="talk-meta">The lecture</div>
-      </div>
-      <div>
-        <h2 class="talk-title">Thirty years of<br>active thermography —<br><em>and what comes next.</em></h2>
-        <p class="talk-abstract">
-          A reflection on three decades of progress in quantitative infrared thermography: from the early lock‑in and pulsed experiments of the 1990s, through pulse‑phase methods and tomographic reconstruction, to today's AI‑augmented thermographic vision.
-        </p>
-        <p>
-          The lecture traces the methodological arc of the field — measurement, modelling, and inversion — and asks where the next decade's breakthroughs are most likely to emerge. Particular attention is given to the convergence of thermography with deep learning, the maturation of multimodal imaging, and the field's growing role in addressing challenges in infrastructure resilience, energy efficiency, and health.
-        </p>
-      </div>
-    </div>
+    <div class="speaker-grid" id="page-speaker-grid"></div>
   </div>
 </section>
 
-<!-- Bio -->
-<section class="bio">
-  <div class="wrap">
-    <div class="bio-grid">
-      <div>
-        <div class="bio-label">Biography</div>
-        <h2>A career of <em>firsts.</em></h2>
-      </div>
-      <div>
-        <p>
-          Xavier Maldague holds the Canada Research Chair in Multipolar Infrared Vision at Université Laval, where he has taught and conducted research since 1989.
-        </p>
-        <p>
-          His work has shaped modern quantitative thermography across several decades — including foundational contributions to active thermographic non‑destructive testing, the development of pulse‑phase thermography, and the integration of thermal imaging with machine‑learning methods for defect characterisation. His textbooks on the theory and practice of infrared thermographic NDT remain standard references for the field.
-        </p>
-        <p>
-          Beyond research, he has supervised dozens of doctoral theses and led international collaborations across aerospace, civil infrastructure, cultural heritage and biomedical thermography. He is a Fellow of several learned societies and the recipient of multiple lifetime and scientific achievement awards in the infrared and NDT communities.
-        </p>
-
-        <div class="credentials">
-          <div class="cred">
-            <div class="cred-num">300<span class="sup">+</span></div>
-            <div class="cred-label">Peer‑reviewed publications</div>
-          </div>
-          <div class="cred">
-            <div class="cred-num">35<span class="sup">+</span></div>
-            <div class="cred-label">Years at Laval</div>
-          </div>
-          <div class="cred">
-            <div class="cred-num">50<span class="sup">+</span></div>
-            <div class="cred-label">PhD theses supervised</div>
-          </div>
-        </div>
-      </div>
+<!-- Speaker bio modal -->
+<div class="modal-overlay" id="speaker-modal">
+  <div class="modal-box">
+    <button class="close" onclick="closeSpeakerModal()" aria-label="Close">&times;</button>
+    <div class="modal-photo" id="modal-photo"></div>
+    <div class="modal-body">
+      <div class="modal-tag" id="modal-tag"></div>
+      <div class="modal-name" id="modal-name"></div>
+      <div class="modal-role" id="modal-role"></div>
+      <p class="modal-bio" id="modal-bio"></p>
     </div>
   </div>
-</section>
+</div>
 
 <!-- Invited speakers teaser -->
 <section>
@@ -321,10 +252,10 @@
     <div class="section-head">
       <div>
         <span class="eyebrow">Programme · Invited</span>
-        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Plenary<br><em style="font-style:italic;font-weight:400;">speakers.</em></h2>
+        <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Additional<br><em style="font-style:italic;font-weight:400;">speakers.</em></h2>
       </div>
       <div>
-        <p class="lede">Alongside the keynote, plenary sessions will feature invited lectures from leading figures across the conference's nine tracks.</p>
+        <p class="lede">Alongside the confirmed speakers above, plenary sessions will feature further invited lectures from leading figures across the conference's nine tracks.</p>
       </div>
     </div>
 
@@ -387,6 +318,61 @@
     </div>
   </div>
 </footer>
+
+<script>
+const speakers = [
+  {
+    photo: '../images/speakers/Xavier_Maldague.jpg',
+    tag: 'Distinguished Keynote · 8 March 2027',
+    name: 'Prof. Xavier Maldague',
+    role: 'Canada Research Chair in Multipolar Infrared Vision · Université Laval, Canada',
+    bio: 'Xavier Maldague holds the Canada Research Chair in Multipolar Infrared Vision at Université Laval, where he has taught and conducted research since 1989. His work has shaped modern quantitative thermography across several decades - including foundational contributions to active thermographic non-destructive testing, the development of pulse-phase thermography, and the integration of thermal imaging with machine-learning methods for defect characterisation. He has authored over 300 refereed publications and multiple textbooks foundational to the field, and has supervised dozens of doctoral theses across aerospace, civil infrastructure, cultural heritage and biomedical thermography.'
+  },
+  {
+    photo: '../images/HaiZhang.png',
+    tag: 'Plenary Speaker',
+    name: 'Prof. Hai Zhang',
+    role: 'School of Astronautics · Harbin Institute of Technology, China',
+    bio: 'Hai Zhang is a Professor and Doctoral Supervisor at the School of Astronautics, Harbin Institute of Technology (HIT). His research spans optical engineering, mechanics, and instrument science and technology.'
+  }
+];
+
+function renderSpeakers(id) {
+  const el = document.getElementById(id);
+  if (!el) return;
+  el.innerHTML = speakers.map((s, i) => `
+    <button class="speaker-card" onclick="openSpeakerModal(${i})">
+      <div class="ph" style="background-image: url('${s.photo}');"></div>
+      <div class="meta">
+        <div class="tag">${s.tag}</div>
+        <div class="name">${s.name}</div>
+        <div class="aff">${s.role}</div>
+        <div class="more">View biography <span class="arrow">→</span></div>
+      </div>
+    </button>
+  `).join('');
+}
+renderSpeakers('page-speaker-grid');
+
+function openSpeakerModal(i) {
+  const s = speakers[i];
+  document.getElementById('modal-photo').style.backgroundImage = `url('${s.photo}')`;
+  document.getElementById('modal-tag').textContent = s.tag;
+  document.getElementById('modal-name').textContent = s.name;
+  document.getElementById('modal-role').textContent = s.role;
+  document.getElementById('modal-bio').textContent = s.bio;
+  document.getElementById('speaker-modal').classList.add('open');
+}
+function closeSpeakerModal() {
+  document.getElementById('speaker-modal').classList.remove('open');
+}
+document.getElementById('speaker-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'speaker-modal') closeSpeakerModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSpeakerModal();
+});
+</script>
 
 </body>
 </html>
