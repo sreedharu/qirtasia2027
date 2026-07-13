@@ -59,6 +59,24 @@
 .hero-nav-overlay:not(.scrolled) .nav a.active {
   color: #fff;
 }
+/* Dropdown panels stay readable against the video: dark translucent
+   backdrop instead of the default solid paper one used once scrolled */
+.hero-nav-overlay:not(.scrolled) .dropdown {
+  background: rgba(10, 12, 22, 0.85);
+  backdrop-filter: blur(6px);
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.hero-nav-overlay:not(.scrolled) .dropdown a {
+  color: rgba(255, 255, 255, 0.8);
+  text-shadow: none;
+}
+.hero-nav-overlay:not(.scrolled) .dropdown a:hover {
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+}
+.hero-nav-overlay:not(.scrolled) .dropdown a.active {
+  color: #fff;
+}
 .hero-nav-overlay:not(.scrolled) .top-cta .btn.ghost {
   color: #fff;
   border-color: rgba(255, 255, 255, 0.5);
