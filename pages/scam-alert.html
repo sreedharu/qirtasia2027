@@ -1,0 +1,254 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Phishing &amp; Scam Alert — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon.png">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+:root {
+  --reg-header-font: 'Chakra Petch', sans-serif;
+  --reg-body-font: 'Manrope', sans-serif;
+}
+
+/* Hero banner — matches the Registration page styling */
+.page-hero {
+  padding: 170px 0 90px;
+  background: var(--thermal-gradient);
+  text-align: center;
+  position: relative;
+}
+.page-hero .wrap { position: relative; z-index: 1; }
+.page-hero .crumb {
+  font-family: var(--reg-body-font); font-size: 14px; font-weight: 600; letter-spacing: 0.02em;
+  color: rgba(255,255,255,0.75); margin-bottom: 18px;
+}
+.page-hero .crumb a { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+.page-hero h1 {
+  font-family: var(--reg-header-font);
+  font-size: clamp(36px, 5.5vw, 58px);
+  font-weight: 700;
+  line-height: 1.15;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #fff;
+}
+.page-hero .lede {
+  font-family: var(--reg-body-font);
+  max-width: 56ch;
+  margin: 24px auto 0;
+  color: rgba(255,255,255,0.85);
+}
+
+.scam-section { padding: 80px 0; }
+.scam-section h2 {
+  font-family: var(--reg-header-font);
+  text-align: center;
+  font-size: clamp(28px, 3.5vw, 40px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 40px;
+}
+.scam-body {
+  max-width: 760px;
+  margin: 0 auto;
+  font-family: var(--reg-body-font);
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--ink-2);
+}
+.scam-body p { margin-bottom: 20px; }
+.scam-body b, .scam-body strong { color: var(--ink); font-weight: 700; }
+.scam-body a { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; word-break: break-word; }
+
+.scam-list {
+  counter-reset: scam-item;
+  list-style: none;
+  margin: 32px 0;
+  padding: 0;
+}
+.scam-list > li {
+  counter-increment: scam-item;
+  position: relative;
+  padding: 20px 0 20px 56px;
+  border-top: 1px solid var(--rule);
+}
+.scam-list > li:last-child { border-bottom: 1px solid var(--rule); }
+.scam-list > li::before {
+  content: counter(scam-item);
+  position: absolute;
+  left: 0; top: 20px;
+  width: 34px; height: 34px;
+  border-radius: 50%;
+  background: var(--thermal-gradient);
+  color: #fff;
+  font-family: var(--reg-header-font);
+  font-weight: 700;
+  font-size: 14px;
+  display: flex; align-items: center; justify-content: center;
+}
+.scam-list ol {
+  list-style: lower-alpha;
+  margin: 12px 0 0 20px;
+  padding: 0;
+}
+.scam-list ol li { margin-bottom: 8px; }
+
+.scam-callout {
+  background: var(--paper-2);
+  border: 1px solid var(--rule-2);
+  border-left: 3px solid var(--accent);
+  padding: 20px 24px;
+  margin: 32px 0;
+  font-size: 15px;
+}
+
+.scam-signoff {
+  text-align: center;
+  margin-top: 48px;
+  padding-top: 32px;
+  border-top: 1px solid var(--rule);
+}
+.scam-signoff .warning {
+  font-family: var(--reg-header-font);
+  font-weight: 700;
+  font-size: 18px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+.scam-signoff .team {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 18px;
+  color: var(--ink-3);
+}
+
+@media (max-width: 800px) {
+  .page-hero { padding: 110px 0 60px; }
+  .scam-list > li { padding-left: 48px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 07–10 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="../index.html#about">About</a>
+          <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="../index.html#dates">Key dates</a>
+          <a href="committee.html">Committee</a>
+          <a href="keynote.html">Keynote speaker</a>
+        </div>
+      </div>
+      <a href="submission.html">Submission</a>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="register.html" class="active">Registration</a>
+          <button type="button" class="caret" aria-label="Toggle Registration menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="register.html">Registration</a>
+          <a href="scam-alert.html" class="active">Phishing &amp; scam alert</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="venue.html">Venue</a>
+          <button type="button" class="caret" aria-label="Toggle Venue menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="venue.html#accommodation">Accommodation</a>
+          <a href="venue.html#travel-singapore">Travelling to Singapore</a>
+        </div>
+      </div>
+      <a href="news.html">News</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <span>Early rate open</span>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Phishing &amp; Scam Alert</div>
+    <h1>Phishing &amp; scam alert</h1>
+    <p class="lede">Protect yourself from fraudulent registration pages, fake travel agents, and impersonation emails.</p>
+  </div>
+</section>
+
+<section class="scam-section">
+  <div class="wrap">
+    <h2>Beware of fraudulent websites &amp; emails</h2>
+    <div class="scam-body">
+      <p>There have been recent cases of scammers creating fake registration pages and impersonating official contacts for international conferences. Scammers may set up look-alike websites or send emails that appear to come from trusted organisations in order to steal personal or financial information.</p>
+      <p>Always verify the source, check website domains carefully, and use only official links for registration, bookings, or payments. Stay alert and protect your information.</p>
+      <p>Here are some important reminders for QIRT Asia 2027:</p>
+
+      <ol class="scam-list">
+        <li>The official conference website is <strong>qirtasia2027.com</strong>. Scammers may create fake conference registration pages that closely resemble ours — when in doubt, check the URL carefully before entering any personal or payment details.</li>
+        <li>Registration and payment for QIRT Asia 2027 are processed <strong>only</strong> through our official conference management partner, SINCE 2027, at this exact address:<br>
+          <a href="https://www.since2027.org/event-details/6th-asian-quantitative-infrared-thermography-conference" target="_blank" rel="noopener">https://www.since2027.org/event-details/6th-asian-quantitative-infrared-thermography-conference</a><br>
+          We will never ask you to register or pay through any other website, third-party link, or agent.</li>
+        <li>QIRT Asia 2027 does not have any partnerships with travel agencies. Do <strong>not</strong> respond to unsolicited emails or calls offering to book travel or accommodation on behalf of QIRT Asia 2027 through unknown or suspicious agencies.</li>
+        <li>QIRT Asia 2027 is organised by the Nondestructive Testing Society of Singapore (NDTSS) — official site <a href="https://ndtss.org.sg/" target="_blank" rel="noopener">ndtss.org.sg</a> — and is co-located with the SINCE 2027 conference and exhibition — official site <a href="https://www.since2027.org/" target="_blank" rel="noopener">since2027.org</a>. If you receive communications claiming to represent the conference from any other organisation, please verify directly with our organising team before responding.</li>
+        <li>Legitimate QIRT Asia 2027 emails will only come from addresses ending in <strong>@qirtasia2027.com</strong> (for example, info@, program@ or registration@qirtasia2027.com), or from the official SINCE 2027 registration platform once you have started registration there. Be cautious of any other domain, however similar it may look.</li>
+        <li>Some information about how to spot phishing scams can be found here: <a href="https://www.csa.gov.sg/our-programmes/cybersecurity-outreach/cybersecurity-campaigns/better-cyber-safe-than-sorry-campaign/spot-signs-of-phishing" target="_blank" rel="noopener">Cyber Security Agency of Singapore — spot the signs of phishing</a>.</li>
+      </ol>
+
+      <div class="scam-callout">
+        If you are ever unsure whether a message, call, or website claiming to represent QIRT Asia 2027 is genuine, contact us directly at <a href="mailto:info@qirtasia2027.com">info@qirtasia2027.com</a> before taking any action or providing any information.
+      </div>
+
+      <div class="scam-signoff">
+        <div class="warning">Stay vigilant and protect your personal and financial information.</div>
+        <div class="team">QIRT Asia 2027 Team</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-orgs">
+      <div class="footer-org">
+        <span class="org-label">Organised by</span>
+        <img src="../images/logos/NDTSS.png" alt="Nondestructive Testing Society of Singapore (NDTSS)">
+      </div>
+      <div class="footer-org">
+        <span class="org-label">Supported by</span>
+        <img src="../images/logos/ASTAR_IMRE.png" alt="A*STAR Institute of Materials Research and Engineering (IMRE)">
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
