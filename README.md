@@ -18,7 +18,7 @@ Official website for the 6th Asian Quantitative Infrared Thermography Conference
 - **Registration Opens:** 1 July 2026
 - **Abstract Submission Deadline:** 15 October 2026
 - **Notification of Acceptance:** 25 November 2026
-- **Early-Bird Registration Deadline:** 15 December 2026
+- **Early-Bird Registration Deadline:** 30 November 2026
 - **Full Paper / Extended Abstract Due:** 10 January 2027
 - **Standard Registration Deadline:** 15 February 2027
 - **QIRT Short Course:** 7 March 2027
