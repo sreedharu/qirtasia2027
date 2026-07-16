@@ -1011,15 +1011,15 @@ footer {
             <p style="color: rgba(255,255,255,0.8); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; margin-bottom: 0.75rem;">Time until conference</p>
             <div class="countdown" style="color: white; text-shadow: 0 2px 10px rgba(0,0,0,0.5); justify-content: center;">
               <div>
-                <span id="cd-days" class="countdown-num">00</span>
+                <span data-cd="days" class="countdown-num">00</span>
                 <span class="countdown-label">Days</span>
               </div>
               <div>
-                <span id="cd-hours" class="countdown-num">00</span>
+                <span data-cd="hours" class="countdown-num">00</span>
                 <span class="countdown-label">Hours</span>
               </div>
               <div>
-                <span id="cd-mins" class="countdown-num">00</span>
+                <span data-cd="mins" class="countdown-num">00</span>
                 <span class="countdown-label">Mins</span>
               </div>
             </div>
@@ -1098,9 +1098,9 @@ footer {
         <p class="lede">Mark your calendar for submission, registration and programme milestones.</p>
 
         <div class="countdown" id="countdown" style="margin-top: 24px;">
-          <div><span class="countdown-num" id="cd-days">—</span><span class="countdown-label">Days</span></div>
-          <div><span class="countdown-num" id="cd-hours">—</span><span class="countdown-label">Hours</span></div>
-          <div><span class="countdown-num" id="cd-mins">—</span><span class="countdown-label">Minutes</span></div>
+          <div><span class="countdown-num" data-cd="days">—</span><span class="countdown-label">Days</span></div>
+          <div><span class="countdown-num" data-cd="hours">—</span><span class="countdown-label">Hours</span></div>
+          <div><span class="countdown-num" data-cd="mins">—</span><span class="countdown-label">Minutes</span></div>
         </div>
       </div>
     </div>
@@ -1412,7 +1412,7 @@ function formatTimeline() {
   const now = new Date();
   const container = document.getElementById('timeline');
   container.innerHTML = milestones.map((m, i) => {
-    const d = new Date(m.date.split('–')[0].replace(' Mar 2027', ' March 2027').replace(' Jul ', ' July ').replace(' Oct ', ' October ').replace(' Nov ', ' November ').replace(' Dec ', ' December ').replace(' Jan ', ' January ').replace(' Feb ', ' February ').replace(' Mar ', ' March '));
+    const d = new Date(m.date.split('–').pop().replace(' Mar 2027', ' March 2027').replace(' Jul ', ' July ').replace(' Oct ', ' October ').replace(' Nov ', ' November ').replace(' Dec ', ' December ').replace(' Jan ', ' January ').replace(' Feb ', ' February ').replace(' Mar ', ' March '));
     const past = d < now;
     const side = i % 2 === 0 ? 'r' : 'l';
     return `
@@ -1438,9 +1438,9 @@ function tick() {
   const d = Math.floor(diff / 86400000);
   const h = Math.floor((diff % 86400000) / 3600000);
   const m = Math.floor((diff % 3600000) / 60000);
-  document.getElementById('cd-days').textContent = d;
-  document.getElementById('cd-hours').textContent = h;
-  document.getElementById('cd-mins').textContent = m;
+  document.querySelectorAll('[data-cd="days"]').forEach(el => el.textContent = d);
+  document.querySelectorAll('[data-cd="hours"]').forEach(el => el.textContent = h);
+  document.querySelectorAll('[data-cd="mins"]').forEach(el => el.textContent = m);
 }
 tick();
 setInterval(tick, 30000);
@@ -1478,14 +1478,6 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     window.scrollTo({ top: el.offsetTop - offset, behavior: 'smooth' });
   });
 });
-// Ensure the countdown tick runs once immediately and doesn't fail if elements aren't there
-function initCountdown() {
-  const cdDays = document.getElementById('cd-days');
-  if (cdDays) {
-    tick();
-  }
-}
-initCountdown();
 </script>
 
 </body>
