@@ -1,0 +1,364 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>QIRT Short Course — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon.png">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+.page-hero .lede { margin-top: 32px; max-width: 60ch; }
+
+.sc-section { padding: 80px 0; }
+
+.sc-facts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  border-top: 1px solid var(--ink);
+  border-bottom: 1px solid var(--rule);
+  padding: 24px 0;
+  margin-bottom: 48px;
+}
+.sc-fact { font-size: 14px; color: var(--ink-2); }
+.sc-fact strong {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.sc-section h2 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 24px;
+}
+.sc-section h2 em { font-style: italic; font-weight: 400; }
+
+.sc-intro { font-size: 16px; color: var(--ink-2); line-height: 1.75; max-width: 70ch; margin-bottom: 56px; }
+
+/* Timetable */
+.agenda-list { border-top: 1px solid var(--rule); margin-bottom: 64px; }
+.agenda-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.agenda-row.is-break { color: var(--ink-3); }
+.agenda-time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  padding-top: 3px;
+}
+.agenda-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.agenda-row.is-break .agenda-title {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-3);
+  font-weight: 400;
+}
+.agenda-speaker {
+  font-size: 14px;
+  color: var(--accent);
+  margin-top: 4px;
+}
+
+/* Instructor cards */
+.instructor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.instructor {
+  border-top: 3px solid transparent;
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  padding: 0 0 24px;
+  overflow: hidden;
+}
+.instructor-img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  background-color: var(--rule);
+  background-size: cover;
+  background-position: center top;
+  margin-bottom: 20px;
+}
+.instructor-body { padding: 0 24px; }
+.instructor-name {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 500;
+}
+.instructor-topic {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+.sc-cta {
+  margin-top: 64px;
+  padding: 40px;
+  background: var(--paper-2);
+  border: 1px solid var(--rule-2);
+  text-align: center;
+}
+.sc-cta p { font-family: var(--font-display); font-style: italic; font-size: 18px; color: var(--ink-2); margin-bottom: 20px; }
+
+@media (max-width: 900px) {
+  .instructor-grid { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px) {
+  .instructor-grid { grid-template-columns: 1fr; }
+  .agenda-row { grid-template-columns: 1fr; gap: 4px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 07–10 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="../index.html#about">About</a>
+          <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="../index.html#dates">Key dates</a>
+          <a href="committee.html">Committee</a>
+          <a href="keynote.html">Keynote speaker</a>
+        </div>
+      </div>
+      <a href="submission.html">Submission</a>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="program.html" class="active">Programme</a>
+          <button type="button" class="caret" aria-label="Toggle Programme menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="program.html">Programme</a>
+          <a href="short-course.html" class="active">Short course</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="register.html">Registration</a>
+          <button type="button" class="caret" aria-label="Toggle Registration menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="register.html">Registration</a>
+          <a href="scam-alert.html">Phishing &amp; scam alert</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="venue.html">Venue</a>
+          <button type="button" class="caret" aria-label="Toggle Venue menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="venue.html#accommodation">Accommodation</a>
+          <a href="venue.html#travel-singapore">Travelling to Singapore</a>
+        </div>
+      </div>
+      <a href="news.html">News</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; <a class="inline" href="program.html">Programme</a> &nbsp;/&nbsp; Short course</div>
+    <h1>QIRT<br><em>short course.</em></h1>
+    <p class="lede">A full-day international short course on lock-in thermography, thermographic signal processing and industrial applications, taught by six leading experts in the field.</p>
+  </div>
+</section>
+
+<section class="sc-section">
+  <div class="wrap">
+
+    <div class="sc-facts">
+      <div class="sc-fact"><strong>7 March 2027</strong>Date</div>
+      <div class="sc-fact"><strong>09:00 – 16:30</strong>Full day</div>
+      <div class="sc-fact"><strong>USD 300</strong>Separate registration required</div>
+      <div class="sc-fact"><strong>Sands Expo &amp; Convention Centre</strong>Marina Bay Sands, Singapore</div>
+    </div>
+
+    <h2>About the <em>course.</em></h2>
+    <p class="sc-intro">The QIRT Short Course is designed for engineers, scientists and students seeking a practical grounding in quantitative infrared thermography. Across six sessions, an international faculty covers foundational theory, advanced signal processing, and applied case studies spanning composites, aerospace, industrial NDT, and long-term outdoor monitoring. The course is held the day before the main conference and requires separate registration.</p>
+
+    <h2>Course <em>timetable.</em></h2>
+    <div class="agenda-list">
+      <div class="agenda-row">
+        <div class="agenda-time">09:00 – 10:00</div>
+        <div>
+          <div class="agenda-title">Fundamentals and advanced concepts in infrared thermography for NDT</div>
+          <div class="agenda-speaker">Prof. Xavier Maldague</div>
+        </div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">10:00 – 11:00</div>
+        <div>
+          <div class="agenda-title">Thermography for composites and aerospace applications</div>
+          <div class="agenda-speaker">Dr. Yusra Abdulrahman</div>
+        </div>
+      </div>
+      <div class="agenda-row is-break">
+        <div class="agenda-time">11:00 – 11:15</div>
+        <div><div class="agenda-title">Coffee break</div></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">11:15 – 12:15</div>
+        <div>
+          <div class="agenda-title">Practical NDT applications and case studies in thermographic inspection</div>
+          <div class="agenda-speaker">Prof. N. P. Avdelidis</div>
+        </div>
+      </div>
+      <div class="agenda-row is-break">
+        <div class="agenda-time">12:15 – 13:15</div>
+        <div><div class="agenda-title">Lunch break</div></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">13:15 – 14:15</div>
+        <div>
+          <div class="agenda-title">Advanced signal processing and AI-based thermographic data analysis</div>
+          <div class="agenda-speaker">Prof. Hai Zhang</div>
+        </div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">14:15 – 15:15</div>
+        <div>
+          <div class="agenda-title">Lock-in thermography and advanced excitation and signal processing techniques</div>
+          <div class="agenda-speaker">Prof. Ravibabu Mulaveesala</div>
+        </div>
+      </div>
+      <div class="agenda-row is-break">
+        <div class="agenda-time">15:15 – 15:30</div>
+        <div><div class="agenda-title">Coffee break</div></div>
+      </div>
+      <div class="agenda-row">
+        <div class="agenda-time">15:30 – 16:30</div>
+        <div>
+          <div class="agenda-title">Uncooled sensors, long-term outdoor thermography, critical system instrumentation and monitoring, and data management</div>
+          <div class="agenda-speaker">Prof. Jean Dumoulin</div>
+        </div>
+      </div>
+    </div>
+
+    <h2>Course <em>instructors.</em></h2>
+    <div class="instructor-grid">
+      <div class="instructor">
+        <div class="instructor-img" style="background-image: url('../images/speakers/Xavier_Maldague.jpg');"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Prof. Xavier Maldague</div>
+          <div class="instructor-topic">Fundamentals and advanced concepts in infrared thermography for NDT.</div>
+        </div>
+      </div>
+      <div class="instructor">
+        <div class="instructor-img"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Dr. Yusra Abdulrahman</div>
+          <div class="instructor-topic">Thermography for composites and aerospace applications.</div>
+        </div>
+      </div>
+      <div class="instructor">
+        <div class="instructor-img"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Prof. N. P. Avdelidis</div>
+          <div class="instructor-topic">Practical NDT applications and case studies in thermographic inspection.</div>
+        </div>
+      </div>
+      <div class="instructor">
+        <div class="instructor-img" style="background-image: url('../images/HaiZhang.png');"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Prof. Hai Zhang</div>
+          <div class="instructor-topic">Advanced signal processing and AI-based thermographic data analysis.</div>
+        </div>
+      </div>
+      <div class="instructor">
+        <div class="instructor-img"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Prof. Ravibabu Mulaveesala</div>
+          <div class="instructor-topic">Lock-in thermography and advanced excitation and signal processing techniques.</div>
+        </div>
+      </div>
+      <div class="instructor">
+        <div class="instructor-img"></div>
+        <div class="instructor-body">
+          <div class="instructor-name">Prof. Jean Dumoulin</div>
+          <div class="instructor-topic">Uncooled sensors, long-term outdoor thermography, critical system instrumentation and monitoring, and data management.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sc-cta">
+      <p>The short course requires separate registration from the main conference.</p>
+      <a href="register.html" class="btn">Go to registration <span class="arrow">→</span></a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-orgs">
+      <div class="footer-org">
+        <span class="org-label">Organised by</span>
+        <img src="../images/logos/NDTSS.png" alt="Nondestructive Testing Society of Singapore (NDTSS)">
+      </div>
+      <div class="footer-org">
+        <span class="org-label">Supported by</span>
+        <img src="../images/logos/ASTAR_IMRE.png" alt="A*STAR Institute of Materials Research and Engineering (IMRE)">
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,421 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Programme — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg">
+<link rel="alternate icon" href="../favicon.png">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+.page-hero .lede { margin-top: 32px; max-width: 60ch; }
+
+.programme-section { padding: 80px 0; }
+
+.callout {
+  border: 1px solid var(--ink);
+  padding: 24px 28px;
+  margin: 0 0 48px;
+  background: var(--paper);
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 24px;
+  align-items: center;
+  max-width: 76ch;
+}
+.callout .cal-tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--accent);
+  padding: 4px 8px;
+  white-space: nowrap;
+}
+.callout .cal-text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--ink-2);
+}
+
+/* Day tabs */
+.day-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 0;
+  overflow-x: auto;
+}
+.day-tab {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  background: none;
+  border: none;
+  padding: 18px 28px;
+  cursor: pointer;
+  white-space: nowrap;
+  position: relative;
+  transition: color 150ms;
+}
+.day-tab .tab-day {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-style: italic;
+  text-transform: none;
+  letter-spacing: 0;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+.day-tab:hover { color: var(--ink); }
+.day-tab.active { color: var(--accent); }
+.day-tab.active .tab-day { color: var(--accent); }
+.day-tab::after {
+  content: "";
+  position: absolute;
+  left: 0; right: 0; bottom: -1px;
+  height: 3px;
+  background: var(--thermal-gradient);
+  transform: scaleX(0);
+  transition: transform 200ms;
+}
+.day-tab.active::after { transform: scaleX(1); }
+
+.day-panel { display: none; padding-top: 40px; }
+.day-panel.active { display: block; }
+
+.agenda-list { border-top: 1px solid var(--rule); }
+.agenda-row {
+  display: grid;
+  grid-template-columns: 160px 1fr;
+  gap: 24px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--rule);
+}
+.agenda-time {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--ink-3);
+  font-variant-numeric: tabular-nums;
+  padding-top: 3px;
+}
+.agenda-title {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.agenda-note {
+  font-size: 14px;
+  color: var(--ink-2);
+  margin-top: 4px;
+  line-height: 1.6;
+}
+.agenda-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 6px;
+}
+.agenda-row.highlight { background: var(--paper-2); margin: 0 -16px; padding: 22px 16px; }
+.agenda-row a.inline-link { color: var(--accent); text-decoration: underline; text-underline-offset: 3px; }
+
+.programme-note {
+  margin-top: 32px;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 16px;
+  color: var(--ink-3);
+  max-width: 65ch;
+}
+
+@media (max-width: 700px) {
+  .agenda-row { grid-template-columns: 1fr; gap: 4px; }
+  .day-tab { padding: 14px 18px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 07–10 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="../index.html#about">About</a>
+          <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="../index.html#dates">Key dates</a>
+          <a href="committee.html">Committee</a>
+          <a href="keynote.html">Keynote speaker</a>
+        </div>
+      </div>
+      <a href="submission.html">Submission</a>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="program.html" class="active">Programme</a>
+          <button type="button" class="caret" aria-label="Toggle Programme menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="program.html" class="active">Programme</a>
+          <a href="short-course.html">Short course</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="register.html">Registration</a>
+          <button type="button" class="caret" aria-label="Toggle Registration menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="register.html">Registration</a>
+          <a href="scam-alert.html">Phishing &amp; scam alert</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="venue.html">Venue</a>
+          <button type="button" class="caret" aria-label="Toggle Venue menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="venue.html#accommodation">Accommodation</a>
+          <a href="venue.html#travel-singapore">Travelling to Singapore</a>
+        </div>
+      </div>
+      <a href="news.html">News</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Programme</div>
+    <h1>Conference<br><em>programme.</em></h1>
+    <p class="lede">A four-day programme spanning the QIRT short course, two days of plenary and parallel technical sessions, and a post-conference tour of Singapore.</p>
+  </div>
+</section>
+
+<section class="programme-section">
+  <div class="wrap">
+
+    <div class="callout">
+      <span class="cal-tag">Note</span>
+      <span class="cal-text">This is a <em style="font-style: italic;">provisional</em> programme outline. The detailed session-by-session schedule and parallel-track allocations will be published once abstract review concludes.</span>
+    </div>
+
+    <div class="day-tabs" role="tablist">
+      <button type="button" class="day-tab active" data-day="d1" role="tab" aria-selected="true">
+        <span class="tab-day">Sun</span>7 Mar
+      </button>
+      <button type="button" class="day-tab" data-day="d2" role="tab" aria-selected="false">
+        <span class="tab-day">Mon</span>8 Mar
+      </button>
+      <button type="button" class="day-tab" data-day="d3" role="tab" aria-selected="false">
+        <span class="tab-day">Tue</span>9 Mar
+      </button>
+      <button type="button" class="day-tab" data-day="d4" role="tab" aria-selected="false">
+        <span class="tab-day">Wed</span>10 Mar
+      </button>
+    </div>
+
+    <!-- Day 1: Short course + welcome -->
+    <div class="day-panel active" id="d1">
+      <div class="agenda-list">
+        <div class="agenda-row">
+          <div class="agenda-time">08:30 – 09:00</div>
+          <div>
+            <div class="agenda-title">Registration &amp; welcome coffee</div>
+          </div>
+        </div>
+        <div class="agenda-row highlight">
+          <div class="agenda-time">09:00 – 16:30</div>
+          <div>
+            <span class="agenda-tag">Short course</span>
+            <div class="agenda-title">QIRT Short Course</div>
+            <div class="agenda-note">A full day of instruction from six international experts, covering foundational and advanced infrared thermography topics. USD 300, separate registration required. See the <a class="inline-link" href="short-course.html">full short course programme</a> for the session-by-session agenda and instructors.</div>
+          </div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">18:00 – 19:30</div>
+          <div>
+            <div class="agenda-title">Welcome reception</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 2: Main conference Day 1 -->
+    <div class="day-panel" id="d2">
+      <div class="agenda-list">
+        <div class="agenda-row">
+          <div class="agenda-time">08:00 – 09:00</div>
+          <div><div class="agenda-title">Registration</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">09:00 – 09:30</div>
+          <div><div class="agenda-title">Opening ceremony &amp; welcome address</div></div>
+        </div>
+        <div class="agenda-row highlight">
+          <div class="agenda-time">09:30 – 10:30</div>
+          <div>
+            <span class="agenda-tag">Keynote</span>
+            <div class="agenda-title">Distinguished keynote lecture — Prof. Xavier Maldague</div>
+          </div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">10:30 – 11:00</div>
+          <div><div class="agenda-title">Coffee break &amp; group photo</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">11:00 – 12:30</div>
+          <div><div class="agenda-title">Parallel technical sessions I</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">12:30 – 13:30</div>
+          <div><div class="agenda-title">Lunch</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">13:30 – 15:00</div>
+          <div><div class="agenda-title">Parallel technical sessions II</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">15:00 – 15:30</div>
+          <div><div class="agenda-title">Coffee break</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">15:30 – 17:00</div>
+          <div><div class="agenda-title">Parallel technical sessions III</div></div>
+        </div>
+        <div class="agenda-row highlight">
+          <div class="agenda-time">19:00</div>
+          <div><div class="agenda-title">Conference dinner</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 3: Main conference Day 2 -->
+    <div class="day-panel" id="d3">
+      <div class="agenda-list">
+        <div class="agenda-row highlight">
+          <div class="agenda-time">09:00 – 10:00</div>
+          <div>
+            <span class="agenda-tag">Invited</span>
+            <div class="agenda-title">Invited lecture — Prof. Hai Zhang</div>
+          </div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">10:00 – 10:30</div>
+          <div><div class="agenda-title">Coffee break</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">10:30 – 12:00</div>
+          <div><div class="agenda-title">Parallel technical sessions IV</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">12:00 – 13:00</div>
+          <div><div class="agenda-title">Lunch</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">13:00 – 14:30</div>
+          <div><div class="agenda-title">Parallel technical sessions V</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">14:30 – 15:00</div>
+          <div><div class="agenda-title">Coffee break</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">15:00 – 16:00</div>
+          <div><div class="agenda-title">Panel discussion &amp; best paper awards</div></div>
+        </div>
+        <div class="agenda-row">
+          <div class="agenda-time">16:00 – 16:30</div>
+          <div><div class="agenda-title">Closing ceremony</div></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Day 4: Post-conference tour -->
+    <div class="day-panel" id="d4">
+      <div class="agenda-list">
+        <div class="agenda-row highlight">
+          <div class="agenda-time">Full day</div>
+          <div>
+            <span class="agenda-tag">Programme</span>
+            <div class="agenda-title">Post-conference tour</div>
+            <div class="agenda-note">Singapore Guided City Tour — Marina Bay, the Civic District and Chinatown. Complimentary for registered participants, subject to availability.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <p class="programme-note">All timings are indicative and subject to change. The full technical programme, including parallel session allocations by topic, will be announced after abstract review.</p>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-orgs">
+      <div class="footer-org">
+        <span class="org-label">Organised by</span>
+        <img src="../images/logos/NDTSS.png" alt="Nondestructive Testing Society of Singapore (NDTSS)">
+      </div>
+      <div class="footer-org">
+        <span class="org-label">Supported by</span>
+        <img src="../images/logos/ASTAR_IMRE.png" alt="A*STAR Institute of Materials Research and Engineering (IMRE)">
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2026 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+document.querySelectorAll('.day-tab').forEach(tab => {
+  tab.addEventListener('click', () => {
+    document.querySelectorAll('.day-tab').forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected', 'false'); });
+    document.querySelectorAll('.day-panel').forEach(p => p.classList.remove('active'));
+    tab.classList.add('active');
+    tab.setAttribute('aria-selected', 'true');
+    document.getElementById(tab.dataset.day).classList.add('active');
+  });
+});
+</script>
+
+</body>
+</html>
