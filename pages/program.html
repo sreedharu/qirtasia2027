@@ -175,6 +175,23 @@
   margin-bottom: 8px;
 }
 .agenda-row.highlight { background: var(--paper-2); margin: 0 -16px; padding: 22px 16px; border-left: 3px solid var(--prog-secondary); }
+.banquet-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+  max-width: 640px;
+}
+.banquet-gallery img {
+  width: 100%;
+  aspect-ratio: 4/3;
+  object-fit: cover;
+  border: 1px solid var(--rule-2);
+  display: block;
+}
+@media (max-width: 700px) {
+  .banquet-gallery { grid-template-columns: 1fr; max-width: 100%; }
+}
 .agenda-row a.inline-link { color: var(--prog-secondary); text-decoration: underline; text-underline-offset: 3px; }
 
 .programme-note {
@@ -360,7 +377,11 @@
           <div>
             <span class="agenda-tag">Banquet</span>
             <div class="agenda-title">Conference Banquet</div>
-            <div class="agenda-note">An evening of dining and networking with delegates and speakers. Included in Regular and Student registration.</div>
+            <div class="agenda-note">Participants will be taken to the nearby Marina Bay Sands, Sands Expo &amp; Convention Centre, where the Conference Banquet will be held. The Banquet is in the form of a multi-course sit-down dinner comprising local Singapore/Asian cuisine. The Banquet venue is next to the Waterfront Promenade, where one can take a walk to enjoy excellent night views of Marina Bay and the iconic surrounding buildings before/after the Banquet. Included in Regular and Student registration.</div>
+            <div class="banquet-gallery">
+              <img src="../images/marina_bay_sands.png" alt="Marina Bay Sands and the Waterfront Promenade">
+              <img src="../images/hero/singapore-skyline.png" alt="Marina Bay skyline at dusk">
+            </div>
           </div>
         </div>
       </div>
