@@ -369,13 +369,14 @@
           <div class="instructor-more">View biography <span class="arrow">→</span></div>
         </div>
       </button>
-      <div class="instructor">
+      <button class="instructor clickable" onclick="openInstructorModal('yusra')">
         <div class="instructor-img" style="background-image: url('../images/speakers/Yusra.jpg');"></div>
         <div class="instructor-body">
           <div class="instructor-name">Dr. Yusra Abdulrahman</div>
           <div class="instructor-topic">Thermography for composites and aerospace applications.</div>
+          <div class="instructor-more">View biography <span class="arrow">→</span></div>
         </div>
-      </div>
+      </button>
       <button class="instructor clickable" onclick="openInstructorModal('avdelidis')">
         <div class="instructor-img" style="background-image: url('../images/speakers/AVDELIDIS.jpg');"></div>
         <div class="instructor-body">
@@ -457,6 +458,13 @@ const instructorBios = {
     name: 'Prof. Xavier Maldague',
     role: 'Canada Research Chair in Multipolar Infrared Vision · Université Laval, Canada',
     bio: 'Xavier Maldague holds the Canada Research Chair in Multipolar Infrared Vision at Université Laval, where he has taught and conducted research since 1989. His work has shaped modern quantitative thermography across several decades - including foundational contributions to active thermographic non-destructive testing, the development of pulse-phase thermography, and the integration of thermal imaging with machine-learning methods for defect characterisation. He has authored over 300 refereed publications and multiple textbooks foundational to the field, and has supervised dozens of doctoral theses across aerospace, civil infrastructure, cultural heritage and biomedical thermography.'
+  },
+  yusra: {
+    photo: '../images/speakers/Yusra.jpg',
+    tag: 'QIRT Short Course Instructor',
+    name: 'Dr. Yusra Abdulrahman',
+    role: 'Khalifa University · United Arab Emirates',
+    bio: 'Dr. Yusra Abdulrahman is an accomplished academic and researcher deeply committed to driving the aerospace industry forward. Her educational journey began with a BSc degree with honors from the University of Arizona in the United States. She furthered her education, attaining both MSc and Ph.D. degrees through the collaborative program between the Massachusetts Institute of Science and Technology (USA) and the Masdar Institute of Science and Technology (UAE). Dr. Abdulrahman has been actively engaged in fruitful collaborations with leading aerospace companies in the UAE since 2014. Her industry experience is a valuable asset as she works to enhance automation processes, redefine inspection techniques, and harness the power of AI for more efficient and sustainable aerospace operations. Her research contributions have not gone unnoticed, earning her numerous awards from the Ministry of Energy and Industry. Multiple publications in esteemed international scientific journals exemplify her commitment to advancing the field. Dr. Abdulrahman\'s multidimensional expertise positions her as a significant contributor to the progress of aerospace engineering and technology at Khalifa University.'
   },
   avdelidis: {
     photo: '../images/speakers/AVDELIDIS.jpg',
