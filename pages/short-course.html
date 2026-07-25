@@ -105,7 +105,13 @@
   border: 1px solid var(--rule);
   padding: 0 0 24px;
   overflow: hidden;
+  text-align: left;
+  font-family: inherit;
+  width: 100%;
+  display: block;
 }
+.instructor.clickable { cursor: pointer; transition: background 180ms; }
+.instructor.clickable:hover { background: var(--paper-2); }
 .instructor-img {
   width: 100%;
   aspect-ratio: 4/3;
@@ -113,7 +119,9 @@
   background-size: cover;
   background-position: center top;
   margin-bottom: 20px;
+  transition: filter 300ms;
 }
+.instructor.clickable:hover .instructor-img { filter: grayscale(0.15); }
 .instructor-body { padding: 0 24px; }
 .instructor-name {
   font-family: var(--font-display);
@@ -125,6 +133,70 @@
   color: var(--ink-2);
   line-height: 1.6;
   margin-top: 8px;
+}
+.instructor-more {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: 14px;
+  display: flex; align-items: center; gap: 6px;
+}
+.instructor.clickable:hover .instructor-more { color: var(--accent); }
+
+/* Bio modal */
+.modal-overlay {
+  position: fixed; inset: 0;
+  background: rgba(10, 10, 14, 0.6);
+  backdrop-filter: blur(3px);
+  z-index: 300;
+  display: none;
+  align-items: center; justify-content: center;
+  padding: 24px;
+}
+.modal-overlay.open { display: flex; }
+.modal-box {
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  max-width: 640px; width: 100%;
+  max-height: 85vh; overflow-y: auto;
+  position: relative;
+  display: grid;
+  grid-template-columns: 200px 1fr;
+}
+.modal-box .modal-photo {
+  width: 100%; height: 100%;
+  min-height: 240px;
+  background-size: cover; background-position: center top;
+}
+.modal-box .modal-body { padding: 40px 36px; }
+.modal-box .close {
+  position: absolute; top: 14px; right: 14px;
+  background: none; border: 0; font-size: 22px; line-height: 1;
+  color: var(--ink-3); cursor: pointer;
+  width: 32px; height: 32px;
+}
+.modal-box .close:hover { color: var(--ink); }
+.modal-box .modal-tag {
+  font-family: var(--font-mono);
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--accent); margin-bottom: 14px;
+}
+.modal-box .modal-name {
+  font-family: var(--font-display);
+  font-size: 30px; font-weight: 500; line-height: 1.1;
+  margin-bottom: 6px;
+}
+.modal-box .modal-role {
+  font-family: var(--font-display);
+  font-style: italic; font-size: 16px;
+  color: var(--ink-2); margin-bottom: 20px; line-height: 1.4;
+}
+.modal-box .modal-bio {
+  font-size: 15px; color: var(--ink-2); line-height: 1.7;
+}
+@media (max-width: 700px) {
+  .modal-box { grid-template-columns: 1fr; }
+  .modal-box .modal-photo { min-height: 200px; }
 }
 
 .sc-cta {
@@ -289,13 +361,14 @@
 
     <h2>Course <em>instructors.</em></h2>
     <div class="instructor-grid">
-      <div class="instructor">
+      <button class="instructor clickable" onclick="openInstructorModal('maldague')">
         <div class="instructor-img" style="background-image: url('../images/speakers/Xavier_Maldague.jpg');"></div>
         <div class="instructor-body">
           <div class="instructor-name">Prof. Xavier Maldague</div>
           <div class="instructor-topic">Fundamentals and advanced concepts in infrared thermography for NDT.</div>
+          <div class="instructor-more">View biography <span class="arrow">→</span></div>
         </div>
-      </div>
+      </button>
       <div class="instructor">
         <div class="instructor-img" style="background-image: url('../images/speakers/Yusra.jpg');"></div>
         <div class="instructor-body">
@@ -303,20 +376,22 @@
           <div class="instructor-topic">Thermography for composites and aerospace applications.</div>
         </div>
       </div>
-      <div class="instructor">
+      <button class="instructor clickable" onclick="openInstructorModal('avdelidis')">
         <div class="instructor-img" style="background-image: url('../images/speakers/AVDELIDIS.jpg');"></div>
         <div class="instructor-body">
           <div class="instructor-name">Prof. N. P. Avdelidis</div>
           <div class="instructor-topic">Practical NDT applications and case studies in thermographic inspection.</div>
+          <div class="instructor-more">View biography <span class="arrow">→</span></div>
         </div>
-      </div>
-      <div class="instructor">
+      </button>
+      <button class="instructor clickable" onclick="openInstructorModal('haizhang')">
         <div class="instructor-img" style="background-image: url('../images/HaiZhang.png');"></div>
         <div class="instructor-body">
           <div class="instructor-name">Prof. Hai Zhang</div>
           <div class="instructor-topic">Advanced signal processing and AI-based thermographic data analysis.</div>
+          <div class="instructor-more">View biography <span class="arrow">→</span></div>
         </div>
-      </div>
+      </button>
       <div class="instructor">
         <div class="instructor-img" style="background-image: url('../images/speakers/Ravibabu.jpg');"></div>
         <div class="instructor-body">
@@ -329,6 +404,20 @@
         <div class="instructor-body">
           <div class="instructor-name">Prof. Jean Dumoulin</div>
           <div class="instructor-topic">Uncooled sensors, long-term outdoor thermography, critical system instrumentation and monitoring, and data management.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Instructor bio modal -->
+    <div class="modal-overlay" id="speaker-modal">
+      <div class="modal-box">
+        <button class="close" onclick="closeSpeakerModal()" aria-label="Close">&times;</button>
+        <div class="modal-photo" id="modal-photo"></div>
+        <div class="modal-body">
+          <div class="modal-tag" id="modal-tag"></div>
+          <div class="modal-name" id="modal-name"></div>
+          <div class="modal-role" id="modal-role"></div>
+          <p class="modal-bio" id="modal-bio"></p>
         </div>
       </div>
     </div>
@@ -359,6 +448,52 @@
     </div>
   </div>
 </footer>
+
+<script>
+const instructorBios = {
+  maldague: {
+    photo: '../images/speakers/Xavier_Maldague.jpg',
+    tag: 'QIRT Short Course Instructor',
+    name: 'Prof. Xavier Maldague',
+    role: 'Canada Research Chair in Multipolar Infrared Vision · Université Laval, Canada',
+    bio: 'Xavier Maldague holds the Canada Research Chair in Multipolar Infrared Vision at Université Laval, where he has taught and conducted research since 1989. His work has shaped modern quantitative thermography across several decades - including foundational contributions to active thermographic non-destructive testing, the development of pulse-phase thermography, and the integration of thermal imaging with machine-learning methods for defect characterisation. He has authored over 300 refereed publications and multiple textbooks foundational to the field, and has supervised dozens of doctoral theses across aerospace, civil infrastructure, cultural heritage and biomedical thermography.'
+  },
+  avdelidis: {
+    photo: '../images/speakers/AVDELIDIS.jpg',
+    tag: 'QIRT Short Course Instructor',
+    name: 'Prof. N. P. Avdelidis',
+    role: 'Professor of Aerospace Systems Management · Department of Aeronautics & Astronautics, University of Southampton',
+    bio: 'Professor Avdelidis is a Professor of Aerospace Systems Management in the Department of Aeronautics & Astronautics, School of Engineering at the University of Southampton. Previously he was a Professor and Head of the IVHM Centre (Integrated Vehicle Health Management Centre) at Cranfield University within the School of Aerospace, Transport and Manufacturing. He also holds a professorship position - title (Professeur Associe) at Universite Laval, within the Department of Electrical and Computer Engineering and the Computer Vision and Systems Laboratory, in Quebec, Canada, where he does a lot of his research activities there in collaboration also with other organizations in Canada including the National Research Council. He has contributed extensively to several research areas, such as non-destructive testing and evaluation (NDT&E) of materials and structures, robotic and autonomous systems in aircraft MRO, advanced IR and other non-invasive imaging techniques, and health management of aircraft systems and structures.'
+  },
+  haizhang: {
+    photo: '../images/HaiZhang.png',
+    tag: 'QIRT Short Course Instructor',
+    name: 'Prof. Hai Zhang',
+    role: 'School of Astronautics · Harbin Institute of Technology, China',
+    bio: 'Hai Zhang is a Full Professor at the Harbin Institute of Technology, holding the title of National Young Talent. He received his PhD from Universite Laval, Canada in 2017, where he remains an Adjunct Professor, and completed a postdoctoral fellowship at the University of Toronto. He has also been a visiting researcher at Fraunhofer EZRT, Fraunhofer IZFP, and the Technical University of Munich, Germany. His research spans infrared thermography and terahertz imaging, photothermal coherent tomography, non-destructive evaluation of materials, non-invasive inspection of cultural heritage, and industrial and medical imaging. He has published over 150 peer-reviewed papers, won four Best Paper Awards, and contributed to several academic books including the ASNT handbook; his work has an H-index of 28 with more than 2,000 citations (Scopus), including citations in journals such as Nature Nanotechnology. He serves as Associate Editor of Measurement and Infrared Physics & Technology, and Editor of the Quantitative InfraRed Thermography Journal, Journal of Cultural Heritage, and the Russian Journal of Nondestructive Testing.'
+  }
+};
+
+function openInstructorModal(id) {
+  const s = instructorBios[id];
+  if (!s) return;
+  document.getElementById('modal-photo').style.backgroundImage = `url('${s.photo}')`;
+  document.getElementById('modal-tag').textContent = s.tag;
+  document.getElementById('modal-name').textContent = s.name;
+  document.getElementById('modal-role').textContent = s.role;
+  document.getElementById('modal-bio').textContent = s.bio;
+  document.getElementById('speaker-modal').classList.add('open');
+}
+function closeSpeakerModal() {
+  document.getElementById('speaker-modal').classList.remove('open');
+}
+document.getElementById('speaker-modal').addEventListener('click', (e) => {
+  if (e.target.id === 'speaker-modal') closeSpeakerModal();
+});
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') closeSpeakerModal();
+});
+</script>
 
 </body>
 </html>
