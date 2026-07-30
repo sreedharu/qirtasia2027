@@ -448,6 +448,14 @@ section {
   object-fit: contain;
   display: block;
 }
+.foot-address {
+  text-align: center;
+  padding: 0 0 32px;
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.6;
+}
+.foot-address strong { color: var(--ink-2); font-weight: 500; }
 .foot-legal {
   display: flex;
   justify-content: space-between;
