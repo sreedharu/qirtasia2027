@@ -1,0 +1,271 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Exhibitors — QIRT Asia 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../styles.css">
+<script src="../js/mobile-nav.js" defer></script>
+<style>
+.page-hero { padding: 80px 0 48px; border-bottom: 1px solid var(--rule); }
+.page-hero .crumb {
+  font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.18em;
+  text-transform: uppercase; color: var(--ink-3); margin-bottom: 24px;
+}
+.page-hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(56px, 7vw, 96px);
+  font-weight: 500; line-height: 0.98; letter-spacing: -0.02em;
+}
+.page-hero h1 em { font-style: italic; font-weight: 400; }
+.page-hero .lede { margin-top: 32px; max-width: 62ch; }
+
+.exhibitors-section { padding: 80px 0; }
+.exhibitors-section h2 {
+  font-family: var(--font-display);
+  font-size: 40px;
+  font-weight: 500;
+  letter-spacing: -0.015em;
+  margin-bottom: 8px;
+}
+.exhibitors-section h2 em { font-style: italic; font-weight: 400; }
+.section-note {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 32px;
+}
+
+/* Confirmed exhibitor cards */
+.exhibitor-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 80px;
+}
+.exhibitor-card {
+  background: var(--paper);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.exhibitor-logo {
+  height: 56px;
+  display: flex;
+  align-items: center;
+}
+.exhibitor-logo img { max-height: 100%; max-width: 220px; width: auto; }
+.exhibitor-name {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 500;
+}
+.exhibitor-desc {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.7;
+}
+.exhibitor-link {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: auto;
+}
+
+/* TBA placeholder slots */
+.exhibitor-tba {
+  background: var(--paper);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 12px;
+  border-top: 2px dashed var(--rule-2);
+}
+.exhibitor-tba .tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.exhibitor-tba .msg {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 20px;
+  color: var(--ink-3);
+}
+
+/* Become an exhibitor CTA */
+.exhibit-cta {
+  max-width: 760px;
+  margin: 0 auto;
+  background: var(--paper);
+  border: 1px solid var(--ink);
+  padding: 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.exhibit-cta::before {
+  content: "";
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: var(--thermal-gradient);
+}
+.exhibit-cta h3 {
+  font-family: var(--font-display);
+  font-size: 32px;
+  font-weight: 500;
+  margin-bottom: 16px;
+}
+.exhibit-cta h3 em { font-style: italic; font-weight: 400; }
+.exhibit-cta p {
+  font-size: 16px;
+  color: var(--ink-2);
+  max-width: 55ch;
+  margin: 0 auto 28px;
+  line-height: 1.6;
+}
+
+@media (max-width: 800px) {
+  .exhibitor-grid { grid-template-columns: 1fr; }
+  .exhibit-cta { padding: 40px 24px; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="../index.html">
+      <img src="../assets/qirtasia-logo.png" alt="QIRT Asia 2027">
+      <div class="brand-meta">
+        <strong>QIRT Asia 2027</strong>
+        <span>Singapore · 07–10 March</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="../index.html#about">About</a>
+          <button type="button" class="caret" aria-label="Toggle About menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="../index.html#dates">Key dates</a>
+          <a href="committee.html">Committee</a>
+          <a href="keynote.html">Keynote speaker</a>
+          <a href="exhibitors.html" class="active">Exhibitors</a>
+        </div>
+      </div>
+      <a href="submission.html">Submission</a>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="program.html">Programme</a>
+          <button type="button" class="caret" aria-label="Toggle Programme menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="program.html">Programme</a>
+          <a href="short-course.html">Short course</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="register.html">Registration</a>
+          <button type="button" class="caret" aria-label="Toggle Registration menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="register.html">Registration</a>
+          <a href="scam-alert.html">Phishing &amp; scam alert</a>
+        </div>
+      </div>
+      <div class="nav-group">
+        <div class="nav-group-head">
+          <a href="venue.html">Venue</a>
+          <button type="button" class="caret" aria-label="Toggle Venue menu">▾</button>
+        </div>
+        <div class="dropdown">
+          <a href="venue.html#accommodation">Accommodation</a>
+          <a href="venue.html#travel-singapore">Travelling to Singapore</a>
+        </div>
+      </div>
+      <a href="news.html">News</a>
+      <a href="contacts.html">Contact</a>
+    </nav>
+    <div class="top-cta">
+      <a href="register.html" class="btn ghost">Register</a>
+    </div>
+  </div>
+</header>
+
+<section class="page-hero">
+  <div class="wrap">
+    <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Exhibitors</div>
+    <h1>Conference<br><em>exhibitors.</em></h1>
+    <p class="lede">Meet the companies showcasing the latest thermal imaging cameras, software and inspection solutions on the industry exhibition floor at Sands Expo &amp; Convention Centre.</p>
+  </div>
+</section>
+
+<section class="exhibitors-section">
+  <div class="wrap">
+    <h2>Confirmed <em>exhibitors.</em></h2>
+    <div class="section-note">Updated as exhibitors are confirmed</div>
+
+    <div class="exhibitor-grid">
+      <div class="exhibitor-card">
+        <div class="exhibitor-logo"><img src="../images/logos/exhibitors/flir.svg" alt="Teledyne FLIR"></div>
+        <div class="exhibitor-name">FLIR</div>
+        <p class="exhibitor-desc">Teledyne FLIR develops thermal, acoustic and visible-light imaging solutions for defence, industrial, and research applications. Its thermal cameras and sensor systems are used across infrared thermography, non-destructive testing, and condition monitoring worldwide.</p>
+        <a class="exhibitor-link" href="https://www.flir.com" target="_blank" rel="noopener">Visit flir.com <span class="arrow">→</span></a>
+      </div>
+
+      <div class="exhibitor-tba">
+        <span class="tag">Exhibitor slot open</span>
+        <div class="msg">To be announced.</div>
+      </div>
+    </div>
+
+    <div class="exhibit-cta">
+      <h3>Showcase your <em>technology.</em></h3>
+      <p>QIRT Asia 2027 brings together researchers, practitioners and industry across nine tracks of infrared thermography. If your organisation would like to exhibit cameras, software or inspection solutions on-site, get in touch with the organising committee.</p>
+      <a href="mailto:info@qirtasia2027.com" class="btn">Enquire about exhibiting <span class="arrow">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-orgs">
+      <div class="footer-org">
+        <span class="org-label">Organised by</span>
+        <img src="../images/logos/NDTSS.png" alt="Nondestructive Testing Society of Singapore (NDTSS)">
+      </div>
+      <div class="footer-org">
+        <span class="org-label">Supported by</span>
+        <img src="../images/logos/ASTAR_IMRE.png" alt="A*STAR Institute of Materials Research and Engineering (IMRE)">
+      </div>
+    </div>
+    <div class="foot-legal">
+      <span>© 2027 QIRT Asia</span>
+      <a href="../index.html" class="inline">Back to home ↗</a>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
