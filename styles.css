@@ -442,9 +442,9 @@ section {
   color: var(--ink-3);
 }
 .footer-org img {
-  height: 52px;
+  height: 76px;
   width: auto;
-  max-width: 240px;
+  max-width: 320px;
   object-fit: contain;
   display: block;
 }
@@ -469,6 +469,6 @@ section {
 }
 @media (max-width: 600px) {
   .footer-orgs { gap: 40px; padding: 32px 0; }
-  .footer-org img { height: 42px; }
+  .footer-org img { height: 60px; }
   .foot-legal { flex-direction: column; gap: 10px; text-align: center; }
 }
