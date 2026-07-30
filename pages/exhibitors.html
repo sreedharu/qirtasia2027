@@ -31,6 +31,7 @@
   letter-spacing: -0.015em;
   margin-bottom: 8px;
 }
+.exhibitors-section h2:not(:first-child) { margin-top: 8px; }
 .exhibitors-section h2 em { font-style: italic; font-weight: 400; }
 .section-note {
   font-family: var(--font-mono);
@@ -143,9 +144,131 @@
   line-height: 1.6;
 }
 
+/* Prospectus download callout */
+.prospectus-callout {
+  border: 1px solid var(--ink);
+  padding: 24px 28px;
+  margin-bottom: 80px;
+  background: var(--paper);
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 32px;
+  align-items: center;
+  justify-content: space-between;
+}
+.prospectus-callout .text {
+  font-family: var(--font-display);
+  font-size: 18px;
+  line-height: 1.4;
+  max-width: 46ch;
+}
+.prospectus-callout .links { display: flex; gap: 12px; flex-wrap: wrap; }
+.prospectus-callout .links a {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border: 1px solid var(--rule-2);
+  padding: 10px 16px;
+  white-space: nowrap;
+}
+.prospectus-callout .links a:hover { border-color: var(--accent); }
+
+/* Package pricing table */
+.package-table-wrap { overflow-x: auto; margin-bottom: 24px; }
+.package-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 720px;
+  font-size: 14px;
+}
+.package-table th, .package-table td {
+  text-align: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--rule);
+}
+.package-table th {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  font-weight: 500;
+  background: var(--paper-2);
+  border-top: 1px solid var(--ink);
+}
+.package-table th:first-child, .package-table td:first-child {
+  text-align: left;
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: 16px;
+  color: var(--ink);
+}
+.package-table .cost { font-variant-numeric: tabular-nums; color: var(--ink-2); }
+.package-note {
+  font-size: 13px;
+  color: var(--ink-3);
+  line-height: 1.7;
+  margin-bottom: 80px;
+}
+.package-note li { margin-bottom: 4px; }
+
+/* Layout images */
+.layout-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px;
+  margin-bottom: 24px;
+}
+.layout-figure { border: 1px solid var(--rule); }
+.layout-figure img { width: 100%; display: block; }
+.layout-figure figcaption {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  padding: 12px 16px;
+  border-top: 1px solid var(--rule);
+}
+
+/* Hours */
+.hours-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+  margin-bottom: 24px;
+}
+.hours-card { background: var(--paper); padding: 32px; }
+.hours-card .day {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 8px;
+}
+.hours-card .time {
+  font-family: var(--font-display);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--ink);
+}
+.hours-fine {
+  font-size: 13px;
+  color: var(--ink-3);
+  margin-bottom: 80px;
+}
+
 @media (max-width: 800px) {
   .exhibitor-grid { grid-template-columns: 1fr; }
   .exhibit-cta { padding: 40px 24px; }
+  .layout-grid { grid-template-columns: 1fr; }
+  .hours-grid { grid-template-columns: 1fr; }
+  .prospectus-callout { flex-direction: column; align-items: flex-start; }
 }
 </style>
 </head>
@@ -217,12 +340,21 @@
   <div class="wrap">
     <div class="crumb"><a class="inline" href="../index.html">Home</a> &nbsp;/&nbsp; Exhibitors</div>
     <h1>Conference<br><em>exhibitors.</em></h1>
-    <p class="lede">Meet the companies showcasing the latest thermal imaging cameras, software and inspection solutions on the industry exhibition floor at Sands Expo &amp; Convention Centre.</p>
+    <p class="lede">QIRT Asia 2027 is co-located with the SINCE 2027 conference and exhibition, sharing a single exhibition floor at Sands Expo &amp; Convention Centre. Meet the companies showcasing the latest thermal imaging cameras, software and inspection solutions.</p>
   </div>
 </section>
 
 <section class="exhibitors-section">
   <div class="wrap">
+
+    <div class="prospectus-callout">
+      <div class="text">Full exhibition packages, booth pricing and floor plans are detailed in the shared SINCE 2027 / QIRT Asia 2027 exhibitor prospectus.</div>
+      <div class="links">
+        <a href="../downloads/SINCE2027_Exhibitor_Prospectus.pdf" target="_blank">Exhibitor prospectus (PDF) ↓</a>
+        <a href="../downloads/SINCE2027_Exhibitor_Agreement.pdf" target="_blank">Exhibitor agreement (PDF) ↓</a>
+      </div>
+    </div>
+
     <h2>Confirmed <em>exhibitors.</em></h2>
     <div class="section-note">Updated as exhibitors are confirmed</div>
 
@@ -240,10 +372,111 @@
       </div>
     </div>
 
+    <h2>Exhibition <em>packages.</em></h2>
+    <div class="section-note">All prices in SGD · full benefit breakdown in the exhibitor prospectus</div>
+    <div class="package-table-wrap">
+      <table class="package-table">
+        <thead>
+          <tr>
+            <th>Package</th>
+            <th>Cost</th>
+            <th>Booth size</th>
+            <th>Advert in booklet</th>
+            <th>Elite passes</th>
+            <th>Standard passes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Platinum</td>
+            <td class="cost">18,000</td>
+            <td>8m × 4m</td>
+            <td>Two pages</td>
+            <td>6</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Diamond</td>
+            <td class="cost">12,500</td>
+            <td>6m × 3m</td>
+            <td>Full page</td>
+            <td>4</td>
+            <td>4</td>
+          </tr>
+          <tr>
+            <td>Gold</td>
+            <td class="cost">8,000</td>
+            <td>5m × 3m</td>
+            <td>Full page</td>
+            <td>3</td>
+            <td>3</td>
+          </tr>
+          <tr>
+            <td>Silver</td>
+            <td class="cost">6,000</td>
+            <td>4m × 3m</td>
+            <td>Half page</td>
+            <td>2</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Bronze</td>
+            <td class="cost">5,300</td>
+            <td>3m × 3m</td>
+            <td>—</td>
+            <td>1</td>
+            <td>2</td>
+          </tr>
+          <tr>
+            <td>Standard</td>
+            <td class="cost">4,500</td>
+            <td>3m × 3m</td>
+            <td>—</td>
+            <td>1</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <ul class="package-note">
+      <li>All packages include logo placement on the conference website, booklet and delegate bag insert; Platinum, Diamond and Gold additionally include logo on the stage backdrop and landing page.</li>
+      <li>Each booth is allocated up to two complimentary car park coupons.</li>
+      <li>Each exhibitor is entitled to one paper presentation slot.</li>
+      <li>Standard Exhibitor Pass is for exhibition access only — Elite Exhibitor Pass includes buffet lunch, gala dinner and technical sessions; Standard includes a bento lunch only. Additional passes: SGD 475 (Elite) / SGD 75 (Standard).</li>
+    </ul>
+
+    <h2>Exhibition <em>layout.</em></h2>
+    <div class="section-note">Level 3, Marina Bay Sands Expo &amp; Convention Centre</div>
+    <div class="layout-grid">
+      <figure class="layout-figure">
+        <img src="../images/exhibition/venue-layout.png" alt="Venue layout showing keynote hall, technical session rooms and exhibition floor">
+        <figcaption>Venue layout</figcaption>
+      </figure>
+      <figure class="layout-figure">
+        <img src="../images/exhibition/booth-floor-plan.png" alt="Exhibition booth floor plan with Platinum, Diamond, Gold, Silver, Bronze and Standard booths">
+        <figcaption>Booth floor plan</figcaption>
+      </figure>
+    </div>
+    <p class="package-note" style="margin-bottom: 80px;">The exhibition floor sits directly beside the technical session rooms and tea-break area, ensuring steady delegate traffic throughout both conference days.</p>
+
+    <h2>Exhibition hours &amp; <em>registration.</em></h2>
+    <div class="hours-grid">
+      <div class="hours-card">
+        <div class="day">Monday · 8 March 2027</div>
+        <div class="time">10:45 – 18:30</div>
+      </div>
+      <div class="hours-card">
+        <div class="day">Tuesday · 9 March 2027</div>
+        <div class="time">09:30 – 16:00</div>
+      </div>
+    </div>
+    <p class="hours-fine">Free exhibition-only passes (excluding food &amp; beverage) can be registered via <a class="inline" href="https://www.since2027.org/exhibition" target="_blank" rel="noopener">since2027.org/exhibition</a>. Delegates registering for the full conference have exhibition access included — see <a class="inline" href="register.html">Registration</a>.</p>
+
     <div class="exhibit-cta">
       <h3>Showcase your <em>technology.</em></h3>
-      <p>QIRT Asia 2027 brings together researchers, practitioners and industry across nine tracks of infrared thermography. If your organisation would like to exhibit cameras, software or inspection solutions on-site, get in touch with the organising committee.</p>
-      <a href="mailto:info@qirtasia2027.com" class="btn">Enquire about exhibiting <span class="arrow">→</span></a>
+      <p>QIRT Asia 2027 brings together researchers, practitioners and industry across nine tracks of infrared thermography, on a shared exhibition floor with SINCE 2027. If your organisation would like to exhibit cameras, software or inspection solutions on-site, get in touch with the exhibition secretariat.</p>
+      <a href="mailto:exhibition@ndtss.org.sg" class="btn">Enquire about exhibiting <span class="arrow">→</span></a>
+      <p style="margin-top: 20px; font-size: 13px; color: var(--ink-3);">exhibition@ndtss.org.sg · Mr Vigneshwar Prabu, Exhibition Secretariat</p>
     </div>
   </div>
 </section>
