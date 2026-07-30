@@ -257,36 +257,85 @@
   border-bottom: 1px solid var(--rule);
   overflow: hidden;
 }
-.heritage-row {
-  display: flex;
-  align-items: center;
-  gap: 48px;
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--ink-3);
-  white-space: nowrap;
-}
-.heritage-row .year {
-  font-family: var(--font-mono);
-  font-style: normal;
-  font-size: 12px;
-  letter-spacing: 0.15em;
-  background: var(--paper-2);
-  padding: 4px 10px;
-  color: var(--ink-2);
-  border: 1px solid var(--rule);
-}
-.heritage-row .city { color: var(--ink); }
-.heritage-row .current { color: var(--accent); font-weight: 500; }
-.heritage-row .sep { color: var(--rule); }
 .heritage-label {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+}
+.heritage-track-wrap {
+  overflow: hidden;
+  -webkit-mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+  mask-image: linear-gradient(to right, transparent 0, #000 60px, #000 calc(100% - 60px), transparent 100%);
+}
+.heritage-track {
+  display: flex;
+  gap: 20px;
+  width: max-content;
+  animation: heritage-scroll 36s linear infinite;
+}
+.heritage-track-wrap:hover .heritage-track { animation-play-state: paused; }
+@keyframes heritage-scroll {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+.heritage-card {
+  position: relative;
+  flex: 0 0 auto;
+  width: 240px;
+  height: 160px;
+  overflow: hidden;
+  border: 1px solid var(--rule);
+}
+.heritage-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.35);
+  transition: filter 400ms, transform 400ms;
+}
+.heritage-card:hover img { filter: grayscale(0); transform: scale(1.04); }
+.heritage-card .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.72) 0%, rgba(10,10,10,0.15) 55%, transparent 80%);
+}
+.heritage-card .info {
+  position: absolute;
+  left: 14px;
+  right: 14px;
+  bottom: 12px;
+}
+.heritage-card .year {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  padding: 3px 8px;
+  margin-bottom: 6px;
+}
+.heritage-card .city {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 19px;
+  color: #fff;
+  line-height: 1.1;
+}
+.heritage-card.current { border-color: var(--accent); }
+.heritage-card.current .year {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+.heritage-card.current .city { font-style: normal; font-weight: 500; }
+@media (prefers-reduced-motion: reduce) {
+  .heritage-track { animation: none; }
 }
 
 /* ===== About ===== */
@@ -1042,19 +1091,9 @@ footer {
 <div class="heritage">
   <div class="wrap">
     <div class="heritage-label">Host cities, 2015 — 2027</div>
-    <div class="heritage-row">
-      <span class="year">I · 2015</span><span class="city">Mamallapuram</span>
-      <span class="sep">—</span>
-      <span class="year">II · 2017</span><span class="city">Daejeon</span>
-      <span class="sep">—</span>
-      <span class="year">III · 2019</span><span class="city">Tokyo</span>
-      <span class="sep">—</span>
-      <span class="year">IV · 2023</span><span class="city">Abu Dhabi</span>
-      <span class="sep">—</span>
-      <span class="year">V · 2025</span><span class="city">Harbin</span>
-      <span class="sep">—</span>
-      <span class="year">VI · 2027</span><span class="city current">Singapore</span>
-    </div>
+  </div>
+  <div class="heritage-track-wrap">
+    <div class="heritage-track" id="heritage-track"></div>
   </div>
 </div>
 
@@ -1401,6 +1440,33 @@ document.getElementById('speaker-modal').addEventListener('click', (e) => {
 document.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') closeSpeakerModal();
 });
+
+/* ===== HERITAGE MARQUEE ===== */
+const hostCities = [
+  { ed: 'I', year: '2015', city: 'Mamallapuram', photo: 'images/host-cities/mamallapuram.jpg' },
+  { ed: 'II', year: '2017', city: 'Daejeon', photo: 'images/host-cities/daejeon.jpg' },
+  { ed: 'III', year: '2019', city: 'Tokyo', photo: 'images/host-cities/tokyo.jpg' },
+  { ed: 'IV', year: '2023', city: 'Abu Dhabi', photo: 'images/host-cities/abudhabi.jpg' },
+  { ed: 'V', year: '2025', city: 'Harbin', photo: 'images/host-cities/harbin.jpg' },
+  { ed: 'VI', year: '2027', city: 'Singapore', photo: 'images/host-cities/singapore.jpg', current: true },
+];
+function renderHeritage() {
+  const track = document.getElementById('heritage-track');
+  if (!track) return;
+  const cardHtml = hostCities.map(c => `
+    <div class="heritage-card${c.current ? ' current' : ''}">
+      <img src="${c.photo}" alt="${c.city}" loading="lazy">
+      <div class="overlay"></div>
+      <div class="info">
+        <span class="year">${c.ed} · ${c.year}</span>
+        <div class="city">${c.city}</div>
+      </div>
+    </div>
+  `).join('');
+  // Duplicated once so the -50% translateX loop is seamless
+  track.innerHTML = cardHtml + cardHtml;
+}
+renderHeritage();
 
 /* ===== TIMELINE ===== */
 const milestones = [
