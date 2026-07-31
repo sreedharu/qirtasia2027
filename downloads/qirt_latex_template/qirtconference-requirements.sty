@@ -1,0 +1,20 @@
+\RequirePackage{iftex}
+\ifPDFTeX                                   % Pdftex
+  \RequirePackage[utf8]{inputenc}
+  \RequirePackage[T1]{fontenc}
+\else                                       % XeLaTeX, LuaTeX, ...
+  \RequirePackage{fontspec}                 % UTF-8
+\fi
+\RequirePackage{tikz}                       % For drawing
+\RequirePackage{geometry}                   % For handling the margins
+% \RequirePackage[francais]{babel} % First indent of paragraphe and other French requirements
+\RequirePackage{xcolor}                     % For colors
+\RequirePackage{ifthen}                     % provides ifthen
+\RequirePackage{xifthen}                    % provides \isempty test
+\RequirePackage[hidelinks]{hyperref}                   % For clickable urls
+\RequirePackage[super]{nth}                 % Lazy superscripts
+\RequirePackage{titlesec}                   % For customizing sections titles
+\RequirePackage{tabto}                      % Tabulation
+\RequirePackage{mathtools}
+\RequirePackage{indentfirst}                % First paragraph indent
+\RequirePackage[tableposition=top]{caption} % Change caption options
