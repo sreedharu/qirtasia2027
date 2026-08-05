@@ -132,9 +132,7 @@
     \includegraphics[width=\linewidth]{img/HeaderImage.png}\\[4pt]
     \centering{\itshape\color{qirt-color}\@titleheader}
   \end{minipage}
-  \vspace{0.3cm}\\
-  \noindent\rule{\linewidth}{0.4pt}
-  \vspace{0.4cm}
+  \vspace{0.5cm}\\
 }
 
 %%Body of the class, most of the declarations appear here.
