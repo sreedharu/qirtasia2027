@@ -87,13 +87,13 @@
   \lfoot{\license} % Footer
 }
 \fancypagestyle{qirtconference}{
-  \setlength{\headheight}{1.2cm}
+  \setlength{\headheight}{1.9cm}
   \renewcommand{\headrule}{\hbox to\headwidth{\color{qirt-color}\leaders\hrule height \headrulewidth\hfill}}
   \renewcommand{\headrulewidth}{1pt} % Set the top line
   \fancyhf{} % No top header
   \rhead{} % No top header
   \lhead{} % No top header
-  \chead{\textcolor{qirt-color}{\@topheader}}
+  \chead{\includegraphics[height=0.9cm]{img/HeaderImage.png}\\[3pt]{\footnotesize\textcolor{qirt-color}{\@topheader}}}
   \cfoot{} % No page numbering
 }
 \pagestyle{qirtconference} % Set the fancy headers
@@ -124,11 +124,11 @@
 %% conference tagline on the right - matches the official Word template header.
 \newcommand{\qirtletterhead}{%
   \noindent
-  \begin{minipage}[c]{0.34\textwidth}
+  \begin{minipage}[c]{0.24\textwidth}
     \includegraphics[width=\linewidth]{img/logo.png}
   \end{minipage}%
   \hfill
-  \begin{minipage}[c]{0.62\textwidth}
+  \begin{minipage}[c]{0.70\textwidth}
     \includegraphics[width=\linewidth]{img/HeaderImage.png}\\[4pt]
     \centering{\itshape\color{qirt-color}\@titleheader}
   \end{minipage}
