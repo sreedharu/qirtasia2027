@@ -80,11 +80,9 @@
 \RequirePackage{fancyhdr}
 % Header different for titlepage
 \fancypagestyle{qirtconference-title}{
-  \setlength{\headheight}{1.2cm}
+  \setlength{\headheight}{0pt} % Letterhead is drawn in the body by \maketitle instead
   \renewcommand{\headrulewidth}{0pt} % Remove the top line
   \fancyhf{} % No top header
-  \rhead{\textcolor{qirt-color}{\@titleheader}}
-  \lhead{\raisebox{-0.5\height}{\includegraphics[height=1.18cm]{img/logo.png}}}
   \cfoot{} % No page numbering
   \lfoot{\license} % Footer
 }
@@ -122,9 +120,27 @@
 \newcommand{\insertauthors}{\@authorsString}
 \newcommand{\insertaffiliation}{\@affilsString}
 
+%% Letterhead banner: logo on the left, illustrated skyline banner with the
+%% conference tagline on the right - matches the official Word template header.
+\newcommand{\qirtletterhead}{%
+  \noindent
+  \begin{minipage}[c]{0.34\textwidth}
+    \includegraphics[width=\linewidth]{img/logo.png}
+  \end{minipage}%
+  \hfill
+  \begin{minipage}[c]{0.62\textwidth}
+    \includegraphics[width=\linewidth]{img/HeaderImage.png}\\[4pt]
+    \centering{\itshape\color{qirt-color}\@titleheader}
+  \end{minipage}
+  \vspace{0.3cm}\\
+  \noindent\rule{\linewidth}{0.4pt}
+  \vspace{0.4cm}
+}
+
 %%Body of the class, most of the declarations appear here.
 \renewcommand{\maketitle}{%
   \thispagestyle{qirtconference-title}
+  \qirtletterhead
   \noindent{\large\bfseries\checkempty{\@title}{Title of your abstract here.}{\@title}}\\
   \vspace{0.5cm}
   \hspace*{\fill}\checkempty{\@authorsString}{by A. Author*, B.Author*, C. Author*}{by \insertauthors}\\
