@@ -209,6 +209,103 @@
 }
 .attr-desc { font-size: 13px; color: var(--ink-3); line-height: 1.6; }
 
+/* Accommodation: corporate code + hotel cards */
+.corp-code-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 24px 48px;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid var(--ink);
+  background: var(--paper);
+  padding: 28px 32px;
+  margin-top: 32px;
+}
+.corp-code-label {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 6px;
+}
+.corp-code-value {
+  font-family: var(--font-mono);
+  font-size: 22px;
+  font-weight: 500;
+  letter-spacing: 0.05em;
+  color: var(--accent);
+}
+.corp-code-details {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px 40px;
+}
+.corp-code-details dt {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 4px;
+}
+.corp-code-details dd { font-size: 14px; color: var(--ink); }
+
+.hotel-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+  margin-top: 48px;
+}
+.hotel-card { border: 1px solid var(--rule); background: var(--paper); }
+.hotel-img {
+  aspect-ratio: 4/3;
+  background-size: cover;
+  background-position: center;
+}
+.hotel-body { padding: 28px 28px 32px; }
+.hotel-body h3 {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+.hotel-body p {
+  font-size: 14px;
+  color: var(--ink-2);
+  line-height: 1.65;
+  margin-bottom: 20px;
+}
+
+.how-to-book {
+  margin-top: 48px;
+  padding: 32px;
+  background: var(--paper);
+  border: 1px solid var(--rule-2);
+}
+.how-to-book h4 {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-bottom: 16px;
+}
+.how-to-book ol {
+  margin: 0 0 16px 20px;
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.8;
+}
+.how-to-book-note {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-3);
+  border-top: 1px solid var(--rule);
+  padding-top: 14px;
+}
+
 @media (max-width: 900px) {
   .split-intro { grid-template-columns: 1fr; gap: 24px; }
   .facts { grid-template-columns: repeat(2, 1fr); }
@@ -216,6 +313,7 @@
   .map-section { grid-template-columns: 1fr; }
   .map-img { border-right: none; border-bottom: 1px solid var(--rule); }
   .attractions { grid-template-columns: 1fr; }
+  .hotel-grid { grid-template-columns: 1fr; }
 }
 </style>
 </head>
@@ -375,14 +473,58 @@
         <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Partner<br>hotels.</h2>
       </div>
       <div>
-        <p class="lede">Discounted rates with nearby hotel partners are being finalised.</p>
+        <p class="lede">A preferential corporate rate has been arranged at two hotels in the Raffles Place CBD, a short MRT ride from Sands Expo &amp; Convention Centre.</p>
       </div>
     </div>
 
-    <div style="border: 1px solid var(--ink); background: var(--paper); padding: 56px 48px; text-align: center; margin-top: 32px;">
-      <span style="display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.15em; text-transform: uppercase; color: var(--ink-3); background: var(--paper-2); border: 1px solid var(--rule); padding: 6px 14px; margin-bottom: 20px;">Coming soon</span>
-      <p style="font-family: var(--font-display); font-size: 24px; font-weight: 500; max-width: 46ch; margin: 0 auto 12px;">Partner hotel rates are not yet confirmed.</p>
-      <p style="font-size: 15px; color: var(--ink-2); max-width: 52ch; margin: 0 auto;">We're finalising discounted accommodation agreements with hotels near Marina Bay Sands and will publish rates and booking codes here once confirmed. In the meantime, delegates are welcome to book Marina Bay Sands or any nearby hotel directly.</p>
+    <div class="corp-code-panel">
+      <div>
+        <span class="corp-code-label">Corporate code</span>
+        <span class="corp-code-value">ASTARCONFERENCES</span>
+      </div>
+      <dl class="corp-code-details">
+        <div>
+          <dt>Booking window</dt>
+          <dd>Now – 3 March 2027</dd>
+        </div>
+        <div>
+          <dt>Stay period</dt>
+          <dd>3 – 14 March 2027</dd>
+        </div>
+        <div>
+          <dt>Cancellation</dt>
+          <dd>Free up to 72 hours before arrival</dd>
+        </div>
+      </dl>
+    </div>
+
+    <div class="hotel-grid">
+      <div class="hotel-card">
+        <div class="hotel-img" style="background-image: url('../images/hotels/ascott-raffles-place.jpg');"></div>
+        <div class="hotel-body">
+          <h3>Ascott Raffles Place Singapore</h3>
+          <p>Serviced residences in a landmark Art Deco tower at the heart of the Raffles Place CBD, around 10 minutes from Sands Expo &amp; Convention Centre by MRT or taxi.</p>
+          <a href="https://www.discoverasr.com/en/ascott-the-residence/singapore/ascott-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="hotel-card">
+        <div class="hotel-img" style="background-image: url('../images/hotels/capitaspring-oakwood.jpg'); background-position: center 30%;"></div>
+        <div class="hotel-body">
+          <h3>Oakwood Premier Raffles Place Singapore</h3>
+          <p>A newly opened 299-room property occupying seven levels of CapitaSpring (pictured), with panoramic skyline views over the Raffles Place CBD.</p>
+          <a href="https://www.discoverasr.com/en/oakwood/singapore/oakwood-premier-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+        </div>
+      </div>
+    </div>
+
+    <div class="how-to-book">
+      <h4>How to book</h4>
+      <ol>
+        <li>Visit the property website above and enter your stay dates.</li>
+        <li>Enter <strong>ASTARCONFERENCES</strong> in the "Promotion" field.</li>
+        <li>Complete your booking under the QIRT Asia 2027 programme.</li>
+      </ol>
+      <p class="how-to-book-note">The property reserves the right to decline a booking if the promotional code is not applicable to the confirmed reservation.</p>
     </div>
   </div>
 </section>
