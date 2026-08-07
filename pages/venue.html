@@ -260,6 +260,30 @@
 }
 .hotel-card { border: 1px solid var(--rule); background: var(--paper); }
 .hotel-img img { width: 100%; display: block; }
+.hotel-tba {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 240px;
+  border-style: dashed;
+  border-color: var(--rule-2);
+}
+.hotel-tba-inner { text-align: center; padding: 32px; }
+.hotel-tba .tag {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+}
+.hotel-tba .msg {
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: 22px;
+  color: var(--ink-3);
+  margin: 10px 0 12px;
+}
+.hotel-tba p { font-size: 13px; color: var(--ink-3); max-width: 32ch; margin: 0 auto; }
 .hotel-body { padding: 28px 28px 32px; }
 .hotel-body h3 {
   font-family: var(--font-display);
@@ -509,6 +533,20 @@
           <h3>Oakwood Premier Raffles Place Singapore</h3>
           <p>A newly opened 299-room property occupying seven levels of CapitaSpring, with panoramic skyline views over the Raffles Place CBD.</p>
           <a href="https://www.discoverasr.com/en/oakwood/singapore/oakwood-premier-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+        </div>
+      </div>
+      <div class="hotel-card hotel-tba">
+        <div class="hotel-tba-inner">
+          <span class="tag">Partner hotel</span>
+          <div class="msg">Coming soon.</div>
+          <p>Additional accommodation partners are being finalised and will be added here.</p>
+        </div>
+      </div>
+      <div class="hotel-card hotel-tba">
+        <div class="hotel-tba-inner">
+          <span class="tag">Partner hotel</span>
+          <div class="msg">Coming soon.</div>
+          <p>Additional accommodation partners are being finalised and will be added here.</p>
         </div>
       </div>
     </div>
