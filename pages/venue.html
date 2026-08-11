@@ -251,6 +251,36 @@
   margin-bottom: 4px;
 }
 .corp-code-details dd { font-size: 14px; color: var(--ink); }
+.corp-code-details dd a { color: var(--accent); }
+
+/* Rate-offer variant of the code panel (no promo code, enquiry-based) */
+.corp-code-value.rate {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  text-transform: none;
+}
+
+/* Booking groups within Accommodation */
+.hotel-group + .hotel-group {
+  margin-top: 72px;
+  padding-top: 64px;
+  border-top: 1px solid var(--rule-2);
+}
+.hotel-group-head {
+  font-family: var(--font-display);
+  font-size: 26px;
+  font-weight: 500;
+  letter-spacing: -0.01em;
+  margin-bottom: 6px;
+}
+.hotel-group-sub {
+  font-size: 15px;
+  color: var(--ink-2);
+  line-height: 1.7;
+  max-width: 70ch;
+}
 
 .hotel-grid {
   display: grid;
@@ -260,30 +290,22 @@
 }
 .hotel-card { border: 1px solid var(--rule); background: var(--paper); }
 .hotel-img img { width: 100%; display: block; }
-.hotel-tba {
+/* Image slot for hotels whose photos are not yet supplied */
+.hotel-img.pending {
+  aspect-ratio: 4/3;
+  background: var(--paper-2);
+  border-bottom: 1px dashed var(--rule-2);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 240px;
-  border-style: dashed;
-  border-color: var(--rule-2);
 }
-.hotel-tba-inner { text-align: center; padding: 32px; }
-.hotel-tba .tag {
+.hotel-img.pending span {
   font-family: var(--font-mono);
   font-size: 10px;
   letter-spacing: 0.15em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.hotel-tba .msg {
-  font-family: var(--font-display);
-  font-style: italic;
-  font-size: 22px;
-  color: var(--ink-3);
-  margin: 10px 0 12px;
-}
-.hotel-tba p { font-size: 13px; color: var(--ink-3); max-width: 32ch; margin: 0 auto; }
 .hotel-body { padding: 28px 28px 32px; }
 .hotel-body h3 {
   font-family: var(--font-display);
@@ -493,72 +515,106 @@
         <h2 style="font-family: var(--font-display); font-size: clamp(36px, 4.4vw, 60px); font-weight: 500; line-height: 1; letter-spacing: -0.015em;">Partner<br>hotels.</h2>
       </div>
       <div>
-        <p class="lede">A preferential corporate rate has been arranged at two hotels in the Raffles Place CBD, a short MRT ride from Sands Expo &amp; Convention Centre.</p>
+        <p class="lede">Preferential rates have been arranged at four hotels in the Singapore CBD, each a short MRT ride or drive from Sands Expo &amp; Convention Centre. There are two booking routes — please follow the one shown for your chosen hotel.</p>
       </div>
     </div>
 
-    <div class="corp-code-panel">
-      <div>
-        <span class="corp-code-label">Corporate code</span>
-        <span class="corp-code-value">ASTARCONFERENCES</span>
+    <!-- Group 1: corporate code -->
+    <div class="hotel-group">
+      <div class="hotel-group-head">Book online with the corporate code</div>
+      <p class="hotel-group-sub">Applies to Ascott Raffles Place and Oakwood Premier Raffles Place.</p>
+
+      <div class="corp-code-panel">
+        <div>
+          <span class="corp-code-label">Corporate code</span>
+          <span class="corp-code-value">ASTARCONFERENCES</span>
+        </div>
+        <dl class="corp-code-details">
+          <div>
+            <dt>Booking window</dt>
+            <dd>Now – 3 March 2027</dd>
+          </div>
+          <div>
+            <dt>Stay period</dt>
+            <dd>3 – 14 March 2027</dd>
+          </div>
+          <div>
+            <dt>Cancellation</dt>
+            <dd>Free up to 72 hours before arrival</dd>
+          </div>
+        </dl>
       </div>
-      <dl class="corp-code-details">
-        <div>
-          <dt>Booking window</dt>
-          <dd>Now – 3 March 2027</dd>
+
+      <div class="hotel-grid">
+        <div class="hotel-card">
+          <div class="hotel-img"><img src="../images/hotels/ascott-raffles-place.jpg" alt="Ascott Raffles Place Singapore"></div>
+          <div class="hotel-body">
+            <h3>Ascott Raffles Place Singapore</h3>
+            <p>Serviced residences in a landmark Art Deco tower at the heart of the Raffles Place CBD, around 10 minutes from Sands Expo &amp; Convention Centre by MRT or taxi.</p>
+            <a href="https://www.discoverasr.com/en/ascott-the-residence/singapore/ascott-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+          </div>
         </div>
-        <div>
-          <dt>Stay period</dt>
-          <dd>3 – 14 March 2027</dd>
+        <div class="hotel-card">
+          <div class="hotel-img"><img src="../images/hotels/oakwood-raffles-place.jpg" alt="Oakwood Premier Raffles Place Singapore"></div>
+          <div class="hotel-body">
+            <h3>Oakwood Premier Raffles Place Singapore</h3>
+            <p>A newly opened 299-room property occupying seven levels of CapitaSpring, with panoramic skyline views over the Raffles Place CBD.</p>
+            <a href="https://www.discoverasr.com/en/oakwood/singapore/oakwood-premier-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+          </div>
         </div>
-        <div>
-          <dt>Cancellation</dt>
-          <dd>Free up to 72 hours before arrival</dd>
-        </div>
-      </dl>
+      </div>
+
+      <div class="how-to-book">
+        <h4>How to book</h4>
+        <ol>
+          <li>Visit the property website above and enter your stay dates.</li>
+          <li>Enter <strong>ASTARCONFERENCES</strong> in the "Promotion" field.</li>
+          <li>Complete your booking under the QIRT Asia 2027 programme.</li>
+        </ol>
+        <p class="how-to-book-note">The property reserves the right to decline a booking if the promotional code is not applicable to the confirmed reservation.</p>
+      </div>
     </div>
 
-    <div class="hotel-grid">
-      <div class="hotel-card">
-        <div class="hotel-img"><img src="../images/hotels/ascott-raffles-place.jpg" alt="Ascott Raffles Place Singapore"></div>
-        <div class="hotel-body">
-          <h3>Ascott Raffles Place Singapore</h3>
-          <p>Serviced residences in a landmark Art Deco tower at the heart of the Raffles Place CBD, around 10 minutes from Sands Expo &amp; Convention Centre by MRT or taxi.</p>
-          <a href="https://www.discoverasr.com/en/ascott-the-residence/singapore/ascott-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
-        </div>
-      </div>
-      <div class="hotel-card">
-        <div class="hotel-img"><img src="../images/hotels/oakwood-raffles-place.jpg" alt="Oakwood Premier Raffles Place Singapore"></div>
-        <div class="hotel-body">
-          <h3>Oakwood Premier Raffles Place Singapore</h3>
-          <p>A newly opened 299-room property occupying seven levels of CapitaSpring, with panoramic skyline views over the Raffles Place CBD.</p>
-          <a href="https://www.discoverasr.com/en/oakwood/singapore/oakwood-premier-raffles-place-singapore" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
-        </div>
-      </div>
-      <div class="hotel-card hotel-tba">
-        <div class="hotel-tba-inner">
-          <span class="tag">Partner hotel</span>
-          <div class="msg">Coming soon.</div>
-          <p>Additional accommodation partners are being finalised and will be added here.</p>
-        </div>
-      </div>
-      <div class="hotel-card hotel-tba">
-        <div class="hotel-tba-inner">
-          <span class="tag">Partner hotel</span>
-          <div class="msg">Coming soon.</div>
-          <p>Additional accommodation partners are being finalised and will be added here.</p>
-        </div>
-      </div>
-    </div>
+    <!-- Group 2: enquiry-based rate -->
+    <div class="hotel-group">
+      <div class="hotel-group-head">Book by enquiry</div>
+      <p class="hotel-group-sub">Applies to Oasia Hotel Downtown and The Clan Hotel. These properties do not use the corporate code above — please contact the reservations manager directly, quoting QIRT Asia 2027.</p>
 
-    <div class="how-to-book">
-      <h4>How to book</h4>
-      <ol>
-        <li>Visit the property website above and enter your stay dates.</li>
-        <li>Enter <strong>ASTARCONFERENCES</strong> in the "Promotion" field.</li>
-        <li>Complete your booking under the QIRT Asia 2027 programme.</li>
-      </ol>
-      <p class="how-to-book-note">The property reserves the right to decline a booking if the promotional code is not applicable to the confirmed reservation.</p>
+      <div class="corp-code-panel">
+        <div>
+          <span class="corp-code-label">Exclusive delegate rate</span>
+          <span class="corp-code-value rate">25% off Best Available Rates</span>
+        </div>
+        <dl class="corp-code-details">
+          <div>
+            <dt>Reservations &amp; enquiries</dt>
+            <dd>Evangeline Lim<br><a href="mailto:evangeline@fareast.com">evangeline@fareast.com</a></dd>
+          </div>
+          <div>
+            <dt>Quote</dt>
+            <dd>SINCE 2027 / QIRT Asia 2027</dd>
+          </div>
+        </dl>
+      </div>
+
+      <div class="hotel-grid">
+        <div class="hotel-card">
+          <div class="hotel-img pending"><span>Photo coming soon</span></div>
+          <div class="hotel-body">
+            <h3>Oasia Hotel Downtown, Singapore</h3>
+            <p>A biophilic sanctuary rising above the city, distinguished by a striking red façade enveloped in lush greenery. Guests can swim at the Level 27 outdoor rooftop pool with sweeping city views, or keep to their routine at the 24-hour gym. Set in the vibrant Tanjong Pagar precinct with Tanjong Pagar MRT station right outside the door — roughly an 8-minute drive from Sands Expo &amp; Convention Centre.</p>
+            <a href="https://www.oasiahotels.com/en/singapore/hotels/oasia-hotel-downtown" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+          </div>
+        </div>
+        <div class="hotel-card">
+          <div class="hotel-img pending"><span>Photo coming soon</span></div>
+          <div class="hotel-body">
+            <h3>The Clan Hotel Singapore</h3>
+            <p>Contemporary luxury behind an enigmatic chrome façade, where Singapore's heritage is reimagined through traditional textures and modern detail, and guests are welcomed with the Nanyang Ritual signature tea ceremony. A Sky Pool and 24-hour Sky Gym sit high above the city. Directly connected to Telok Ayer MRT station (Exit D) — roughly a 6-minute drive from Sands Expo &amp; Convention Centre.</p>
+            <a href="https://www.theclanhotel.com.sg/" target="_blank" rel="noopener" class="btn ghost">Visit property site <span class="arrow">↗</span></a>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
