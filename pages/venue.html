@@ -290,22 +290,6 @@
 }
 .hotel-card { border: 1px solid var(--rule); background: var(--paper); }
 .hotel-img img { width: 100%; display: block; }
-/* Image slot for hotels whose photos are not yet supplied */
-.hotel-img.pending {
-  aspect-ratio: 4/3;
-  background: var(--paper-2);
-  border-bottom: 1px dashed var(--rule-2);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.hotel-img.pending span {
-  font-family: var(--font-mono);
-  font-size: 10px;
-  letter-spacing: 0.15em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
 .hotel-body { padding: 28px 28px 32px; }
 .hotel-body h3 {
   font-family: var(--font-display);
@@ -599,7 +583,7 @@
 
       <div class="hotel-grid">
         <div class="hotel-card">
-          <div class="hotel-img pending"><span>Photo coming soon</span></div>
+          <div class="hotel-img"><img src="../images/hotels/oasia-hotel-downtown.jpg" alt="Oasia Hotel Downtown, Singapore"></div>
           <div class="hotel-body">
             <h3>Oasia Hotel Downtown, Singapore</h3>
             <p>A biophilic sanctuary rising above the city, distinguished by a striking red façade enveloped in lush greenery. Guests can swim at the Level 27 outdoor rooftop pool with sweeping city views, or keep to their routine at the 24-hour gym. Set in the vibrant Tanjong Pagar precinct with Tanjong Pagar MRT station right outside the door — roughly an 8-minute drive from Sands Expo &amp; Convention Centre.</p>
@@ -607,7 +591,7 @@
           </div>
         </div>
         <div class="hotel-card">
-          <div class="hotel-img pending"><span>Photo coming soon</span></div>
+          <div class="hotel-img"><img src="../images/hotels/the-clan-hotel.jpg" alt="The Clan Hotel Singapore"></div>
           <div class="hotel-body">
             <h3>The Clan Hotel Singapore</h3>
             <p>Contemporary luxury behind an enigmatic chrome façade, where Singapore's heritage is reimagined through traditional textures and modern detail, and guests are welcomed with the Nanyang Ritual signature tea ceremony. A Sky Pool and 24-hour Sky Gym sit high above the city. Directly connected to Telok Ayer MRT station (Exit D) — roughly a 6-minute drive from Sands Expo &amp; Convention Centre.</p>
