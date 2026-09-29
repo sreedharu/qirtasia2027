@@ -217,12 +217,17 @@
 /* Layout images */
 .layout-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
   margin-bottom: 24px;
 }
-.layout-figure { border: 1px solid var(--rule); }
-.layout-figure img { width: 100%; display: block; }
+.layout-figure {
+  background: var(--paper);
+  border: 1px solid var(--rule);
+  display: flex;
+  flex-direction: column;
+}
+.layout-figure img { width: 100%; height: auto; display: block; }
 .layout-figure figcaption {
   font-family: var(--font-mono);
   font-size: 11px;
@@ -231,6 +236,7 @@
   color: var(--ink-3);
   padding: 12px 16px;
   border-top: 1px solid var(--rule);
+  margin-top: auto;
 }
 
 /* Hours */
@@ -263,10 +269,13 @@
   margin-bottom: 80px;
 }
 
+@media (max-width: 900px) {
+  .layout-grid { grid-template-columns: 1fr; }
+}
+
 @media (max-width: 800px) {
   .exhibitor-grid { grid-template-columns: 1fr; }
   .exhibit-cta { padding: 40px 24px; }
-  .layout-grid { grid-template-columns: 1fr; }
   .hours-grid { grid-template-columns: 1fr; }
   .prospectus-callout { flex-direction: column; align-items: flex-start; }
 }
@@ -455,6 +464,10 @@
       <figure class="layout-figure">
         <img src="../images/exhibition/booth-floor-plan.png" alt="Exhibition booth floor plan with Platinum, Diamond, Gold, Silver, Bronze and Standard booths">
         <figcaption>Booth floor plan</figcaption>
+      </figure>
+      <figure class="layout-figure">
+        <img src="../images/exhibition/Booths24092026.avif" alt="Updated exhibition booth allocation and taken booths status">
+        <figcaption>Booth allocation &amp; taken booths update</figcaption>
       </figure>
     </div>
     <p class="package-note" style="margin-bottom: 80px;">The exhibition floor sits directly beside the technical session rooms and tea-break area, ensuring steady delegate traffic throughout both conference days.</p>
