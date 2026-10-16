@@ -22,7 +22,7 @@ Official website for the 6th Asian Quantitative Infrared Thermography Conference
 - **Full Paper / Extended Abstract Due:** 10 January 2027
 - **Standard Registration Deadline:** 15 February 2027
 - **QIRT Short Course:** 7 March 2027
-- **Main Conference:** 8-9 March 2027
+- **Main Conference & Technical Visit:** 8-9 March 2027
 - **Post-Conference Tour:** 10 March 2027
 
 ## Organizing Committee
@@ -40,9 +40,10 @@ Official website for the 6th Asian Quantitative Infrared Thermography Conference
 
 The QIRT Asia Steering Committee (19 members across 10 countries) is listed in full on `pages/committee.html`.
 
-## Keynote Speaker
+## Keynote Speakers
 
 - **Prof. Xavier Maldague** - Université Laval, Canada Research Chair in Multipolar Infrared Vision; also QIRT Council Representative
+- **Prof. Hai Zhang** - Harbin Institute of Technology, National Young Talent, Editor of Quantitative InfraRed Thermography Journal
 
 ## Awards
 
