@@ -30,13 +30,13 @@ Official website for the 6th Asian Quantitative Infrared Thermography Conference
 **Local Organizing Committee** — see `pages/committee.html` for full affiliations:
 
 - **Dr. Andrew Ngo** - Chair (A*STAR IMRE / A*STAR FEAT)
-- **Dr. Sreedhar Unnikrishnakurup** - Co-Chair (A*STAR IMRE / A*STAR FEAT)
+- **Dr. Sreedhar Unnikrishnakurup** - Co-Chair & Technical Committee (A*STAR IMRE / A*STAR FEAT)
 - **Prof. Junyan Liu** - Vice Chair (Harbin Institute of Technology)
 - **Prof. Edmund Liew** - Committee Member (Singapore Institute of Technology)
 - **Vinod Kumar** - Logistics Committee (A*STAR IMRE)
-- **Jonathan Zheng** - Technical Committee (A*STAR IMRE)
 - **Dr. Andy Malcolm** - Committee Member (A*STAR SIMTECH)
 - **Dr. Sajeesh K Babu** - President NDTSS, ICNDT Chairman
+- **Dr. Santhakumar Sampath** - Committee Member (A*STAR IMRE)
 
 The QIRT Asia Steering Committee (19 members across 10 countries) is listed in full on `pages/committee.html`.
 
